@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>METANETSOFT | Dijital Geleceğin Mimarları</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-error": "#490106",
+                      "primary": "#c6c6c7",
+                      "secondary-dim": "#9f9d9d",
+                      "on-tertiary-container": "#005359",
+                      "on-error-container": "#ff9993",
+                      "on-secondary-container": "#c1bfbe",
+                      "surface-tint": "#c6c6c7",
+                      "on-primary": "#3f4041",
+                      "secondary-fixed": "#e4e2e1",
+                      "error": "#ee7d77",
+                      "secondary-fixed-dim": "#d6d4d3",
+                      "secondary-container": "#3c3b3b",
+                      "primary-dim": "#b8b9b9",
+                      "background": "#0e0e0e",
+                      "on-tertiary": "#005d63",
+                      "tertiary-fixed": "#00eefc",
+                      "on-primary-fixed-variant": "#5a5c5c",
+                      "on-tertiary-fixed-variant": "#005e64",
+                      "on-secondary-fixed-variant": "#5c5b5b",
+                      "surface-container": "#191919",
+                      "on-primary-container": "#d0d0d0",
+                      "primary-fixed": "#e2e2e2",
+                      "inverse-surface": "#f9f9f9",
+                      "tertiary": "#8ff5ff",
+                      "error-dim": "#bb5551",
+                      "primary-container": "#454747",
+                      "surface-container-highest": "#262626",
+                      "on-surface": "#e5e5e5",
+                      "primary-fixed-dim": "#d4d4d4",
+                      "on-secondary": "#202020",
+                      "on-background": "#e5e5e5",
+                      "surface-bright": "#2c2c2c",
+                      "surface-container-high": "#1f1f1f",
+                      "outline-variant": "#484848",
+                      "tertiary-container": "#00eefc",
+                      "on-primary-fixed": "#3e4040",
+                      "on-surface-variant": "#ababab",
+                      "surface-variant": "#262626",
+                      "outline": "#757575",
+                      "surface-container-lowest": "#000000",
+                      "tertiary-dim": "#00deec",
+                      "surface-container-low": "#131313",
+                      "inverse-on-surface": "#555555",
+                      "error-container": "#7f2927",
+                      "inverse-primary": "#5e5f60",
+                      "on-secondary-fixed": "#3f3f3f",
+                      "surface-dim": "#0e0e0e",
+                      "tertiary-fixed-dim": "#00deec",
+                      "on-tertiary-fixed": "#003f43",
+                      "surface": "#0e0e0e",
+                      "secondary": "#9f9d9d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "fontFamily": {
+                      "headline": ["Space Grotesk"],
+                      "display": ["Space Grotesk"],
+                      "body": ["Inter"],
+                      "label": ["Space Grotesk"]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #0e0e0e; color: #e5e5e5; scroll-behavior: smooth; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .grid-pattern { background-image: radial-gradient(rgba(72, 72, 72, 0.15) 1px, transparent 1px); background-size: 40px 40px; }
+        .mono-label { font-family: 'Space Grotesk', monospace; text-transform: uppercase; letter-spacing: 0.1em; }
+    </style>
+</head>
+<body class="bg-background text-on-background selection:bg-tertiary selection:text-on-background">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-[#191919]/70 backdrop-blur-md">
+<div class="flex justify-between items-center px-8 py-4 max-w-full mx-auto">
+<div class="text-xl font-bold tracking-tighter text-[#e5e5e5] font-headline">METANETSOFT</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-['Space_Grotesk'] uppercase tracking-tighter text-[#757575] hover:text-[#8ff5ff] transition-colors duration-300" href="#">Hakkımızda</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-tighter text-[#757575] hover:text-[#8ff5ff] transition-colors duration-300" href="#">Hizmetler</a>
+<a class="font-['Space_Grotesk'] uppercase tracking-tighter text-[#757575] hover:text-[#8ff5ff] transition-colors duration-300" href="#portfolio">Projeler</a>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden lg:flex items-center pr-6 mr-2">
+<div class="flex items-center gap-2 bg-[#1f1f1f] border border-[#222] px-3 py-1.5 cursor-pointer group hover:border-tertiary transition-colors duration-300">
+<span class="font-headline text-[11px] font-bold uppercase tracking-widest text-tertiary">TR</span>
+<span class="material-symbols-outlined text-tertiary text-sm !leading-none">keyboard_arrow_down</span>
+</div>
+</div>
+<a class="px-6 py-2 bg-primary text-on-primary font-headline font-bold uppercase tracking-tighter hover:scale-95 duration-200 transition-transform inline-block" href="#contact">İletişim</a>
+</div>
+</div>
+</nav>
+<main class="pt-16">
+<canvas class="fixed inset-0 pointer-events-none z-0 opacity-40" id="particle-canvas"></canvas>
+<!-- Section 1: Hero -->
+<section class="relative min-h-[921px] flex flex-col justify-center px-8 md:px-24 grid-pattern overflow-hidden">
+<div class="absolute top-0 right-0 w-1/2 h-full opacity-20 pointer-events-none"></div>
+<div class="relative z-10 max-w-5xl">
+<div class="flex items-center gap-4 mb-6">
+<span class="w-12 h-[1px] bg-tertiary"></span>
+<span class="mono-label text-tertiary text-sm">Sistem Hazır: Bağlantı Kuruluyor</span>
+</div>
+<h1 class="text-6xl md:text-8xl font-headline font-bold text-on-background leading-tight tracking-tighter mb-4">İşimiz <span class="text-primary">basit.</span></h1>
+<div class="md:grid md:grid-cols-12 gap-8 items-start">
+<h2 class="col-span-7 text-2xl md:text-4xl font-headline font-light text-on-surface-variant leading-snug tracking-tight mb-8">Ekibinize katılıyor veya projelerinizi teknik mükemmeliyetle hayata geçiriyoruz.</h2>
+</div>
+<div class="flex flex-col md:flex-row gap-4 mt-8">
+<a class="px-10 py-5 bg-transparent border border-outline/30 text-primary font-headline font-bold uppercase tracking-widest hover:bg-surface-container transition-all text-center" href="#portfolio">
+                    Portfolyoyu Görüntüle
+                </a>
+</div>
+</div>
+<!-- Technical Detail Ornament -->
+<div class="absolute bottom-12 left-24 hidden md:flex items-center gap-12 text-[10px] mono-label text-outline">
+<div>ENL: 40.7128° K</div>
+<div>BOY: 74.0060° B</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 bg-tertiary animate-pulse"></span>
+                ÇALIŞMA SÜRESİ: %99.998
+            </div>
+</div>
+</section>
+<!-- Section 2: About & Expertise -->
+<section class="py-32 px-8 md:px-24 bg-surface">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16">
+<div class="col-span-12 md:col-span-5">
+<h3 class="mono-label text-tertiary mb-4">01 // Mimari</h3>
+<h2 class="text-5xl font-headline font-bold tracking-tighter leading-none mb-8">
+                    Dijital Geleceğin <br/><span class="text-on-surface-variant">Mimarları</span>
+</h2>
+</div>
+<div class="col-span-12 md:col-span-7 space-y-6">
+<p class="text-xl text-on-surface-variant leading-relaxed font-light">
+                    Metanetsoft, yüksek performanslı bir teknik danışmanlık firmasıdır. Sadece yazılım üretmiyor; ölçeklenebilir, sağlam dijital altyapılar tasarlıyoruz. Erken aşama yapay zeka entegrasyonlarından karmaşık kurumsal sistemlere kadar, vizyon ile uygulama arasındaki köprüyü kuruyoruz.
+                </p>
+<p class="text-lg text-outline leading-relaxed">
+                    Metodolojimiz köklerini, ham performans, yapısal bütünlük ve tavizsiz güvenliği önceliklendiren <span class="text-on-surface">Teknik Brutalizm</span>'den alır. İster mevcut sprint döngülerinize entegre olalım, ister tam döngülü bir ürün teslim edelim; cerrahi bir hassasiyetle çalışıyoruz.
+                </p>
+<div class="grid grid-cols-2 gap-4 pt-8">
+<div class="p-6 bg-surface-container-low border-l-2 border-tertiary">
+<div class="text-3xl font-headline font-bold text-primary">99.9%</div>
+<div class="mono-label text-[10px] text-outline">SİSTEM ÇALIŞMA SÜRESİ</div>
+</div>
+<div class="p-6 bg-surface-container-low border-l-2 border-tertiary">
+<div class="text-3xl font-headline font-bold text-primary">&lt; 50ms</div>
+<div class="mono-label text-[10px] text-outline">GLOBAL ERİŞİM HIZI</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Services (Bento Grid) -->
+<section class="py-32 px-8 md:px-24 bg-surface-container-low">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div>
+<h3 class="mono-label text-tertiary mb-4">02 // Temel Yetenekler</h3>
+<h2 class="text-5xl font-headline font-bold tracking-tighter">Stratejik Yürütme</h2>
+</div>
+<p class="max-w-xs text-outline text-sm mono-label">
+                Yüksek erişilebilirlik sağlayan ortamlar için tasarlanmış modüler çözümler.
+            </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-1">
+<!-- AI & Automation -->
+<div class="group relative bg-surface p-10 hover:bg-surface-container-high transition-colors duration-500 min-h-[450px] flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-4xl text-tertiary mb-8" data-icon="neurology">neurology</span>
+<h4 class="text-2xl font-headline font-bold mb-4">Yapay Zeka ve Akıllı Otomasyon</h4>
+<p class="text-on-surface-variant leading-relaxed">
+                        Karar alma iş akışlarını otomatikleştirmek için Yüksek Dil Modelleri (LLM), bilgisayarlı görü ve tahmine dayalı analitik uyguluyoruz. Veriyi otonom bir güce dönüştürüyoruz.
+                    </p>
+</div>
+<div class="mt-8">
+<ul class="text-xs mono-label text-outline space-y-2">
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-tertiary"></span> Özel LLM İnce Ayarı</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-tertiary"></span> Tahmine Dayalı Mantık Motorları</li>
+</ul>
+</div>
+</div>
+<!-- Web Engineering -->
+<div class="group relative bg-surface p-10 hover:bg-surface-container-high transition-colors duration-500 min-h-[450px] flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-4xl text-tertiary mb-8" data-icon="terminal">terminal</span>
+<h4 class="text-2xl font-headline font-bold mb-4">Web Tasarımı, Mühendisliği ve SEO</h4>
+<p class="text-on-surface-variant leading-relaxed">React, Next.js ve modern teknolojilerle estetik tasarım ve yüksek performanslı sistemleri birleştiriyoruz. Butik projelerden karmaşık sistemlere kadar SEO odaklı ve kullanıcı deneyimi öncelikli dijital çözümler sunuyoruz.</p>
+</div>
+<div class="mt-8">
+<ul class="text-xs mono-label text-outline space-y-2">
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-tertiary"></span> Modern UI/UX Tasarımı</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-tertiary"></span> Teknik SEO ve Performans Optimizasyonu</li>
+</ul>
+</div>
+</div>
+<!-- Mobile Development -->
+<div class="group relative bg-surface p-10 hover:bg-surface-container-high transition-colors duration-500 min-h-[450px] flex flex-col justify-between">
+<div>
+<span class="material-symbols-outlined text-4xl text-tertiary mb-8" data-icon="smartphone">smartphone</span>
+<h4 class="text-2xl font-headline font-bold mb-4">Mobil Uygulama Geliştirme</h4>
+<p class="text-on-surface-variant leading-relaxed">
+                        Kullanıcının cebinde yaşayan yerel (native) ve çapraz platform deneyimleri. Çevrimdışı öncelikli mühendislik ile yüksek sadakatli kullanıcı arayüzü.
+                    </p>
+</div>
+<div class="mt-8">
+<ul class="text-xs mono-label text-outline space-y-2">
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-tertiary"></span> Swift / Kotlin Uzmanlığı</li>
+<li class="flex items-center gap-2"><span class="w-1 h-1 bg-tertiary"></span> Gerçek Zamanlı Biyometrik Senkronizasyon</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Projects & Logos (Concept Proof) -->
+<section class="py-32 px-8 md:px-24" id="portfolio">
+<h3 class="mono-label text-tertiary mb-12">03 // Konsept Kanıtı</h3>
+<div class="space-y-32">
+<!-- Project 1: NEURAL CORE REDESIGN -->
+<div class="md:grid md:grid-cols-12 gap-12 items-center">
+<div class="col-span-7 relative group overflow-hidden">
+<img alt="Neural Core Redesign Visual" class="w-full aspect-[16/9] object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1hXnW7HrdXE8sqWXY6Q5WiTUyRFWJg94l_36szMh6x2TLNPPVG991LmhsPphDNfKljisI2eK84zcwT5qLLFgZmu32Wmf3f4-RSQ5CRkisimBai7jUDxTgNW2kEhxZ9ZtKg-fcoHi6JFYo2IOwm6xU3Ktf6owER29T0b6chjxxEFqopj5PSuM5-24mnKDoxMdcXfzcpS5eYSt8A-0IlScu10UoPuD5Yo68cwtGPmhIAcdVzx4gC_FD-Htt39JReC77mUWjcUl9B3mn"/>
+<div class="absolute inset-0 bg-surface/40 group-hover:bg-transparent transition-all"></div>
+</div>
+<div class="col-span-5 pt-8 md:pt-0">
+<div class="text-tertiary text-xs mono-label mb-2">AI Mimari Optimizasyonu // 2024</div>
+<h4 class="text-4xl font-headline font-bold mb-4">NEURAL CORE REDESIGN</h4>
+<p class="text-on-surface-variant mb-6">Otonom sistemler için gecikme süresini %40 azaltan ve karar verme süreçlerini milisaniyeler seviyesine çeken gelişmiş yapay zeka çekirdeği optimizasyonu.</p>
+</div>
+</div>
+<!-- Project 2: SKY SCALE PROJECT -->
+<div class="md:grid md:grid-cols-12 gap-12 items-center">
+<div class="col-span-5 order-2 md:order-1 pt-8 md:pt-0 text-right md:text-left">
+<div class="text-tertiary text-xs mono-label mb-2">Bulut Altyapı Ölçeklenebilirliği // 2024</div>
+<h4 class="text-4xl font-headline font-bold mb-4">SKY SCALE PROJECT</h4>
+<p class="text-on-surface-variant mb-6">Küresel veri trafiğini yönetmek üzere tasarlanan, saniyede milyonlarca talebi hatasız karşılayan elastik bulut mimarisi kurulumu.</p>
+</div>
+<div class="col-span-7 order-1 md:order-2 relative group overflow-hidden">
+<img alt="Sky Scale Project Visual" class="w-full aspect-[16/9] object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1s7pwqo4hmWA-klbLHtgijAERXLv4z2lLRgaQmyMjiQ4pKXxzfAqmJpMXSCq7cXfWPuAJvxW_alPuRDFcNBMr0DN7qqOhRQDIsTiRr9Ad137lD66yM9QTrvwSGlX9NjpmkrhYQHZ3uqFxNRzrv9b1ncFj9fqLaZhRtlyV8YgY-onpWbo93vinNOkKYtVgxwcCfZA9crZ_6qTxJrVwCGAlZiDlIAFB7C2xXpt8JRsHUfjZ7KP5WnqqiHYhNmsU6M-Vh-VxFKVPm-Km"/>
+<div class="absolute inset-0 bg-surface/40 group-hover:bg-transparent transition-all"></div>
+</div>
+</div>
+<!-- Project 3: ENTERPRISE FLUX -->
+<div class="md:grid md:grid-cols-12 gap-12 items-center">
+<div class="col-span-7 relative group overflow-hidden">
+<img alt="Enterprise Flux Visual" class="w-full aspect-[16/9] object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJa_VHCElVaVw_R168IeQpFoF-Aflj5qtVZps9m68A-33H-LC6R0ew_Coc-z8ciSlP4mqaK9BgV-Xt0bzESblfo9PH_bLdv9OGKFYiBjMcxwjfMdfjLkMzoDzpFf_OlSnocmd0t670tuC9656FIOEJmIaIEdvggN6d_MsB1aBXTNzXgViIiPfo-6vOHjxrvHxQfH_BmFj3rRbKuLh9Q-vccpRsbCTRiHUsfURo-pF59SEmpM_kqlwky1QZc07p-mku2l6VkG9QRtt3"/>
+<div class="absolute inset-0 bg-surface/40 group-hover:bg-transparent transition-all"></div>
+</div>
+<div class="col-span-5 pt-8 md:pt-0">
+<div class="text-tertiary text-xs mono-label mb-2">Kurumsal Dijital Dönüşüm // 2023</div>
+<h4 class="text-4xl font-headline font-bold mb-4">ENTERPRISE FLUX</h4>
+<p class="text-on-surface-variant mb-6">Geleneksel finansal süreçleri modern blockchain ve API odaklı sistemlere taşıyan kapsamlı dijital entegrasyon projesi.</p>
+</div>
+</div>
+</div>
+<!-- Logos Section -->
+<div class="mt-32 pt-16 border-t border-outline/20 text-center">
+<h3 class="mono-label text-tertiary mb-12">04 // Referanslar ve İş Ortakları</h3>
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-50 grayscale">
+<div class="font-headline text-2xl font-bold tracking-widest">NEXUS AI</div>
+<div class="font-headline text-2xl font-bold tracking-widest">GLOBAL FREIGHT</div>
+<div class="font-headline text-2xl font-bold tracking-widest">FINCORP</div>
+<div class="font-headline text-2xl font-bold tracking-widest">QUANTUM SYSTEMS</div>
+<div class="font-headline text-2xl font-bold tracking-widest">CYBERNETICS</div>
+</div>
+</div>
+</section>
+<!-- Contact Form Section -->
+<section class="py-32 px-8 md:px-24 bg-surface" id="contact">
+<div class="max-w-4xl mx-auto">
+<h3 class="mono-label text-tertiary mb-4">05 // İletişim</h3>
+<h2 class="text-5xl font-headline font-bold tracking-tighter mb-12">Sisteme Bağlan</h2>
+<form class="space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<label class="block text-xs mono-label text-outline mb-2">İSİM</label>
+<input class="w-full bg-surface-container-low border border-outline/30 p-4 text-on-surface focus:outline-none focus:border-tertiary transition-colors" placeholder="İsminiz..." type="text"/>
+</div>
+<div>
+<label class="block text-xs mono-label text-outline mb-2">E-POSTA</label>
+<input class="w-full bg-surface-container-low border border-outline/30 p-4 text-on-surface focus:outline-none focus:border-tertiary transition-colors" placeholder="Emailiniz..." type="email"/>
+</div>
+</div>
+<div>
+<label class="block text-xs mono-label text-outline mb-2">MESAJ</label>
+<textarea class="w-full bg-surface-container-low border border-outline/30 p-4 text-on-surface focus:outline-none focus:border-tertiary transition-colors h-32" placeholder="Danışma içeriğiniz..."></textarea>
+</div>
+<button class="px-10 py-5 bg-primary text-on-primary font-headline font-bold uppercase tracking-widest hover:bg-primary-dim transition-all active:scale-95 w-full md:w-auto" type="submit">PROTOKOLÜ BAŞLAT</button>
+</form>
+</div>
+</section>
+<!-- Section 1.1: Vision & Mission -->
+<section class="py-32 px-8 md:px-24 bg-surface border-t border-outline/10">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-16">
+<div class="col-span-12 md:col-span-5">
+<h3 class="mono-label text-tertiary mb-4">01.1 // HEDEF VE DEĞERLER</h3>
+<h2 class="text-5xl font-headline font-bold tracking-tighter leading-none mb-8">
+                Vizyon &amp; <br/><span class="text-on-surface-variant">Misyon</span>
+</h2>
+</div>
+<div class="col-span-12 md:col-span-7">
+<div class="grid grid-cols-1 gap-8">
+<div class="p-8 bg-surface-container-low border-l-2 border-tertiary group hover:bg-surface-container transition-colors duration-300">
+<div class="mono-label text-xs text-tertiary mb-4">[ VİZYONUMUZ ]</div>
+<p class="text-xl text-on-surface-variant leading-relaxed font-light">
+                        Teknolojinin sınırlarını zorlayarak, global ölçekte dijital mimarinin standartlarını belirleyen, yenilikçi ve dönüştürücü bir teknoloji danışmanlığı lideri olmak.
+                    </p>
+</div>
+<div class="p-8 bg-surface-container-low border-l-2 border-tertiary group hover:bg-surface-container transition-colors duration-300">
+<div class="mono-label text-xs text-tertiary mb-4">[ MİSYONUMUZ ]</div>
+<p class="text-xl text-on-surface-variant leading-relaxed font-light">
+                        Müşterilerimize teknik mükemmeliyet ve stratejik derinlik sunarak, karmaşık dijital problemleri basit, ölçeklenebilir ve sürdürülebilir çözümlere dönüştürmek; projelerine gerçek değer katmak.
+                    </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-32 px-8 md:px-24 bg-surface-container-highest flex flex-col items-center text-center">
+<h2 class="text-5xl md:text-7xl font-headline font-bold tracking-tighter mb-8 max-w-4xl">Projenizi inşa etmeye <span class="text-tertiary">hazır mısınız?</span></h2>
+<p class="text-on-surface-variant text-xl mb-12 max-w-2xl">
+            Ekibimiz iş akışınıza entegre olmak için bekliyor. Teknik yol haritanızı tartışalım.
+        </p>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t border-[#484848]/15 bg-[#131313]">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full">
+<div class="mb-8 md:mb-0 text-center md:text-left">
+<div class="text-lg font-black text-[#e5e5e5] font-headline mb-2">METANETSOFT</div>
+<p class="font-['Space_Grotesk'] text-xs tracking-widest text-[#757575]">© 2024 METANETSOFT. GELECEĞİ TASARLIYORUZ.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-['Space_Grotesk'] text-xs tracking-widest text-[#757575] hover:text-[#e5e5e5] transition-opacity" href="#">Gizlilik Politikası</a>
+<a class="font-['Space_Grotesk'] text-xs tracking-widest text-[#757575] hover:text-[#e5e5e5] transition-opacity" href="#">Hizmet Şartları</a>
+<a class="font-['Space_Grotesk'] text-xs tracking-widest text-[#757575] hover:text-[#e5e5e5] transition-opacity" href="#">LinkedIn</a>
+<a class="font-['Space_Grotesk'] text-xs tracking-widest text-[#757575] hover:text-[#e5e5e5] transition-opacity" href="#">Github</a>
+</div>
+</div>
+</footer>
+<script>
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let mouse = { x: null, y: null };
+
+window.addEventListener('mousemove', (e) => {
+    mouse.x = e.x;
+    mouse.y = e.y;
+});
+
+function init() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    particles = [];
+    for (let i = 0; i < 100; i++) {
+        particles.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            size: Math.random() * 2,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5
+        });
+    }
+}
+
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        
+        if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+        // Mouse interaction
+        const dx = mouse.x - p.x;
+        const dy = mouse.y - p.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < 150) {
+            p.x -= dx * 0.01;
+            p.y -= dy * 0.01;
+        }
+
+        ctx.fillStyle = '#00deec';
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        particles.forEach(p2 => {
+            const d = Math.sqrt((p.x - p2.x)**2 + (p.y - p2.y)**2);
+            if (d < 100) {
+                ctx.strokeStyle = `rgba(0, 222, 236, ${1 - d/100})`;
+                ctx.lineWidth = 0.5;
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y);
+                ctx.lineTo(p2.x, p2.y);
+                ctx.stroke();
+            }
+        });
+    });
+    requestAnimationFrame(animate);
+}
+
+window.addEventListener('resize', init);
+init();
+animate();
+</script>
+</body></html>

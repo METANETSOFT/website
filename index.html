@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="{{locale}}" dir="{{dir}}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}" />
+  <link rel="canonical" href="{{canonicalUrl}}" />
+
+  <!-- SEO / Crawl -->
+  <meta name="robots" content="{{robotsMeta}}" />
+  <meta name="googlebot" content="{{robotsMeta}}" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="{{title}}" />
+  <meta property="og:description" content="{{description}}" />
+  <meta property="og:site_name" content="Metanetsoft" />
+  <meta property="og:url" content="{{canonicalUrl}}" />
+  <meta property="og:locale" content="{{ogLocale}}" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{title}}" />
+  <meta name="twitter:description" content="{{description}}" />
+
+  <!-- JSON-LD Organization Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Metanetsoft",
+    "url": "{{canonicalUrl}}",
+    "logo": "{{canonicalUrl}}/logo.svg",
+    "description": "Technical consultancy focused on AI, web engineering, mobile apps, scalable architecture, and digital transformation.",
+    "knowsAbout": ["Artificial Intelligence", "Web Development", "Mobile Applications", "Cloud Architecture", "Digital Transformation"],
+    "areaServed": "Worldwide",
+    "sameAs": []
+  }
+  </script>
+
+  <!-- JSON-LD Service Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Metanetsoft Technical Consultancy",
+    "description": "AI, web engineering, mobile apps, scalable architecture, and digital transformation services.",
+    "provider": {
+      "@type": "Organization",
+      "name": "Metanetsoft"
+    },
+    "serviceType": "Technical Consulting"
+  }
+  </script>
+
+  <!-- Link rel files -->
+  <link rel="robots" href="/robots.txt" />
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="sitemap" href="/sitemap.xml" />
+  <link rel="llms-full" href="/llms.txt" />
+
+  <!-- SSR injected head -->
+  <!-- head-extra -->
+
+</head>
+<body>
+  <div id="app"><!-- app-html --></div>
+
+  <!-- SSR bootstrap payload -->
+  <script id="__i18n_bootstrap__" type="application/json"><!--bootstrap--></script>
+
+  <script type="module" src="/src/entry-client.ts"></script>
+</body>
+</html>

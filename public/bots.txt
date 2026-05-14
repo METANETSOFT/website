@@ -1,0 +1,15 @@
+Metanetsoft bot policy
+
+Allowed agents:
+- General web crawlers
+- GPTBot
+- ChatGPT-User
+- CCBot
+
+Primary crawl documents:
+- /robots.txt
+- /llms.txt
+- /sitemap.xml
+
+Default locale:
+- en

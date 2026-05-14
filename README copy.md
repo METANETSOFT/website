@@ -54,7 +54,6 @@ npm run start
 ```
 
 Notes:
-
 - Production start runs with `NODE_ENV=production`
 - App listens on `PORT` when Dokploy injects it
 - Local fallback port remains `5553` when `PORT` is not set
@@ -91,7 +90,6 @@ Server sends these headers by default:
 - `Strict-Transport-Security` in production only
 
 Notes:
-
 - CSP allows current exact-shell dependencies: Tailwind CDN, Google Fonts, local assets, inline bootstrap/config scripts
 - If you later remove Tailwind CDN or external fonts, CSP can be tightened further
 
@@ -116,17 +114,17 @@ If no header present, return `{ "countryCode": null }`. Client falls back to bro
 ### 2. Client: init i18n
 
 ```typescript
-import { createI18n } from "./i18n/index";
-import { applyLocaleToDocument } from "./ui/applyLocaleToDocument";
-import { createLanguageSwitcher } from "./ui/createLanguageSwitcher";
-import { bindTranslations } from "./ui/bindTranslations";
+import { createI18n } from './i18n/index';
+import { applyLocaleToDocument } from './ui/applyLocaleToDocument';
+import { createLanguageSwitcher } from './ui/createLanguageSwitcher';
+import { bindTranslations } from './ui/bindTranslations';
 
 // Plain auto-detect
 const i18n = createI18n();
 await i18n.init();
 
 // Or seed from SSR bootstrap (skip IP detection round-trip)
-const i18n = createI18n({ initialLocale: "de", skipDetect: true });
+const i18n = createI18n({ initialLocale: 'de', skipDetect: true });
 await i18n.init();
 
 // Apply lang + dir to <html>
@@ -139,11 +137,11 @@ applyLocaleToDocument(i18n.getLocale());
 // createLanguageSwitcher — plain <select> variant, simple and robust
 const { select, cleanup } = createLanguageSwitcher({
   i18n,
-  className: "lang-switcher",
+  className: 'lang-switcher',
   groupByRegion: true,
   onChange: (locale) => applyLocaleToDocument(locale),
 });
-document.getElementById("lang-mount")?.appendChild(select);
+document.getElementById('lang-mount')?.appendChild(select);
 // Call cleanup() on unmount to remove subscription listeners
 ```
 
@@ -152,12 +150,12 @@ document.getElementById("lang-mount")?.appendChild(select);
 // root is NOT auto-mounted — caller appends wherever needed
 const { root, cleanup, open, close, focus } = createSearchableLanguageSwitcher({
   i18n,
-  mount: document.getElementById("lang-switcher-mount"), // optional — only appends if provided
-  preferredLocales: ["en", "es", "de", "fr", "ja"],
+  mount: document.getElementById('lang-switcher-mount'), // optional — only appends if provided
+  preferredLocales: ['en', 'es', 'de', 'fr', 'ja'],
   groupByRegion: true,
-  searchPlaceholder: "Search language…", // falls back to i18n key
-  className: "lang-switcher",
-  id: "my-lang-switcher",
+  searchPlaceholder: 'Search language…', // falls back to i18n key
+  className: 'lang-switcher',
+  id: 'my-lang-switcher',
   onChange: (locale) => applyLocaleToDocument(locale),
 });
 // root is the container div; popover auto-opens on trigger click/key
@@ -187,9 +185,9 @@ const cleanup = bindTranslations(i18n);
 ### 5. Translate imperatively
 
 ```typescript
-const msg = i18n.t("contact.send"); // plain key
-const greeting = i18n.t("home.welcome"); // dot-notation
-const param = i18n.t("apply.title", { name: "John" }); // {param} interpolation
+const msg = i18n.t('contact.send');          // plain key
+const greeting = i18n.t('home.welcome');      // dot-notation
+const param = i18n.t('apply.title', { name: 'John' }); // {param} interpolation
 ```
 
 ## /api/geo-country Contract
@@ -197,13 +195,10 @@ const param = i18n.t("apply.title", { name: "John" }); // {param} interpolation
 **Request**: none required (country read from server headers)
 
 **Response** (200 OK, `countryCode` is always present — `null` means detection failed):
-
 ```json
 { "countryCode": "DE" }
 ```
-
 or
-
 ```json
 { "countryCode": null }
 ```
@@ -225,34 +220,32 @@ user's choice to the server for SSR/edge bootstrap — enabling server-rendered 
 to render in the correct locale without a client round-trip.
 
 **Dual-write (explicit — not automatic):**
-
 ```typescript
-import { createI18n } from "./i18n/index";
-import { setLocaleCookie } from "./i18n/index";
+import { createI18n } from './i18n/index';
+import { setLocaleCookie } from './i18n/index';
 
 const i18n = createI18n();
 await i18n.init();
 
 // When user changes language, write both stores
-i18n.setLocale("de");
-setLocaleCookie("de");
+i18n.setLocale('de');
+setLocaleCookie('de');
 ```
 
 **Server bootstrap (SSR / edge):**
-
 ```typescript
-import { detectInitialLocale } from "./server/bootstrap-locale";
-import { getLocaleCookieFromHeader } from "./server/cookies";
-import { resolveCountry } from "./server/geo-country";
+import { detectInitialLocale } from './server/bootstrap-locale';
+import { getLocaleCookieFromHeader } from './server/cookies';
+import { resolveCountry } from './server/geo-country';
 
 export async function handleRequest(req) {
   // Parse cookie from raw HTTP header — not document.cookie (client-only)
-  const cookieLocale = getLocaleCookieFromHeader(req.headers["cookie"]);
+  const cookieLocale = getLocaleCookieFromHeader(req.headers['cookie']);
 
   const { locale } = detectInitialLocale({
     storedLocale: cookieLocale, // checked first in detection priority
     countryCode: resolveCountry(req),
-    acceptLanguage: req.headers["accept-language"],
+    acceptLanguage: req.headers['accept-language'],
   });
 
   // locale is pre-seeded — client init with { initialLocale: locale, skipDetect: true }
@@ -272,9 +265,9 @@ app decide when to sync.
 
 **30 locales — two waves:**
 
-| Wave        | Locales                                                                               |
-| ----------- | ------------------------------------------------------------------------------------- |
-| Wave 1 (13) | `en` `es` `de` `fr` `ja` `zh-CN` `zh-TW` `pt-BR` `ko` `ar` `ru` `it` `id`             |
+| Wave | Locales |
+|------|---------|
+| Wave 1 (13) | `en` `es` `de` `fr` `ja` `zh-CN` `zh-TW` `pt-BR` `ko` `ar` `ru` `it` `id` |
 | Wave 2 (17) | `hi` `ur` `tr` `vi` `pl` `nl` `ro` `cs` `sv` `hu` `uk` `th` `bn` `fa` `fil` `ms` `el` |
 
 **RTL (3):** `ar` `ur` `fa` — `dir="rtl"` applied on `<html>` automatically.
@@ -296,11 +289,11 @@ Use `RECOMMENDED_VISIBLE_ORDER` from `src/ui/localeDisplay.ts` or `getOrderedLoc
 
 ## Data-i18n Attribute Reference
 
-| Attribute                                              | Behaviour                                                        |
-| ------------------------------------------------------ | ---------------------------------------------------------------- |
-| `data-i18n="key"`                                      | Set `textContent` to `t(key)`                                    |
-| `data-i18n-attr="placeholder\|aria-label\|title\|alt"` | Set specific attribute instead of textContent                    |
-| `data-i18n-param-*="value"`                            | Interpolation: `data-i18n-param-name="John"` → `{name}` replaced |
+| Attribute | Behaviour |
+|---|---|
+| `data-i18n="key"` | Set `textContent` to `t(key)` |
+| `data-i18n-attr="placeholder\|aria-label\|title\|alt"` | Set specific attribute instead of textContent |
+| `data-i18n-param-*="value"` | Interpolation: `data-i18n-param-name="John"` → `{name}` replaced |
 
 ## Run Commands
 
@@ -353,13 +346,11 @@ metanet-i18n/
 ## SSR / Non-Browser Guards
 
 All browser-only code guarded by:
-
 ```typescript
 function isBrowser(): boolean {
-  return typeof window !== "undefined" && typeof document !== "undefined";
+  return typeof window !== 'undefined' && typeof document !== 'undefined';
 }
 ```
-
 Call `applyLocaleToDocument`, `createLanguageSwitcher`, `bindTranslations` only client-side.
 
 ## Path Notes
@@ -370,12 +361,12 @@ The scaffold lives at `/config/projects/metanet-i18n/` because the environment r
 
 Ready-to-use route handlers for common TypeScript frameworks. **Zero runtime deps in the scaffold** — all adapters use plain `Response` / `any` structural types with framework types as comments, so they copy without installing anything.
 
-| File                             | Framework                | Placement                              |
-| -------------------------------- | ------------------------ | -------------------------------------- |
-| `src/adapters/express-route.ts`  | Express 4/5              | `app.get('/api/geo-country', ...)`     |
-| `src/adapters/fastify-route.ts`  | Fastify 4/5              | `fastify.get('/api/geo-country', ...)` |
-| `src/adapters/hono-route.ts`     | Hono 4 (any runtime)     | `app.get('/api/geo-country', ...)`     |
-| `src/adapters/next-app-route.ts` | Next.js App Router (14+) | `app/api/geo-country/route.ts`         |
+| File | Framework | Placement |
+|---|---|---|
+| `src/adapters/express-route.ts` | Express 4/5 | `app.get('/api/geo-country', ...)` |
+| `src/adapters/fastify-route.ts` | Fastify 4/5 | `fastify.get('/api/geo-country', ...)` |
+| `src/adapters/hono-route.ts` | Hono 4 (any runtime) | `app.get('/api/geo-country', ...)` |
+| `src/adapters/next-app-route.ts` | Next.js App Router (14+) | `app/api/geo-country/route.ts` |
 
 All four handlers call `resolveCountry(req)` and return `{ countryCode: string | null }` with status 200. The Next.js adapter uses the global `Response` constructor — no `next/server` import required (but `NextResponse.json()` is shown in comments).
 

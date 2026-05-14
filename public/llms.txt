@@ -1,0 +1,24 @@
+# https://metanetsoft.com/llms.txt
+
+Metanetsoft is a technical consultancy focused on AI, web engineering, mobile applications, scalable architecture, and digital transformation.
+
+## Services
+
+- AI and Intelligent Automation: Custom LLM fine-tuning, predictive logic engines, computer vision
+- Web Design, Engineering, and SEO: Modern UI/UX design, React/Next.js engineering, technical SEO and performance optimization
+- Mobile Application Development: Native and cross-platform mobile experiences, Swift/Kotlin expertise, real-time biometric synchronization
+- Cloud Infrastructure Scalability: Elastic architectures handling millions of requests per second
+- Enterprise Digital Transformation: End-to-end software ecosystem modernization
+
+## Supported Languages (30 locales)
+
+English, Spanish, German, French, Japanese, Chinese (Simplified), Chinese (Traditional), Portuguese (Brazil), Korean, Arabic, Russian, Italian, Indonesian, Hindi, Urdu, Turkish, Vietnamese, Polish, Dutch, Romanian, Czech, Swedish, Hungarian, Ukrainian, Thai, Bengali, Persian, Filipino, Malay, Greek
+
+## Contact
+
+Website: https://metanetsoft.com
+Email: contact@metanetsoft.com
+
+## Organization
+
+Metanetsoft is a high-performance technical consultancy specializing in AI architecture optimization, cloud infrastructure scalability, and enterprise digital transformation.
