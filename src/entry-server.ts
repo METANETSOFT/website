@@ -46,27 +46,56 @@ import type { TranslationDict } from './i18n/types';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
-const EXACT_SHELL_CSS_VERSION = '20260519c';
+const EXACT_SHELL_CSS_VERSION = '20260519d';
 const EXACT_SHELL_MOBILE_CRITICAL_CSS = `<style id="exact-shell-mobile-critical">
 @media (max-width: 640px) {
+  html,
+  body {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+
+  .exact-shell-nav {
+    left: 0 !important;
+    right: 0 !important;
+    width: auto !important;
+    max-width: 100vw !important;
+    overflow-x: clip !important;
+  }
+
+  .exact-shell-nav__inner {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .exact-shell-nav__actions {
+    gap: 0.75rem !important;
+  }
+
+  .exact-shell-nav__actions > a {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
   #architecture,
   #values {
     padding-top: 5rem !important;
     padding-bottom: 5rem !important;
-    padding-left: 1.25rem !important;
-    padding-right: 1.25rem !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    overflow-x: clip !important;
   }
 
   #architecture > .grid,
   #values > .grid {
-    gap: 2.5rem !important;
+    gap: 2rem !important;
   }
 
   #architecture h2,
   #values h2 {
-    font-size: 2.25rem !important;
-    line-height: 0.95 !important;
-    margin-bottom: 1.5rem !important;
+    font-size: 1.875rem !important;
+    line-height: 1 !important;
+    margin-bottom: 1.25rem !important;
     overflow-wrap: anywhere !important;
     word-break: break-word !important;
     max-width: 100% !important;
@@ -74,34 +103,45 @@ const EXACT_SHELL_MOBILE_CRITICAL_CSS = `<style id="exact-shell-mobile-critical"
 
   #architecture p.text-xl,
   #values p.text-xl {
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
     line-height: 1.7 !important;
+    max-width: 100% !important;
   }
 
   #architecture p.text-lg {
-    font-size: 0.95rem !important;
+    font-size: 0.9rem !important;
     line-height: 1.7 !important;
+    max-width: 100% !important;
   }
 
   #architecture .grid.grid-cols-2 {
     grid-template-columns: 1fr !important;
     gap: 0.75rem !important;
-    padding-top: 1.5rem !important;
+    padding-top: 1.25rem !important;
+  }
+
+  #architecture .col-span-12,
+  #values .col-span-12,
+  #architecture .grid.grid-cols-2 > *,
+  #values .grid.grid-cols-1 > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
   }
 
   #architecture .p-6,
   #values .p-8 {
-    padding: 1.25rem !important;
+    padding: 1rem !important;
   }
 
   #architecture .text-3xl {
-    font-size: 1.5rem !important;
+    font-size: 1.35rem !important;
     line-height: 1.1 !important;
   }
 
   #architecture .mono-label,
   #values .mono-label {
     white-space: normal !important;
+    overflow-wrap: anywhere !important;
   }
 
   .footer-inner {
@@ -125,7 +165,7 @@ const EXACT_SHELL_MOBILE_CRITICAL_CSS = `<style id="exact-shell-mobile-critical"
 @media (max-width: 400px) {
   #architecture h2,
   #values h2 {
-    font-size: 2rem !important;
+    font-size: 1.7rem !important;
   }
 }
 </style>`;
