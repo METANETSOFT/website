@@ -53,6 +53,10 @@ function isExactShell(): boolean {
   );
 }
 
+function isDesktopViewport(): boolean {
+  return document.documentElement.clientWidth >= 1024;
+}
+
 function findExactShellLangControl(): HTMLElement | null {
   const nodes = Array.from(document.querySelectorAll<HTMLElement>('div'));
   return nodes.find((node) => {
@@ -62,6 +66,8 @@ function findExactShellLangControl(): HTMLElement | null {
 }
 
 function mountExactShellSelect(currentLocale: LocaleCode): HTMLSelectElement | null {
+  if (!isDesktopViewport()) return null;
+
   const control = findExactShellLangControl();
   if (!control) return null;
 

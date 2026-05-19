@@ -46,6 +46,89 @@ import type { TranslationDict } from './i18n/types';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
+const EXACT_SHELL_CSS_VERSION = '20260519c';
+const EXACT_SHELL_MOBILE_CRITICAL_CSS = `<style id="exact-shell-mobile-critical">
+@media (max-width: 640px) {
+  #architecture,
+  #values {
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+  #architecture > .grid,
+  #values > .grid {
+    gap: 2.5rem !important;
+  }
+
+  #architecture h2,
+  #values h2 {
+    font-size: 2.25rem !important;
+    line-height: 0.95 !important;
+    margin-bottom: 1.5rem !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+  }
+
+  #architecture p.text-xl,
+  #values p.text-xl {
+    font-size: 1rem !important;
+    line-height: 1.7 !important;
+  }
+
+  #architecture p.text-lg {
+    font-size: 0.95rem !important;
+    line-height: 1.7 !important;
+  }
+
+  #architecture .grid.grid-cols-2 {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+    padding-top: 1.5rem !important;
+  }
+
+  #architecture .p-6,
+  #values .p-8 {
+    padding: 1.25rem !important;
+  }
+
+  #architecture .text-3xl {
+    font-size: 1.5rem !important;
+    line-height: 1.1 !important;
+  }
+
+  #architecture .mono-label,
+  #values .mono-label {
+    white-space: normal !important;
+  }
+
+  .footer-inner {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  .footer-links {
+    width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 1rem !important;
+  }
+
+  .footer-links > * {
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 400px) {
+  #architecture h2,
+  #values h2 {
+    font-size: 2rem !important;
+  }
+}
+</style>`;
 
 const DICTIONARIES: Record<LocaleCode, TranslationDict> = {
   en, es, de, fr, ja,
@@ -342,6 +425,8 @@ export async function renderExactShell(
 
   const shellPath = join(ROOT, 'public', 'stitch-desktop-lang.html');
   let html = readFileSync(shellPath, 'utf-8');
+  html = html.replace('/exact-shell.css', `/exact-shell.css?v=${EXACT_SHELL_CSS_VERSION}`);
+  html = html.replace('</head>', `${EXACT_SHELL_MOBILE_CRITICAL_CSS}\n</head>`);
 
   // Set <html lang and dir>
   html = html.replace(/<html class="dark" lang="[^"]*"/, `<html class="dark" lang="${escHtml(locale)}" dir="${escHtml(dir)}"`);

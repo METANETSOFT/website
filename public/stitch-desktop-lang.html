@@ -293,8 +293,10 @@ window.addEventListener('mousemove', (e) => {
 });
 
 function init() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const viewportWidth = document.documentElement.clientWidth || window.innerWidth;
+    const viewportHeight = window.visualViewport?.height || window.innerHeight;
+    canvas.width = viewportWidth;
+    canvas.height = viewportHeight;
     particles = [];
     for (let i = 0; i < 100; i++) {
         particles.push({
