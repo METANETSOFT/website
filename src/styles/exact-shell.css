@@ -1,3 +1,83 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  @media (max-width: 640px) {
+    #architecture,
+    #values {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    #architecture > .grid,
+    #values > .grid {
+      gap: 2.5rem;
+    }
+
+    #architecture h2,
+    #values h2 {
+      font-size: 2.25rem;
+      line-height: 0.95;
+      margin-bottom: 1.5rem;
+      overflow-wrap: anywhere;
+    }
+
+    #architecture p.text-xl,
+    #values p.text-xl {
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    #architecture p.text-lg {
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    #architecture .grid.grid-cols-2 {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+      padding-top: 1.5rem;
+    }
+
+    #architecture .p-6,
+    #values .p-8 {
+      padding: 1.25rem;
+    }
+
+    #architecture .text-3xl {
+      font-size: 1.5rem;
+      line-height: 1.1;
+    }
+
+    #architecture .mono-label,
+    #values .mono-label {
+      white-space: normal;
+    }
+
+    .footer-inner {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+
+    .footer-links {
+      width: 100%;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .footer-links > * {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 400px) {
+    #architecture h2,
+    #values h2 {
+      font-size: 2rem;
+    }
+  }
+}
