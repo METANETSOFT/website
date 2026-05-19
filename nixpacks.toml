@@ -6,7 +6,7 @@ NIXPACKS_NODE_VERSION = "22"
 nixPkgs = ["nodejs_22"]
 
 [phases.install]
-cmds = ["npm ci"]
+cmds = ["npm ci --include=dev"]
 cacheDirectories = ["/root/.npm"]
 
 [phases.build]

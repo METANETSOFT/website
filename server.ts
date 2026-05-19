@@ -15,12 +15,16 @@ import { createServer as createViteDevServer } from 'vite';
 import { readFileSync, existsSync, statSync } from 'fs';
 import { resolve, join } from 'path';
 import { fileURLToPath } from 'url';
-import { isSupportedLocale, DEFAULT_LOCALE } from './src/i18n/locales.js';
+import { isSupportedLocale } from './src/i18n/locales.js';
 import type { LocaleCode } from './src/i18n/types.js';
+import { detectInitialLocale, getLocaleCookieFromHeader, resolveCountry } from './src/server/index.js';
+import { getHeader } from './src/server/http.js';
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const isDev = process.env.NODE_ENV !== 'production';
 const PUBLIC_DIR = resolve(__dirname, 'public');
+const CLIENT_ENTRY_DEV = '/src/entry-client.ts';
+const CLIENT_ENTRY_PROD = '/assets/entry-client.js';
 
 function getPort(): number {
   const cliPortIndex = process.argv.findIndex(arg => arg === '--port');
@@ -34,21 +38,39 @@ function getPort(): number {
 
 async function renderUrl(url: string, headers: Record<string, string | string[] | undefined>): Promise<{ html: string; status: number }> {
   const requestUrl = new URL(url, 'http://localhost');
-  const localeParam = requestUrl.searchParams.get('locale');
-
-  const locale: LocaleCode = localeParam && isSupportedLocale(localeParam)
-    ? localeParam
-    : DEFAULT_LOCALE;
+  const locale = detectLocaleForRequest(requestUrl, headers);
+  const clientEntryPath = isDev ? CLIENT_ENTRY_DEV : CLIENT_ENTRY_PROD;
 
   // Root route → exact shell (pixel-perfect SSR from Stitch export) for all locales.
   if (requestUrl.pathname === '/') {
     const { renderExactShell } = await import('./src/entry-server.js');
-    return renderExactShell(locale);
+    return renderExactShell(locale, clientEntryPath);
   }
 
   // All other routes → generic template-based SSR
   const { render } = await import('./src/entry-server.js');
-  return render(url, locale, headers);
+  return render(url, locale, headers, clientEntryPath);
+}
+
+function detectLocaleForRequest(
+  requestUrl: URL,
+  headers: Record<string, string | string[] | undefined>,
+): LocaleCode {
+  const localeParam = requestUrl.searchParams.get('locale');
+  if (localeParam && isSupportedLocale(localeParam)) {
+    return localeParam;
+  }
+
+  const cookieHeader = getHeader(headers, 'cookie');
+  const acceptLanguage = getHeader(headers, 'accept-language');
+  const storedLocale = getLocaleCookieFromHeader(cookieHeader);
+  const countryCode = resolveCountry({ headers });
+
+  return detectInitialLocale({
+    storedLocale,
+    countryCode,
+    acceptLanguage,
+  }).locale;
 }
 
 // ─── Dev server ───────────────────────────────────────────────────────────────
@@ -209,8 +231,8 @@ function setCommonHeaders(res: { setHeader(key: string, val: string): void }, ur
     "img-src 'self' data: https:",
     "font-src 'self' https://fonts.gstatic.com data:",
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-    "script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com",
-    "connect-src 'self' ws: wss: https:",
+    "script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com https://static.cloudflareinsights.com",
+    "connect-src 'self' ws: wss: https: https://cloudflareinsights.com https://static.cloudflareinsights.com",
   ].join('; ');
 
   res.setHeader('Content-Security-Policy', csp);

@@ -332,6 +332,7 @@ const EXACT_SHELL_LOCALE_LABELS: Record<LocaleCode, string> = {
  */
 export async function renderExactShell(
   locale: LocaleCode,
+  clientEntryPath = '/src/entry-client.ts',
 ): Promise<{ html: string; status: number }> {
   const dict = DICTIONARIES[locale] ?? DICTIONARIES['en'];
   const dir = isRTL(locale) ? 'rtl' : 'ltr';
@@ -430,16 +431,36 @@ export async function renderExactShell(
 
   // Add id attributes to contact form inputs for client wiring
   html = html.replace(
-    /<input class="w-full bg-surface-container-low border border-outline\/30 p-4 text-on-surface focus:outline-none focus:border-tertiary transition-colors" placeholder="İsminiz\.\.\."/,
-    `<input id="contact-name" name="name" class="w-full bg-surface-container-low border border-outline/30 p-4 text-on-surface focus:outline-none focus:border-tertiary transition-colors" placeholder="İsminiz..."`,
+    /<input class="w-full bg-surface-container-low border border-outline\/30 p-4 text-on-surface focus:outline-none focus:border-tertiary transition-colors" placeholder="[^"]+" type="text"\/>/,
+    (match) => match.replace('<input ', '<input id="contact-name" name="name" autocomplete="name" '),
   );
   html = html.replace(
-    /<input class="w-full bg-surface-container-low border border-outline\/30 p-4 text-on-surface focus:outline-none focus:border-tertiary transition-colors" placeholder="Emailiniz\.\.\."/,
-    `<input id="contact-email" name="email" type="email" class="w-full bg-surface-container-low border border-outline/30 p-4 text-on-surface focus:outline-none focus:border-tertiary transition-colors" placeholder="Emailiniz..."`,
+    /<input class="w-full bg-surface-container-low border border-outline\/30 p-4 text-on-surface focus:outline-none focus:border-tertiary transition-colors" placeholder="[^"]+" type="email"\/>/,
+    (match) => match.replace('<input ', '<input id="contact-email" name="email" autocomplete="email" '),
   );
   html = html.replace(
-    /<textarea class="w-full bg-surface-container-low border border-outline\/30 p-4 text-on-surface focus:outline-none focus:border-tertiary transition-colors h-32" placeholder="Danışma içeriğiniz\.\.\."><\/textarea>/,
-    `<textarea id="contact-message" name="message" class="w-full bg-surface-container-low border border-outline/30 p-4 text-on-surface focus:outline-none focus:border-tertiary transition-colors h-32" placeholder="Danışma içeriğiniz..."></textarea>`,
+    /<textarea class="w-full bg-surface-container-low border border-outline\/30 p-4 text-on-surface focus:outline-none focus:border-tertiary transition-colors h-32" placeholder="[^"]+"><\/textarea>/,
+    (match) => match.replace('<textarea ', '<textarea id="contact-message" name="message" '),
+  );
+  html = html.replace(
+    /<form class="space-y-6">/,
+    `<form id="contact-form" class="space-y-6" novalidate>`,
+  );
+  html = html.replace(
+    /<label class="block text-xs mono-label text-outline mb-2">[^<]+<\/label>/,
+    (match) => match.replace('<label ', '<label for="contact-name" '),
+  );
+  html = html.replace(
+    /<label class="block text-xs mono-label text-outline mb-2">[^<]+<\/label>/,
+    (match) => match.includes('for=') ? match : match.replace('<label ', '<label for="contact-email" '),
+  );
+  html = html.replace(
+    /<label class="block text-xs mono-label text-outline mb-2">[^<]+<\/label>/,
+    (match) => match.includes('for=') ? match : match.replace('<label ', '<label for="contact-message" '),
+  );
+  html = html.replace(
+    /<button class="px-10 py-5 bg-primary text-on-primary font-headline font-bold uppercase tracking-widest hover:bg-primary-dim transition-all active:scale-95 w-full md:w-auto" type="submit">PROTOKOLÜ BAŞLAT<\/button>/,
+    `<button class="px-10 py-5 bg-primary text-on-primary font-headline font-bold uppercase tracking-widest hover:bg-primary-dim transition-all active:scale-95 w-full md:w-auto" type="submit">PROTOKOLÜ BAŞLAT</button>\n<p id="form-status" class="text-sm text-on-surface-variant" aria-live="polite"></p>`,
   );
 
   // Inject bootstrap + entry-client before </body>
@@ -447,7 +468,7 @@ export async function renderExactShell(
   if (lastBodyClose !== -1) {
     const privacyModal = `${renderPrivacyModal(locale)}\n${renderTermsModal(locale)}\n`;
     const bootstrapScript = `\n<script id="__i18n_bootstrap__" type="application/json">${bootstrap}<\/script>\n`;
-    const entryScript = `<script type="module" src="/src/entry-client.ts"><\/script>\n`;
+    const entryScript = `<script type="module" src="${escHtml(clientEntryPath)}"><\/script>\n`;
     html = html.slice(0, lastBodyClose) + privacyModal + bootstrapScript + entryScript + html.slice(lastBodyClose);
   }
 
@@ -656,11 +677,11 @@ function renderContact(dict: TranslationDict): string {
         <div class="form-row">
           <div class="form-field">
             <label for="contact-name" data-i18n="contact.nameLabel">${t(dict, 'contact.nameLabel')}</label>
-            <input type="text" id="contact-name" name="name" required data-i18n="contact.nameLabel" data-i18n-attr="placeholder" />
+            <input type="text" id="contact-name" name="name" autocomplete="name" required data-i18n="contact.nameLabel" data-i18n-attr="placeholder" />
           </div>
           <div class="form-field">
             <label for="contact-email" data-i18n="contact.emailLabel">${t(dict, 'contact.emailLabel')}</label>
-            <input type="email" id="contact-email" name="email" required data-i18n="contact.emailLabel" data-i18n-attr="placeholder" />
+            <input type="email" id="contact-email" name="email" autocomplete="email" required data-i18n="contact.emailLabel" data-i18n-attr="placeholder" />
           </div>
         </div>
         <div class="form-field">
@@ -787,6 +808,7 @@ export async function render(
   _urlPath: string,
   locale: LocaleCode,
   _headers: Record<string, string | string[] | undefined>,
+  clientEntryPath = '/src/entry-client.ts',
 ): Promise<{ html: string; status: number }> {
   const dict = DICTIONARIES[locale] ?? DICTIONARIES['en'];
   const dir = isRTL(locale) ? 'rtl' : 'ltr';
@@ -824,6 +846,7 @@ ${renderTermsModal(locale)}`;
     .replace('{{canonicalUrl}}', escHtml(canonicalUrl))
     .replace('{{robotsMeta}}', escHtml(robotsMeta))
     .replace('{{ogLocale}}', escHtml(ogLocale))
+    .replace('{{clientEntryPath}}', escHtml(clientEntryPath))
     .replace('<!-- app-html -->', appHtml)
     .replace('<!--bootstrap-->', escHtml(bootstrap))
     .replace('<!-- head-extra -->', buildJsonLd(canonicalUrl, description));

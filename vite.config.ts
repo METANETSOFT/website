@@ -6,13 +6,14 @@ export default defineConfig({
   plugins: [],
 
   build: {
-    ssr: true,
-    ssrManifest: false,
+    outDir: 'dist',
+    emptyOutDir: true,
+    lib: {
+      entry: resolve(__dirname, 'src/entry-client.ts'),
+      formats: ['es'],
+      fileName: () => 'assets/entry-client',
+    },
     rollupOptions: {
-      input: {
-        client: resolve(__dirname, 'index.html'),
-        'entry-server': resolve(__dirname, 'src/entry-server.ts'),
-      },
       output: {
         entryFileNames: 'assets/[name].js',
         chunkFileNames: 'assets/[name].js',
