@@ -45,7 +45,7 @@ export const de: TranslationDict = {
 
   about: {
     sectionIndex: '01 // Architektur',
-    title: 'Digitale Architekten\\nder Zukunft',
+    title: 'Digitale Architekten\nder Zukunft',
     bodyLead: 'Metanetsoft ist eine leistungsstarke technische Beratung. Wir bauen nicht nur Software; wir entwerfen skalierbare und widerstandsfähige digitale Grundlagen.',
     bodyExtended: 'Von frühen KI-Integrationen bis zu komplexen Enterprise-Systemen verbinden wir Vision und Ausführung mit struktureller Klarheit und Engineering-Disziplin.',
     bodyMethodology: 'Unsere Methodik ist im technischen Brutalismus verwurzelt: rohe Leistung, strukturelle Integrität und unerschütterliche Sicherheit.',
@@ -62,19 +62,19 @@ export const de: TranslationDict = {
     lead: 'Modulare Lösungen für hochverfügbare Umgebungen.',
     ai: {
       title: 'KI und intelligente Automatisierung',
-      description: 'Wir setzen LLMs, Computer Vision und prädiktive Analytik ein, um Entscheidungsworkflows zu automatisieren.',
+      description: 'Wir setzen LLMs, Computer Vision und prädiktive Analytik ein, um Entscheidungsworkflows zu automatisieren und Daten in autonomen Vorsprung zu verwandeln.',
       bullet1: 'Benutzerdefiniertes LLM-Fine-Tuning',
       bullet2: 'Prädiktive Logik-Engines',
     },
     web: {
       title: 'Webdesign, Engineering und SEO',
-      description: 'Wir kombinieren ästhetisches Produktdesign mit Hochleistungs-Engineering unter Verwendung von React, Next.js.',
+      description: 'Wir kombinieren ästhetisches Produktdesign mit Hochleistungs-Engineering auf Basis von React, Next.js und modernen Websystemen.',
       bullet1: 'Modernes UI/UX-Design',
       bullet2: 'Technisches SEO und Leistungsoptimierung',
     },
     mobile: {
       title: 'Mobile App-Entwicklung',
-      description: 'Native und plattformübergreifende mobile Erlebnisse für Zuverlässigkeit und Geschwindigkeit.',
+      description: 'Native und plattformübergreifende mobile Erlebnisse für Zuverlässigkeit, Geschwindigkeit und hochpräzise Interaktion.',
       bullet1: 'Swift / Kotlin-Expertise',
       bullet2: 'Echtzeit-Biometrie-Synchronisierung',
     },
@@ -88,18 +88,18 @@ export const de: TranslationDict = {
     sectionIndex: '03 // Machbarkeitsnachweis',
     neuralCore: {
       meta: 'KI-Architekturoptimierung // 2024',
-      title: 'NEURAL CORE REDESIGN',
-      description: 'Fortgeschrittene KI-Kern-Optimierung, die Latenz um 40% reduziert.',
+      title: 'NEUGESTALTUNG VON NEURAL CORE',
+      description: 'Fortgeschrittene KI-Kern-Optimierung, die Latenz um 40 % reduziert und autonome Entscheidungszyklen in den Millisekundenbereich bringt.',
     },
     skyScale: {
       meta: 'Cloud-Infrastruktur-Skalierbarkeit // 2024',
-      title: 'SKY SCALE PROJECT',
-      description: 'Elastische Cloud-Architektur für globales Traffic-Management.',
+      title: 'SKY-SCALE-PROJEKT',
+      description: 'Elastische Cloud-Architektur für globales Traffic-Management und Millionen Anfragen pro Sekunde ohne Ausfall.',
     },
     enterpriseFlux: {
-      meta: 'Enterprise digitale Transformation // 2023',
+      meta: 'Digitale Unternehmenstransformation // 2023',
       title: 'ENTERPRISE FLUX',
-      description: 'Software-Ökosystem zur Modernisierung von Enterprise-Workflows.',
+      description: 'Software-Ökosystem zur Modernisierung von Unternehmens-Workflows und Automatisierung geschäftskritischer Abläufe von Ende zu Ende.',
     },
   },
 
@@ -129,16 +129,16 @@ export const de: TranslationDict = {
 
   vm: {
     sectionIndex: '01.1 // Ziele und Werte',
-    title: 'Vision &\\nMission',
+    title: 'Vision\nMission',
     visionLabel: '[ UNSERE VISION ]',
-    visionBody: 'Die Grenzen der Technologie erweitern und globale Standards für digitale Architektur setzen.',
+    visionBody: 'Die Grenzen der Technologie erweitern und globale Standards für digitale Architektur setzen, um eine innovative und transformative Führungsrolle in der Technologieberatung einzunehmen.',
     missionLabel: '[ UNSERE MISSION ]',
-    missionBody: 'Technische Exzellenz und strategische Tiefe an unsere Kunden liefern.',
+    missionBody: 'Unseren Kunden technische Exzellenz und strategische Tiefe liefern, indem wir komplexe digitale Probleme in einfache, skalierbare und nachhaltige Lösungen übersetzen.',
   },
 
   cta: {
     title: 'Bereit, Ihr Projekt zu bauen?',
-    body: 'Unser Team ist bereit, sich in Ihren Workflow zu integrieren.',
+    body: 'Unser Team ist bereit, sich in Ihren Workflow zu integrieren. Lassen Sie uns über Ihre technische Roadmap sprechen.',
   },
 
   footer: {
@@ -147,7 +147,7 @@ export const de: TranslationDict = {
     privacy: 'Datenschutzrichtlinie',
     terms: 'Nutzungsbedingungen',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
 
   home: {

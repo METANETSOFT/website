@@ -135,7 +135,7 @@ export const vi: TranslationDict = {
     privacy: 'Chính sách quyền riêng tư',
     terms: 'Điều khoản dịch vụ',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
   home: {
     welcome: 'Chào mừng',

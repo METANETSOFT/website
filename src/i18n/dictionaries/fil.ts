@@ -36,7 +36,7 @@ export const fil: TranslationDict = {
     ctaPrimary: 'Tingnan ang Portfolio',
     latLabel: 'LAT: 40.7128° N',
     lonLabel: 'LON: 74.0060° W',
-    uptimeLabel: 'KAKAYANGAN: %99.998',
+    uptimeLabel: 'UPTIME: %99.998',
   },
   about: {
     sectionIndex: '01 // Arkitektura',
@@ -45,9 +45,9 @@ export const fil: TranslationDict = {
     bodyExtended: 'Mula sa mga maagang stage na AI integration hanggang sa mga kumplikadong enterprise system, nag-uugnay kami ng pangitain at pagpapatupad sa structural na kalinawan at engineering discipline.',
     bodyMethodology: 'Ang metodolohiya namin ay nakaugat sa technical brutalism: raw na performance, structural integrity, at walang kompromis na seguridad.',
     uptimeValue: '99.9%',
-    uptimeMetric: 'SYSTEM AVAILABILITY',
+    uptimeMetric: 'KAKAYAHAN NG SISTEMA',
     latencyValue: '< 50ms',
-    latencyMetric: 'GLOBAL ACCESS SPEED',
+    latencyMetric: 'BILIS NG PANDAIGDIGANG ACCESS',
     description: 'Kami ay isang leading technology company na nakatuon sa paggawa ng mga innovative na solusyon na nagpapalit ng mga negosyo at komunidad sa buong mundo.',
   },
   services: {
@@ -78,7 +78,7 @@ export const fil: TranslationDict = {
     training: 'Pagsasanay',
   },
   portfolio: {
-    sectionIndex: '03 // Proof of Concept',
+    sectionIndex: '03 // Patunay ng Konsepto',
     neuralCore: {
       meta: 'AI Architecture Optimization // 2024',
       title: 'NEURAL CORE REDESIGN',
@@ -96,7 +96,7 @@ export const fil: TranslationDict = {
     },
   },
   partners: {
-    label: '04 // Mga Referensya at Business Partners',
+    label: '04 // Mga Sanggunian at Kasosyong Pangnegosyo',
   },
   contact: {
     sectionIndex: '05 // Kontak',
@@ -112,10 +112,10 @@ export const fil: TranslationDict = {
     error: 'Nabigo ang transmission. Subukang muli.',
     formName: 'Pangalan',
     formEmail: 'Email',
-    formMessage: 'Mensaje',
-    send: 'Magpadala ng Mensaje',
+    formMessage: 'Mensahe',
+    send: 'Magpadala ng Mensahe',
     sent: 'Matagumpay na naisumite ang mensahe',
-    lead: 'Handa ng build ang iyong proyekto?',
+    lead: 'Handa ka na bang buuin ang iyong proyekto?',
   },
   vm: {
     sectionIndex: '01.1 // Mga Layunin at Halaga',
@@ -132,10 +132,10 @@ export const fil: TranslationDict = {
   footer: {
     brand: 'METANETSOFT',
     tagline: '© 2024 METANETSOFT. ITATAYO NAMIN ANG HINIHARAP.',
-    privacy: 'Privacy Policy',
+    privacy: 'Patakaran sa Privacy',
     terms: 'Mga Tuntunin ng Serbisyo',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
   home: {
     welcome: 'Maligayang pagdating',

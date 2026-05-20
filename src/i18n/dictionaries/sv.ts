@@ -135,7 +135,7 @@ export const sv: TranslationDict = {
     privacy: 'Integritetspolicy',
     terms: 'Tjänstevillkor',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
   home: {
     welcome: 'Välkommen',

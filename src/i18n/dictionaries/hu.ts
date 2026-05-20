@@ -135,7 +135,7 @@ export const hu: TranslationDict = {
     privacy: 'Adatvédelmi Irányelvek',
     terms: 'Szolgáltatási Feltételek',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
   home: {
     welcome: 'Üdvözöljük',

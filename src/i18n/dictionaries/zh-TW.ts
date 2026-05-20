@@ -45,10 +45,10 @@ export const zhTW: TranslationDict = {
 
   about: {
     sectionIndex: '01 // 架構',
-    title: '未來的\\n數位建築師',
+    title: '未來的\n數位架構師',
     bodyLead: 'Metanetsoft是一家高效能技術顧問公司。我們不僅建構軟體；我們設計可擴展且有彈性的數位基礎。',
     bodyExtended: '從早期AI整合到複雜企業系統，我們以結構清晰度和工程紀律連接願景與執行。',
-    bodyMethodology: '我們的方法論植根於技術野蠻主義：原始效能、機構完整性和不妥協的安全性。',
+    bodyMethodology: '我們的方法論植根於技術粗獷主義：原始效能、結構完整性與毫不妥協的安全性。',
     uptimeValue: '99.9%',
     uptimeMetric: '系統可用性',
     latencyValue: '< 50ms',
@@ -88,18 +88,18 @@ export const zhTW: TranslationDict = {
     sectionIndex: '03 // 概念驗證',
     neuralCore: {
       meta: 'AI架構優化 // 2024',
-      title: 'NEURAL CORE REDESIGN',
-      description: '高級AI核心優化，延遲降低40%。',
+      title: 'NEURAL CORE 重構',
+      description: '高階 AI 核心優化，將延遲降低 40%，並把自主決策循環推進到毫秒等級。',
     },
     skyScale: {
       meta: '雲端基礎架構可擴展性 // 2024',
-      title: 'SKY SCALE PROJECT',
-      description: '彈性雲端架構，管理全球流量。',
+      title: 'SKY SCALE 專案',
+      description: '為全球流量管理打造的彈性雲端架構，可穩定處理每秒數百萬次請求。',
     },
     enterpriseFlux: {
       meta: '企業數位轉型 // 2023',
       title: 'ENTERPRISE FLUX',
-      description: '現代化企業工作流程的軟體生態系統。',
+      description: '一套現代化企業工作流程並端到端自動化關鍵業務流程的軟體生態系統。',
     },
   },
 
@@ -129,7 +129,7 @@ export const zhTW: TranslationDict = {
 
   vm: {
     sectionIndex: '01.1 // 目標與價值',
-    title: '願景 &\\n使命',
+    title: '願景\n使命',
     visionLabel: '[ 我們的願景 ]',
     visionBody: '拓展技術邊界，為數位架構設定全球標準。',
     missionLabel: '[ 我們的使命 ]',
@@ -147,7 +147,7 @@ export const zhTW: TranslationDict = {
     privacy: '隱私權政策',
     terms: '服務條款',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
 
   home: {

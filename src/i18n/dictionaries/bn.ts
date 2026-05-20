@@ -135,7 +135,7 @@ export const bn: TranslationDict = {
     privacy: 'গোপনীয়তা নীতি',
     terms: 'সেবার শর্তাবলী',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
   home: {
     welcome: 'স্বাগতম',

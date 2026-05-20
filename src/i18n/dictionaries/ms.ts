@@ -135,7 +135,7 @@ export const ms: TranslationDict = {
     privacy: 'Dasar privasi',
     terms: 'Syarat perkhidmatan',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
   home: {
     welcome: 'Selamat datang',

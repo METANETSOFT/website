@@ -45,10 +45,10 @@ export const fr: TranslationDict = {
 
   about: {
     sectionIndex: '01 // Architecture',
-    title: 'Architectes Numériques\\ndu Futur',
-    bodyLead: 'Metanetsoft est un cabinet de conseil technique haute performance.',
-    bodyExtended: 'Des premières intégrations d\'IA aux systèmes d\'entreprise complexes, nous connectons vision et exécution.',
-    bodyMethodology: 'Notre méthodologie est ancrée dans le brutalisme technique.',
+    title: 'Architectes Numériques\ndu Futur',
+    bodyLead: 'Metanetsoft est un cabinet de conseil technique haute performance. Nous ne faisons pas que développer des logiciels ; nous concevons des fondations numériques évolutives et résilientes.',
+    bodyExtended: 'Des premières intégrations d\'IA aux systèmes d\'entreprise complexes, nous relions vision et exécution avec clarté structurelle et rigueur d\'ingénierie.',
+    bodyMethodology: 'Notre méthodologie s\'ancre dans le brutalisme technique : performance brute, intégrité structurelle et sécurité sans compromis.',
     uptimeValue: '99.9%',
     uptimeMetric: 'DISPONIBILITÉ DU SYSTÈME',
     latencyValue: '< 50ms',
@@ -62,19 +62,19 @@ export const fr: TranslationDict = {
     lead: 'Solutions modulaires conçues pour les environnements à haute disponibilité.',
     ai: {
       title: 'IA et Automatisation Intelligente',
-      description: 'Nous appliquons les LLMs, la vision par ordinateur et l\'analytique prédictive.',
+      description: 'Nous appliquons les LLM, la vision par ordinateur et l\'analyse prédictive pour automatiser les flux de décision et transformer les données en levier autonome.',
       bullet1: 'Fine-Tuning LLM Personnalisé',
       bullet2: 'Moteurs de Logique Prédictive',
     },
     web: {
       title: 'Design Web, Ingénierie et SEO',
-      description: 'Nous combinons le design esthétique de produit avec l\'ingénierie haute performance.',
+      description: 'Nous combinons design produit exigeant et ingénierie haute performance avec React, Next.js et des systèmes web modernes.',
       bullet1: 'Design UI/UX Moderne',
       bullet2: 'SEO Technique et Optimisation',
     },
     mobile: {
       title: 'Développement d\'Applications Mobiles',
-      description: 'Expériences mobiles natives et multiplateformes.',
+      description: 'Expériences mobiles natives et multiplateformes conçues pour la fiabilité, la vitesse et une interaction de haute fidélité.',
       bullet1: 'Expertise Swift / Kotlin',
       bullet2: 'Synchronisation Biométrique en Temps Réel',
     },
@@ -88,18 +88,18 @@ export const fr: TranslationDict = {
     sectionIndex: '03 // Preuve de Concept',
     neuralCore: {
       meta: 'Optimisation de l\'Architecture IA // 2024',
-      title: 'REDESIGN NEURAL CORE',
-      description: 'Optimisation avancée du cœur IA.',
+      title: 'REFONTE DE NEURAL CORE',
+      description: 'Optimisation avancée du cœur IA qui réduit la latence de 40 % et fait passer les cycles de décision autonome à l\'échelle de la milliseconde.',
     },
     skyScale: {
-      meta: 'Évolutivité Cloud // 2024',
+      meta: 'Scalabilité de l\'infrastructure cloud // 2024',
       title: 'PROJET SKY SCALE',
-      description: 'Architecture cloud élastique pour le trafic mondial.',
+      description: 'Architecture cloud élastique conçue pour absorber le trafic mondial et traiter des millions de requêtes par seconde sans défaillance.',
     },
     enterpriseFlux: {
-      meta: 'Transformation Numérique // 2023',
+      meta: 'Transformation numérique d\'entreprise // 2023',
       title: 'ENTERPRISE FLUX',
-      description: 'Logiciel modernisant les workflows d\'entreprise.',
+      description: 'Écosystème logiciel qui modernise les workflows d\'entreprise et automatise les opérations critiques de bout en bout.',
     },
   },
 
@@ -129,16 +129,16 @@ export const fr: TranslationDict = {
 
   vm: {
     sectionIndex: '01.1 // Objectifs et Valeurs',
-    title: 'Vision &\\nMission',
+    title: 'Vision\nMission',
     visionLabel: '[ NOTRE VISION ]',
-    visionBody: 'Pousser les limites de la technologie et établir des normes mondiales.',
+    visionBody: 'Repousser les limites de la technologie et définir des standards mondiaux pour l\'architecture numérique afin de devenir un leader innovant et transformateur du conseil technologique.',
     missionLabel: '[ NOTRE MISSION ]',
-    missionBody: 'Livrer l\'excellence technique et la profondeur stratégique.',
+    missionBody: 'Apporter excellence technique et profondeur stratégique à nos clients en transformant des problèmes numériques complexes en solutions simples, évolutives et durables.',
   },
 
   cta: {
     title: 'Prêt à construire votre projet?',
-    body: 'Notre équipe est prête à s\'intégrer à votre workflow.',
+    body: 'Notre équipe est prête à s\'intégrer à votre workflow. Parlons de votre feuille de route technique.',
   },
 
   footer: {
@@ -147,7 +147,7 @@ export const fr: TranslationDict = {
     privacy: 'Politique de Confidentialité',
     terms: 'Conditions d\'Utilisation',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
 
   home: {

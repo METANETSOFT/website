@@ -135,7 +135,7 @@ export const el: TranslationDict = {
     privacy: 'Πολιτική Απορρήτου',
     terms: 'Όροι Χρήσης',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
   home: {
     welcome: 'Καλώς ήρθες',

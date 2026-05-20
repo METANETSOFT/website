@@ -45,10 +45,10 @@ export const ar: TranslationDict = {
 
   about: {
     sectionIndex: '01 // الهندسة المعمارية',
-    title: 'المهندسون الرقميون\\nللمستقبل',
+    title: 'المهندسون الرقميون\nللمستقبل',
     bodyLead: 'Metanetsoft هي استشارات تقنية عالية الأداء. لا نكتفي ببناء البرمجيات؛ نصمم أسسًا رقمية قابلة للتوسع ومرنة.',
     bodyExtended: 'من عمليات التكامل المبكرة للذكاء الاصطناعي إلى أنظمة المؤسسات المعقدة، نربط الرؤية بالتنفيذ بوضوح هيكلي والانضباط الهندسي.',
-    bodyMethodology: 'تتجذر منهجيتنا في البلادة التقنية: الأداء الخام والسلامة الهيكلية والأمان الذي لا يت妥协.',
+    bodyMethodology: 'تتجذر منهجيتنا في الوحشية التقنية: الأداء الخام، والسلامة الهيكلية، والأمان غير القابل للمساومة.',
     uptimeValue: '99.9%',
     uptimeMetric: 'توفر النظام',
     latencyValue: '< 50ms',
@@ -99,7 +99,7 @@ export const ar: TranslationDict = {
     enterpriseFlux: {
       meta: 'التحول الرقمي للشركات // 2023',
       title: 'ENTERPRISE FLUX',
-      description: 'نظام بيئي للبرمجيات يحديث تدفقات عمل المؤسسات.',
+      description: 'نظام بيئي برمجي يحدّث تدفقات عمل المؤسسات ويؤتمت العمليات الحساسة للأعمال من البداية إلى النهاية.',
     },
   },
 
@@ -129,7 +129,7 @@ export const ar: TranslationDict = {
 
   vm: {
     sectionIndex: '01.1 // الأهداف والقيم',
-    title: 'الرؤية &\\nالمهمة',
+    title: 'الرؤية\nالمهمة',
     visionLabel: '[ رؤيتنا ]',
     visionBody: 'توسيع حدود التكنولوجيا ووضع معايير عالمية للهندسة الرقمية.',
     missionLabel: '[ مهمتنا ]',
@@ -143,11 +143,11 @@ export const ar: TranslationDict = {
 
   footer: {
     brand: 'METANETSOFT',
-    tagline: '© 2024 METANETSOFT. نبنى المستقبل.',
+    tagline: '© 2024 METANETSOFT. نبني المستقبل.',
     privacy: 'سياسة الخصوصية',
     terms: 'شروط الخدمة',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
 
   home: {

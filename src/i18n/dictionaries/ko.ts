@@ -45,9 +45,9 @@ export const ko: TranslationDict = {
 
   about: {
     sectionIndex: '01 // 아키텍처',
-    title: '미래의\\n디지털 건축가',
-    bodyLead: 'Metanetsoft는 고성능 기술 컨설팅 회사입니다. 우리는 소프트웨어를 구축할 뿐만 아니라 확장 가능하고弾力적인 디지털 기반을 설계합니다.',
-    bodyExtended: '초기 AI 통합から 복잡한 기업 시스템까지, 우리는 구조적 명확성과 엔지니어링 규율으로 비전과 실행을 연결합니다.',
+    title: '미래의\n디지털 아키텍트',
+    bodyLead: 'Metanetsoft는 고성능 기술 컨설팅 회사입니다. 우리는 단순히 소프트웨어를 만드는 데 그치지 않고, 확장 가능하고 탄력적인 디지털 기반을 설계합니다.',
+    bodyExtended: '초기 AI 통합부터 복잡한 엔터프라이즈 시스템까지, 우리는 구조적 명확성과 엔지니어링 규율로 비전과 실행을 연결합니다.',
     bodyMethodology: '우리의 방법론은 기술적 브루탈리즘에 뿌리를 두고 있습니다.',
     uptimeValue: '99.9%',
     uptimeMetric: '시스템 가용성',
@@ -62,19 +62,19 @@ export const ko: TranslationDict = {
     lead: '고가용성 환경을 위해 설계된 모듈식 솔루션.',
     ai: {
       title: 'AI와 지능형 자동화',
-      description: '당신은 LLMs, 컴퓨터 비전 및 예측 분석을 적용하여 결정 워크플로우를 자동화하고 데이터를 자율적 지렛대로 변환합니다.',
+      description: '우리는 LLM, 컴퓨터 비전, 예측 분석을 적용해 의사결정 워크플로를 자동화하고 데이터를 자율적 추진력으로 전환합니다.',
       bullet1: '맞춤형 LLM 미세 조정',
       bullet2: '예측 로직 엔진',
     },
     web: {
       title: '웹 디자인, 엔지니어링 및 SEO',
-      description: '당신은 React, Next.js 및 최신 웹 시스템을 사용하여 아름다운 제품 디자인과 고성능 엔지니어링을 결합합니다.',
+      description: '우리는 React, Next.js, 최신 웹 시스템을 활용해 미감 있는 제품 디자인과 고성능 엔지니어링을 결합합니다.',
       bullet1: '현대적 UI/UX 디자인',
       bullet2: '기술적 SEO 및 성능 최적화',
     },
     mobile: {
       title: '모바일 앱 개발',
-      description: '신뢰성, 속도 및 고충실도 상호 작용을 위해 구축된 기본 및 크로스 플랫폼 모바일 환경.',
+      description: '신뢰성, 속도, 높은 상호작용 완성도를 위해 설계된 네이티브 및 크로스플랫폼 모바일 경험입니다.',
       bullet1: 'Swift / Kotlin 전문 지식',
       bullet2: '실시간 생체 인증 동기화',
     },
@@ -88,18 +88,18 @@ export const ko: TranslationDict = {
     sectionIndex: '03 // 개념 증명',
     neuralCore: {
       meta: 'AI 아키텍처 최적화 // 2024',
-      title: 'NEURAL CORE REDESIGN',
-      description: '지연을 40% 감소시키는 고급 AI 코어 최적화.',
+      title: 'NEURAL CORE 재설계',
+      description: '지연 시간을 40% 줄이고 자율 의사결정 사이클을 밀리초 단위로 끌어내린 고급 AI 코어 최적화입니다.',
     },
     skyScale: {
       meta: '클라우드 인프라 확장성 // 2024',
-      title: 'SKY SCALE PROJECT',
-      description: '글로벌 트래픽 관리를 위해 구축된 탄성 있는 클라우드 아키텍처.',
+      title: 'SKY SCALE 프로젝트',
+      description: '글로벌 트래픽을 관리하고 초당 수백만 건의 요청을 안정적으로 처리하도록 설계된 탄력적 클라우드 아키텍처입니다.',
     },
     enterpriseFlux: {
       meta: '기업 디지털 변환 // 2023',
       title: 'ENTERPRISE FLUX',
-      description: '기업 워크플로우를 현대화하는 소프트웨어 에코시스템.',
+      description: '엔터프라이즈 워크플로를 현대화하고 핵심 비즈니스 운영을 엔드투엔드로 자동화하는 소프트웨어 생태계입니다.',
     },
   },
 
@@ -129,7 +129,7 @@ export const ko: TranslationDict = {
 
   vm: {
     sectionIndex: '01.1 // 목표 및 가치',
-    title: '비전 &\\n미션',
+    title: '비전\n미션',
     visionLabel: '[ 우리의 비전 ]',
     visionBody: '기술의 한계를 확장하고 디지털 아키텍처를 위한 글로벌 표준을 설정합니다.',
     missionLabel: '[ 우리의 미션 ]',
@@ -147,7 +147,7 @@ export const ko: TranslationDict = {
     privacy: '개인 정보 보호 정책',
     terms: '서비스 약관',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
 
   home: {

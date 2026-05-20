@@ -179,6 +179,15 @@ const DICTIONARIES: Record<LocaleCode, TranslationDict> = {
   fil, ms, el,
 };
 
+function getLocaleDict(locale: LocaleCode): TranslationDict {
+  return DICTIONARIES[locale] ?? DICTIONARIES.en;
+}
+
+function getLocalizedLabel(locale: LocaleCode, key: string, fallback: string): string {
+  const value = t(getLocaleDict(locale), key);
+  return value === key ? fallback : value;
+}
+
 // ─── Server-side translation ───────────────────────────────────────────────────
 
 function t(dict: TranslationDict, key: string, params?: Record<string, string | number>): string {
@@ -287,7 +296,7 @@ function localizeExactShellContent(html: string, dict: TranslationDict, locale: 
     ['ÇALIŞMA SÜRESİ: %99.998', escHtml(t(dict, 'hero.uptimeLabel'))],
     ['01 // Mimari', escHtml(t(dict, 'about.sectionIndex'))],
     ['Dijital Geleceğin <br/><span class="text-on-surface-variant">Mimarları</span>', `${escHtml(aboutTitleParts[0] ?? t(dict, 'about.title'))} <br/><span class="text-on-surface-variant">${escHtml(aboutTitleParts[1] ?? '')}</span>`],
-    ['Metanetsoft, yüksek performanslı bir teknik danışmanlık firmasıdır. Sadece yazılım üretmiyor; ölçeklenebilir, sağlam dijital altyapılar tasarlıyoruz. Erken aşama yapay zeka entegrasyonlarından karmaşık kurumsal sistemlere kadar, vizyon ile uygulama arasındaki köprüyü kuruyoruz.', escHtml(t(dict, 'about.bodyLead'))],
+    ['Metanetsoft, yüksek performanslı bir teknik danışmanlık firmasıdır. Sadece yazılım üretmiyor; ölçeklenebilir, sağlam dijital altyapılar tasarlıyoruz. Erken aşama yapay zeka entegrasyonlarından karmaşık kurumsal sistemlere kadar, vizyon ile uygulama arasındaki köprüyü kuruyoruz.', escHtml(`${t(dict, 'about.bodyLead')} ${t(dict, 'about.bodyExtended')}`)],
     [`Metodolojimiz köklerini, ham performans, yapısal bütünlük ve tavizsiz güvenliği önceliklendiren <span class="text-on-surface">Teknik Brutalizm</span>'den alır. İster mevcut sprint döngülerinize entegre olalım, ister tam döngülü bir ürün teslim edelim; cerrahi bir hassasiyetle çalışıyoruz.`, escHtml(t(dict, 'about.bodyMethodology'))],
     ['SİSTEM ÇALIŞMA SÜRESİ', escHtml(t(dict, 'about.uptimeMetric'))],
     ['GLOBAL ERİŞİM HIZI', escHtml(t(dict, 'about.latencyMetric'))],
@@ -353,8 +362,10 @@ function localizeExactShellContent(html: string, dict: TranslationDict, locale: 
 
 function renderPrivacyModal(locale: LocaleCode): string {
   const isTr = locale === 'tr';
-  const title = isTr ? 'Metanetsoft Gizlilik Politikası' : 'Metanetsoft Privacy Policy';
-  const close = isTr ? 'Kapat' : 'Close';
+  const title = isTr
+    ? 'Metanetsoft Gizlilik Politikası'
+    : `${getLocalizedLabel(locale, 'footer.privacy', 'Privacy Policy')} | Metanetsoft`;
+  const close = getLocalizedLabel(locale, 'common.close', 'Close');
   const intro = isTr
     ? 'Metanetsoft, ziyaretçilerinin ve müşterilerinin gizliliğine önem verir. Bu politika; topladığımız bilgileri, kullanım amaçlarımızı ve koruma yaklaşımımızı genel hatlarıyla açıklar.'
     : 'Metanetsoft values the privacy of its visitors and clients. This policy outlines the information we collect, why we use it, and how we protect it.';
@@ -395,8 +406,10 @@ function renderPrivacyModal(locale: LocaleCode): string {
 
 function renderTermsModal(locale: LocaleCode): string {
   const isTr = locale === 'tr';
-  const title = isTr ? 'Metanetsoft Hizmet Şartları' : 'Metanetsoft Terms of Service';
-  const close = isTr ? 'Kapat' : 'Close';
+  const title = isTr
+    ? 'Metanetsoft Hizmet Şartları'
+    : `${getLocalizedLabel(locale, 'footer.terms', 'Terms of Service')} | Metanetsoft`;
+  const close = getLocalizedLabel(locale, 'common.close', 'Close');
   const intro = isTr
     ? 'Bu web sitesini ve Metanetsoft tarafından sunulan içerik, iletişim ve danışmanlık hizmetlerini kullanan herkes aşağıdaki genel hizmet şartlarını kabul etmiş sayılır.'
     : 'By using this website and any content, communication, or consulting services provided by Metanetsoft, you agree to the following general terms of service.';
@@ -607,16 +620,7 @@ export async function renderExactShell(
 // ─── Nav ─────────────────────────────────────────────────────────────────────
 
 function getReferencesNavLabel(locale: LocaleCode): string {
-  const map: Partial<Record<LocaleCode, string>> = {
-    tr: 'Referanslar',
-    en: 'References',
-    es: 'Referencias',
-    de: 'Referenzen',
-    fr: 'Références',
-    it: 'Referenze',
-    'pt-BR': 'Referências',
-  };
-  return map[locale] ?? 'References';
+  return getExactShellReferencesLabel(locale);
 }
 
 function renderNav(dict: TranslationDict, locale: LocaleCode, switcherHtml: string): string {
@@ -627,8 +631,8 @@ function renderNav(dict: TranslationDict, locale: LocaleCode, switcherHtml: stri
       <div class="site-nav__links">
         <a href="#services" data-i18n="nav.services">${t(dict, 'nav.services')}</a>
         <a href="#references">${getReferencesNavLabel(locale)}</a>
-        <a href="#vision">${locale === 'tr' ? 'Vizyon' : 'Vision'}</a>
-        <a href="#mission">${locale === 'tr' ? 'Misyon' : 'Mission'}</a>
+        <a href="#vision">${getExactShellVisionLabel(locale)}</a>
+        <a href="#mission">${getExactShellMissionLabel(locale)}</a>
       </div>
       <div class="site-nav__actions">
         <div class="site-nav__lang">${switcherHtml}</div>
@@ -803,16 +807,16 @@ function renderContact(dict: TranslationDict): string {
         <div class="form-row">
           <div class="form-field">
             <label for="contact-name" data-i18n="contact.nameLabel">${t(dict, 'contact.nameLabel')}</label>
-            <input type="text" id="contact-name" name="name" autocomplete="name" required data-i18n="contact.nameLabel" data-i18n-attr="placeholder" />
+            <input type="text" id="contact-name" name="name" autocomplete="name" required placeholder="${escHtml(t(dict, 'contact.namePlaceholder'))}" data-i18n="contact.namePlaceholder" data-i18n-attr="placeholder" />
           </div>
           <div class="form-field">
             <label for="contact-email" data-i18n="contact.emailLabel">${t(dict, 'contact.emailLabel')}</label>
-            <input type="email" id="contact-email" name="email" autocomplete="email" required data-i18n="contact.emailLabel" data-i18n-attr="placeholder" />
+            <input type="email" id="contact-email" name="email" autocomplete="email" required placeholder="${escHtml(t(dict, 'contact.emailPlaceholder'))}" data-i18n="contact.emailPlaceholder" data-i18n-attr="placeholder" />
           </div>
         </div>
         <div class="form-field">
           <label for="contact-message" data-i18n="contact.messageLabel">${t(dict, 'contact.messageLabel')}</label>
-          <textarea id="contact-message" name="message" rows="5" required data-i18n="contact.messageLabel" data-i18n-attr="placeholder"></textarea>
+          <textarea id="contact-message" name="message" rows="5" required placeholder="${escHtml(t(dict, 'contact.messagePlaceholder'))}" data-i18n="contact.messagePlaceholder" data-i18n-attr="placeholder"></textarea>
         </div>
         <button type="submit" class="btn btn--primary" data-i18n="contact.submit">${t(dict, 'contact.submit')}</button>
         <p class="form-status" id="form-status" aria-live="polite"></p>
@@ -893,7 +897,7 @@ function buildGenericSwitcherHtml(locale: LocaleCode): string {
     pl: 'PL', nl: 'NL', ro: 'RO', cs: 'CS', sv: 'SV', hu: 'HU', uk: 'UK',
     th: 'TH', bn: 'BN', fa: 'FA', fil: 'FIL', ms: 'MS', el: 'EL',
   };
-  let html = `<select id="lang-select-ssr" aria-label="Language">`;
+  let html = `<select id="lang-select-ssr" aria-label="${escHtml(getLocalizedLabel(locale, 'header.languageSelect', 'Select language'))}">`;
   for (const code of ordered) {
     const selected = code === locale ? ' selected' : '';
     html += `<option value="${code}"${selected}>${displayNames[code] ?? code}</option>`;

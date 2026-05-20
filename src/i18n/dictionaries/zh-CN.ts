@@ -16,7 +16,7 @@ export const zhCN: TranslationDict = {
   meta: {
     appName: 'Metanetsoft',
     pageTitle: 'Metanetsoft | 未来数字建筑师',
-    pageDescription: '专注于AI、Web工程、移动应用、可扩展架构和数字化转型的技术咨询。',
+    pageDescription: '专注于 AI、Web 工程、移动应用、可扩展架构与数字化转型的技术咨询服务。',
   },
 
   header: {
@@ -45,10 +45,10 @@ export const zhCN: TranslationDict = {
 
   about: {
     sectionIndex: '01 // 架构',
-    title: '未来的\\n数字建筑师',
+    title: '未来的\n数字架构师',
     bodyLead: 'Metanetsoft是一家高性能技术咨询公司。我们不仅构建软件；我们设计可扩展且有弹性的数字基础。',
     bodyExtended: '从早期AI集成到复杂企业系统，我们以结构清晰度和工程纪律连接愿景与执行。',
-    bodyMethodology: '我们的方法论植根于技术粗犷主义：原始性能、结构完整性和不妥协的安全性。',
+    bodyMethodology: '我们的方法论植根于技术粗野主义：追求原始性能、结构完整性与毫不妥协的安全性。',
     uptimeValue: '99.9%',
     uptimeMetric: '系统可用性',
     latencyValue: '< 50ms',
@@ -88,18 +88,18 @@ export const zhCN: TranslationDict = {
     sectionIndex: '03 // 概念验证',
     neuralCore: {
       meta: 'AI架构优化 // 2024',
-      title: 'NEURAL CORE REDESIGN',
-      description: '高级AI核心优化，延迟降低40%。',
+      title: 'NEURAL CORE 重构',
+      description: '高级 AI 核心优化方案，将延迟降低 40%，并把自主决策周期推进到毫秒级。',
     },
     skyScale: {
       meta: '云基础设施可扩展性 // 2024',
-      title: 'SKY SCALE PROJECT',
-      description: '弹性云架构，管理全球流量。',
+      title: 'SKY SCALE 项目',
+      description: '为全球流量管理而构建的弹性云架构，可稳定处理每秒数百万次请求。',
     },
     enterpriseFlux: {
       meta: '企业数字化转型 // 2023',
       title: 'ENTERPRISE FLUX',
-      description: '现代化企业工作流程的软件生态系统。',
+      description: '一套现代化企业工作流并端到端自动化关键业务流程的软件生态系统。',
     },
   },
 
@@ -129,7 +129,7 @@ export const zhCN: TranslationDict = {
 
   vm: {
     sectionIndex: '01.1 // 目标与价值',
-    title: '愿景 &\\n使命',
+    title: '愿景\n使命',
     visionLabel: '[ 我们的愿景 ]',
     visionBody: '拓展技术边界，为数字架构设定全球标准。',
     missionLabel: '[ 我们的使命 ]',
@@ -147,7 +147,7 @@ export const zhCN: TranslationDict = {
     privacy: '隐私政策',
     terms: '服务条款',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
 
   home: {

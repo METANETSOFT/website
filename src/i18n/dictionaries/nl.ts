@@ -135,7 +135,7 @@ export const nl: TranslationDict = {
     privacy: 'Privacybeleid',
     terms: 'Servicevoorwaarden',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
   home: {
     welcome: 'Welkom',

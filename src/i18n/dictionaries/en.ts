@@ -147,7 +147,7 @@ export const en: TranslationDict = {
     privacy: 'Privacy Policy',
     terms: 'Terms of Service',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
 
 

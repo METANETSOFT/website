@@ -135,7 +135,7 @@ export const ur: TranslationDict = {
     privacy: 'رازداری کی پالیسی',
     terms: 'خدمت کی شرائط',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
   home: {
     welcome: 'خوش آمدید',

@@ -147,7 +147,7 @@ export const ro: TranslationDict = {
     privacy: 'Politica de Confidențialitate',
     terms: 'Termeni de Serviciu',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
 
   home: {

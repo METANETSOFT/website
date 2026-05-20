@@ -35,6 +35,9 @@ function getLocalizedAriaLabel(i18n: I18nInstance): string {
   const secondary = i18n.t('language.select');
   if (secondary !== 'language.select') return secondary;
 
+  const tertiary = i18n.t('language.title');
+  if (tertiary !== 'language.title') return tertiary;
+
   return 'Select language';
 }
 

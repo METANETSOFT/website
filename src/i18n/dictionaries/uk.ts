@@ -135,7 +135,7 @@ export const uk: TranslationDict = {
     privacy: 'Політика Конфіденційності',
     terms: 'Умови Використання',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
   home: {
     welcome: 'Ласкаво просимо',

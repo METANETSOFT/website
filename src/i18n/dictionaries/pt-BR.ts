@@ -45,7 +45,7 @@ export const ptBR: TranslationDict = {
 
   about: {
     sectionIndex: '01 // Arquitetura',
-    title: 'Arquitetos Digitais\\ndo Futuro',
+    title: 'Arquitetos Digitais\ndo Futuro',
     bodyLead: 'Metanetsoft é uma consultoria técnica de alto desempenho. Não apenas construímos software; projetamos bases digitais escaláveis e resilientes.',
     bodyExtended: 'Das primeiras integrações de IA a sistemas empresariais complexos, conectamos visão e execução com clareza estrutural e disciplina de engenharia.',
     bodyMethodology: 'Nossa metodologia está enraizada no brutalismo técnico: performance bruta, integridade estrutural e segurança inabalável.',
@@ -88,18 +88,18 @@ export const ptBR: TranslationDict = {
     sectionIndex: '03 // Prova de Conceito',
     neuralCore: {
       meta: 'Otimização de Arquitetura de IA // 2024',
-      title: 'REDESIGN NEURAL CORE',
-      description: 'Otimização avançada do núcleo de IA que reduz a latência em 40%.',
+      title: 'REDESENHO DO NEURAL CORE',
+      description: 'Otimização avançada do núcleo de IA que reduz a latência em 40% e leva os ciclos de decisão autônoma ao território dos milissegundos.',
     },
     skyScale: {
       meta: 'Escalabilidade de Infraestrutura em Nuvem // 2024',
       title: 'PROJETO SKY SCALE',
-      description: 'Arquitetura em nuvem elástica construída para gerenciar tráfego global.',
+      description: 'Arquitetura em nuvem elástica criada para gerenciar tráfego global e sustentar milhões de requisições por segundo sem falhas.',
     },
     enterpriseFlux: {
       meta: 'Transformação Digital Empresarial // 2023',
       title: 'ENTERPRISE FLUX',
-      description: 'Ecossistema de software modernizando fluxos de trabalho empresariais.',
+      description: 'Ecossistema de software que moderniza fluxos de trabalho empresariais e automatiza operações críticas de ponta a ponta.',
     },
   },
 
@@ -129,7 +129,7 @@ export const ptBR: TranslationDict = {
 
   vm: {
     sectionIndex: '01.1 // Objetivos e Valores',
-    title: 'Visão &\\nMissão',
+    title: 'Visão\nMissão',
     visionLabel: '[ NOSSA VISÃO ]',
     visionBody: 'Expandir os limites da tecnologia e estabelecer padrões globais para arquitetura digital.',
     missionLabel: '[ NOSSA MISSÃO ]',
@@ -147,7 +147,7 @@ export const ptBR: TranslationDict = {
     privacy: 'Política de Privacidade',
     terms: 'Termos de Serviço',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
 
   home: {

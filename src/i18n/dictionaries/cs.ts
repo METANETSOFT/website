@@ -135,7 +135,7 @@ export const cs: TranslationDict = {
     privacy: 'Zásady Ochrany Osobních Údajů',
     terms: 'Smluvní Podmínky',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
   home: {
     welcome: 'Vítejte',

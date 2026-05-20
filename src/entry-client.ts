@@ -86,7 +86,7 @@ function mountExactShellSelect(currentLocale: LocaleCode): HTMLSelectElement | n
   control.style.position = 'relative';
   const select = document.createElement('select');
   select.id = 'lang-select-ssr';
-  select.setAttribute('aria-label', 'Language');
+  select.setAttribute('aria-label', 'Select language');
   Object.assign(select.style, { position: 'absolute', inset: '0', opacity: '0', cursor: 'pointer', width: '100%', height: '100%' });
 
   for (const code of ordered) {
@@ -203,6 +203,7 @@ async function init(): Promise<void> {
     : document.getElementById('lang-select-ssr') as HTMLSelectElement | null;
 
   if (ssrSelect) {
+    ssrSelect.setAttribute('aria-label', i18n.t('header.languageSelect'));
     ssrSelect.addEventListener('change', () => {
       const selected = ssrSelect.value as LocaleCode;
       localeNavigate(selected);

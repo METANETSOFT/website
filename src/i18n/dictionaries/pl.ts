@@ -135,7 +135,7 @@ export const pl: TranslationDict = {
     privacy: 'Polityka prywatności',
     terms: 'Warunki usługi',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
   home: {
     welcome: 'Witaj',

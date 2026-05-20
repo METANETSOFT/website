@@ -47,7 +47,7 @@ export const tr: TranslationDict = {
     sectionIndex: '01 // Mimari',
     title: 'Dijital Geleceğin\nMimarları',
     bodyLead: 'Metanetsoft yüksek performanslı bir teknik danışmanlık şirketidir. Biz sadece yazılım inşa etmiyoruz; ölçeklenebilir ve dayanıklı dijital temeller tasarlıyoruz.',
-    bodyExtended: 'Erken aşama AI entegrasyonlarından karmaşık kurumsal sistemlere kadar, vizyonu ve uygulamayı yapısal netlik ve mühendislik disipliniyle birleştiriyoruz.',
+    bodyExtended: 'Erken aşama yapay zeka entegrasyonlarından karmaşık kurumsal sistemlere kadar, vizyonu ve uygulamayi yapisal netlik ve muhendislik disipliniyle birlestiriyoruz.',
     bodyMethodology: 'Metodolojimiz teknik brutalizmde kök salıyor: ham performans, yapısal bütünlük ve tavizsiz güvenlik.',
     uptimeValue: '99.9%',
     uptimeMetric: 'SİSTEM ÇALIŞMA SÜRESİ',
@@ -147,7 +147,7 @@ export const tr: TranslationDict = {
     privacy: 'Gizlilik Politikası',
     terms: 'Hizmet Şartları',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
 
   home: {

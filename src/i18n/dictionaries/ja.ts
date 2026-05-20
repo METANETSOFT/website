@@ -16,7 +16,7 @@ export const ja: TranslationDict = {
   meta: {
     appName: 'Metanetsoft',
     pageTitle: 'Metanetsoft | 未来のデジタルアーキテクト',
-    pageDescription: 'AI、Webエンジニアリング、モバイルアプリ、スケーラブルアーキテクチャ、数字化转型にフォーカスした技術コンサルティング。',
+    pageDescription: 'AI、Webエンジニアリング、モバイルアプリ、スケーラブルなアーキテクチャ、デジタル変革に特化した技術コンサルティング。',
   },
 
   header: {
@@ -45,7 +45,7 @@ export const ja: TranslationDict = {
 
   about: {
     sectionIndex: '01 // アーキテクチャ',
-    title: '未来のデジタル\\nアーキテクト',
+    title: '未来のデジタル\nアーキテクト',
     bodyLead: 'Metanetsoftは高性能技術コンサルティングです。ソフトウェアを構築するだけでなく、スケーラブルでレジリエントなデジタル基盤を設計します。',
     bodyExtended: '初期のAI統合から複雑なエンタープライズシステムまで、構造的明確さとエンジニアリング規律を持ってビジョンと実行を結びつけます。',
     bodyMethodology: '私たちの方法論は技術的ブルータリズムに根ざしています。',
@@ -69,7 +69,7 @@ export const ja: TranslationDict = {
     web: {
       title: 'Webデザイン、エンジニアリング、SEO',
       description: 'React、Next.js、最新のWebシステムを使用して、美的なプロダクトデザインと高性能エンジニアリングを組み合わせます。',
-      bullet1: 'モダンスUI/UXデザイン',
+      bullet1: 'モダンなUI/UXデザイン',
       bullet2: '技術的SEOとパフォーマンス最適化',
     },
     mobile: {
@@ -97,7 +97,7 @@ export const ja: TranslationDict = {
       description: 'グローバルトラフィックを管理し、秒間数百万の要求を失敗なく処理するように構築されたエラスティッククラウドアーキテクチャ。',
     },
     enterpriseFlux: {
-      meta: 'エンタープライズ数字化変換 // 2023',
+      meta: 'エンタープライズのデジタル変革 // 2023',
       title: 'エンタープライズフラックス',
       description: 'エンタープライズワークフローを近代化し、エンドツーエンドでビジネスクリティカルな操作を自動化するソフトウェアエコシステム。',
     },
@@ -129,7 +129,7 @@ export const ja: TranslationDict = {
 
   vm: {
     sectionIndex: '01.1 // 目標と価値',
-    title: 'ビジョン &\\nミッション',
+    title: 'ビジョン\nミッション',
     visionLabel: '[ 私たちのビジョン ]',
     visionBody: '技術の限界を押し広げ、デジタルアーキテクチャのグローバルスタンダードを設定し、革新的で変革的な技術コンサルティングリーダーになる。',
     missionLabel: '[ 私たちのミッション ]',
@@ -147,7 +147,7 @@ export const ja: TranslationDict = {
     privacy: 'プライバシーポリシー',
     terms: '利用規約',
     linkedin: 'LinkedIn',
-    github: 'Github',
+    github: 'GitHub',
   },
 
   home: {
