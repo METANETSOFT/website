@@ -348,11 +348,12 @@ function renderPortfolio(dict: TranslationDict): string {
     <div class="partners" id="references">
       <span class="partners__label" data-i18n="partners.label">${t(dict, 'partners.label')}</span>
       <div class="partners__logos">
-        <span>NEXUS AI</span>
-        <span>GLOBAL FREIGHT</span>
-        <span>FINCORP</span>
-        <span>QUANTUM SYSTEMS</span>
-        <span>CYBERNETICS</span>
+        <a href="https://www.linkedin.com/company/kctek/posts/?feedView=all" target="_blank" rel="noreferrer">KCTEK</a>
+        <a href="https://www.linkedin.com/company/akeski/posts/?feedView=all" target="_blank" rel="noreferrer">AKESKI</a>
+        <a href="https://www.linkedin.com/company/riseconsultingtr/posts/?feedView=all" target="_blank" rel="noreferrer">RISE TECHNOLOGIES</a>
+        <a href="https://www.linkedin.com/company/arpiesyazilim/" target="_blank" rel="noreferrer">ARPIES TECH</a>
+        <a href="https://www.linkedin.com/company/milangaz/?originalSubdomain=tr" target="_blank" rel="noreferrer">MILAN GAZ</a>
+        <a href="https://www.linkedin.com/company/ohshift/posts/?feedView=all" target="_blank" rel="noreferrer">OHSHIFT</a>
       </div>
     </div>
   </section>`;

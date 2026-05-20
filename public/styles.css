@@ -692,13 +692,21 @@ main { flex: 1; margin-top: 60px; }
   filter: grayscale(100%);
 }
 
-.partners__logos span {
+.partners__logos > * {
   font-family: var(--font-display);
   font-size: 1.1rem;
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--clr-text);
+}
+
+.partners__logos a {
+  text-decoration: none;
+}
+
+.partners__logos a:hover {
+  color: var(--clr-accent);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
