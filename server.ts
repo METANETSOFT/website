@@ -130,6 +130,7 @@ async function handleContactRequest(
       message: payload.message.trim(),
     });
 
+    console.log(`[contact] delivered ip=${rateLimitKey} email=${payload.email.trim()}`);
     sendJson(res, 200, { ok: true });
     return true;
   } catch (error) {

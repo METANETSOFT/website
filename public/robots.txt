@@ -11,3 +11,4 @@ User-agent: CCBot
 Allow: /
 
 Sitemap: https://metanetsoft.com/sitemap.xml
+# llms.txt: https://metanetsoft.com/llms.txt

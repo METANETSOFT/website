@@ -53,21 +53,38 @@ function isExactShell(): boolean {
   );
 }
 
-function isDesktopViewport(): boolean {
-  return document.documentElement.clientWidth >= 1024;
-}
-
 function findExactShellLangControl(): HTMLElement | null {
-  const nodes = Array.from(document.querySelectorAll<HTMLElement>('div'));
+  const navActions = document.querySelector('.exact-shell-nav__actions');
+  const nodes = Array.from((navActions ?? document).querySelectorAll<HTMLElement>('div'));
   return nodes.find((node) => {
     const text = (node.textContent ?? '').replace(/\s+/g, '');
     return /^(EN|ES|DE|FR|JA|ZH|TW|PT|KO|AR|RU|IT|ID|HI|UR|TR|VI|PL|NL|RO|CS|SV|HU|UK|TH|BN|FA|FIL|MS|EL)keyboard_arrow_down$/.test(text);
   }) ?? null;
 }
 
-function mountExactShellSelect(currentLocale: LocaleCode): HTMLSelectElement | null {
-  if (!isDesktopViewport()) return null;
+function ensureFormStatusElement(form: HTMLFormElement): HTMLElement {
+  let statusEl = document.getElementById('form-status');
+  if (statusEl) return statusEl;
 
+  statusEl = document.createElement('p');
+  statusEl.id = 'form-status';
+  statusEl.className = 'form-status text-sm text-on-surface-variant';
+  statusEl.setAttribute('aria-live', 'polite');
+  form.appendChild(statusEl);
+  return statusEl;
+}
+
+function mountFormStatusObserver(form: HTMLFormElement): void {
+  const observer = new MutationObserver(() => {
+    if (!document.getElementById('form-status')) {
+      ensureFormStatusElement(form);
+    }
+  });
+
+  observer.observe(form, { childList: true });
+}
+
+function mountExactShellSelect(currentLocale: LocaleCode): HTMLSelectElement | null {
   const control = findExactShellLangControl();
   if (!control) return null;
 
@@ -226,10 +243,10 @@ async function init(): Promise<void> {
   // Simple contact form feedback (works in both shells — IDs are set in SSR)
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   if (form) {
+    mountFormStatusObserver(form);
     form.addEventListener('submit', async (e: SubmitEvent) => {
       e.preventDefault();
-      const statusEl = document.getElementById('form-status');
-      if (!statusEl) return;
+      const statusEl = ensureFormStatusElement(form);
       const name = (document.getElementById('contact-name') as HTMLInputElement)?.value;
       const email = (document.getElementById('contact-email') as HTMLInputElement)?.value;
       const message = (document.getElementById('contact-message') as HTMLTextAreaElement)?.value;
@@ -259,6 +276,7 @@ async function init(): Promise<void> {
 
         statusEl.textContent = i18n.t('contact.success');
         statusEl.style.color = 'green';
+        console.log('[contact] submit ok');
         form.reset();
       } catch (error) {
         console.error('[contact]', error);
