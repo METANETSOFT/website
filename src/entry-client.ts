@@ -29,6 +29,9 @@ interface ContactApiErrorResponse {
   ok?: boolean;
   error?: string;
   errorCode?: string;
+  jobId?: string;
+  status?: string;
+  queuePosition?: number | null;
 }
 
 type ToastVariant = 'info' | 'success' | 'error';
@@ -190,12 +193,24 @@ function setFormStatus(statusEl: HTMLElement, message: string, variant: ToastVar
       : '#b8c7cf';
 }
 
+function buildQueueAcceptedMessage(i18n: ReturnType<typeof createI18n>, queuePosition?: number | null): string {
+  if (typeof queuePosition === 'number' && queuePosition > 1) {
+    return i18n.t('contact.queuedWithPosition', { position: queuePosition });
+  }
+  return i18n.t('contact.queued');
+}
+
 function resolveContactErrorMessage(i18n: ReturnType<typeof createI18n>, errorCode?: string, fallback?: string): string {
   switch (errorCode) {
     case 'INVALID_PAYLOAD':
       return i18n.t('contact.errorInvalid');
+    case 'INVALID_JOB_ID':
+    case 'JOB_NOT_FOUND':
+      return i18n.t('contact.errorQueueLost');
     case 'RATE_LIMITED':
       return i18n.t('contact.errorRateLimited');
+    case 'QUEUE_FULL':
+      return i18n.t('contact.errorQueueFull');
     case 'MAIL_CONFIG_MISSING':
       return i18n.t('contact.errorUnavailable');
     case 'MAIL_AUTH_FAILED':
@@ -211,6 +226,76 @@ function resolveContactErrorMessage(i18n: ReturnType<typeof createI18n>, errorCo
     default:
       return fallback?.trim() || i18n.t('contact.errorServer');
   }
+}
+
+async function pollContactJob(
+  i18n: ReturnType<typeof createI18n>,
+  jobId: string,
+  toast: ToastHandle,
+  statusEl: HTMLElement,
+  isActive: () => boolean,
+): Promise<void> {
+  for (let attempt = 0; attempt < 25; attempt += 1) {
+    await new Promise((resolve) => window.setTimeout(resolve, 1200));
+    if (!isActive()) return;
+
+    try {
+      const response = await fetch(`/api/contact-status?jobId=${encodeURIComponent(jobId)}`);
+      const body = await response.json().catch(() => null) as ContactApiErrorResponse | null;
+      if (!response.ok) {
+        const errorMessage = resolveContactErrorMessage(i18n, body?.errorCode, body?.error);
+        if (!isActive()) return;
+        setFormStatus(statusEl, errorMessage, 'error');
+        toast.update(errorMessage, 'error', 6000);
+        return;
+      }
+
+      if (!body) continue;
+
+      if (body.status === 'queued') {
+        const queuedMessage = buildQueueAcceptedMessage(i18n, body.queuePosition);
+        if (!isActive()) return;
+        setFormStatus(statusEl, queuedMessage, 'info');
+        toast.update(queuedMessage, 'info');
+        continue;
+      }
+
+      if (body.status === 'processing') {
+        const processingMessage = i18n.t('contact.processing');
+        if (!isActive()) return;
+        setFormStatus(statusEl, processingMessage, 'info');
+        toast.update(processingMessage, 'info');
+        continue;
+      }
+
+      if (body.status === 'completed') {
+        const successMessage = i18n.t('contact.success');
+        if (!isActive()) return;
+        setFormStatus(statusEl, successMessage, 'success');
+        toast.update(successMessage, 'success', 4200);
+        return;
+      }
+
+      if (body.status === 'failed') {
+        const errorMessage = resolveContactErrorMessage(i18n, body.errorCode, body.error);
+        if (!isActive()) return;
+        setFormStatus(statusEl, errorMessage, 'error');
+        toast.update(errorMessage, 'error', 6000);
+        return;
+      }
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : i18n.t('contact.errorQueueLost');
+      if (!isActive()) return;
+      setFormStatus(statusEl, errorMessage, 'error');
+      toast.update(errorMessage, 'error', 6000);
+      return;
+    }
+  }
+
+  if (!isActive()) return;
+  const queuedMessage = i18n.t('contact.processingDelayed');
+  setFormStatus(statusEl, queuedMessage, 'info');
+  toast.update(queuedMessage, 'info', 6000);
 }
 
 function mountFormStatusObserver(form: HTMLFormElement): void {
@@ -383,6 +468,7 @@ async function init(): Promise<void> {
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   if (form) {
     mountFormStatusObserver(form);
+    let activeContactJobId: string | null = null;
     form.addEventListener('submit', async (e: SubmitEvent) => {
       e.preventDefault();
       const statusEl = ensureFormStatusElement(form);
@@ -397,7 +483,7 @@ async function init(): Promise<void> {
       }
 
       const submitButton = form.querySelector<HTMLButtonElement>('button[type="submit"]');
-      const pendingMessage = i18n.t('contact.sending');
+      const pendingMessage = i18n.t('contact.queueing');
       const toast = showToast(pendingMessage, 'info');
 
       try {
@@ -426,11 +512,26 @@ async function init(): Promise<void> {
           throw new Error(resolveContactErrorMessage(i18n, responseBody?.errorCode, responseBody?.error));
         }
 
-        const successMessage = i18n.t('contact.success');
-        setFormStatus(statusEl, successMessage, 'success');
-        toast.update(successMessage, 'success', 4200);
-        console.log('[contact] submit ok');
+        const jobId = responseBody?.jobId;
+        const queuedMessage = buildQueueAcceptedMessage(i18n, responseBody?.queuePosition);
+        activeContactJobId = jobId ?? null;
+        setFormStatus(statusEl, queuedMessage, 'info');
+        toast.update(queuedMessage, 'info');
         form.reset();
+
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.style.opacity = '';
+          submitButton.style.cursor = '';
+        }
+
+        if (jobId) {
+          void pollContactJob(i18n, jobId, toast, statusEl, () => activeContactJobId === jobId);
+        } else {
+          toast.update(i18n.t('contact.errorQueueLost'), 'error', 6000);
+          setFormStatus(statusEl, i18n.t('contact.errorQueueLost'), 'error');
+        }
+        return;
       } catch (error) {
         console.error('[contact]', error);
         const messageText = error instanceof Error

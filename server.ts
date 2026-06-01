@@ -21,6 +21,7 @@ import type { LocaleCode } from './src/i18n/types.js';
 import { detectInitialLocale, getLocaleCookieFromHeader, resolveCountry } from './src/server/index.js';
 import { getHeader, getClientIP } from './src/server/http.js';
 import { sendContactEmail, hasContactMailConfig, getContactMailErrorResponse } from './src/server/contact-mail.js';
+import { enqueueContactJob, getContactQueueJob, ContactQueueError } from './src/server/contact-queue.js';
 
 loadEnv();
 
@@ -93,6 +94,39 @@ async function handleContactRequest(
   url: string,
 ): Promise<boolean> {
   const pathname = url.split('?')[0];
+  if (pathname === '/api/contact-status') {
+    setCommonHeaders(res, url);
+
+    if (req.method !== 'GET') {
+      res.setHeader('Allow', 'GET');
+      sendJson(res, 405, { ok: false, error: 'Method Not Allowed', errorCode: 'METHOD_NOT_ALLOWED' });
+      return true;
+    }
+
+    const requestUrl = new URL(url, 'http://localhost');
+    const jobId = requestUrl.searchParams.get('jobId')?.trim() ?? '';
+    if (!jobId) {
+      sendJson(res, 400, { ok: false, error: 'Missing jobId', errorCode: 'INVALID_JOB_ID' });
+      return true;
+    }
+
+    const job = getContactQueueJob(jobId);
+    if (!job) {
+      sendJson(res, 404, { ok: false, error: 'Queue job not found', errorCode: 'JOB_NOT_FOUND' });
+      return true;
+    }
+
+    sendJson(res, 200, {
+      ok: true,
+      jobId: job.id,
+      status: job.status,
+      queuePosition: job.queuePosition,
+      error: job.errorMessage,
+      errorCode: job.errorCode,
+    });
+    return true;
+  }
+
   if (pathname !== '/api/contact') return false;
 
   setCommonHeaders(res, url);
@@ -124,16 +158,22 @@ async function handleContactRequest(
       return true;
     }
 
-    await sendContactEmail({
+    const { jobId, queuePosition } = enqueueContactJob({
       name: payload.name.trim(),
       email: payload.email.trim(),
       message: payload.message.trim(),
     });
 
-    console.log(`[contact] delivered ip=${rateLimitKey} email=${payload.email.trim()}`);
-    sendJson(res, 200, { ok: true });
+    console.log(`[contact] queued ip=${rateLimitKey} email=${payload.email.trim()} job=${jobId} position=${queuePosition}`);
+    sendJson(res, 202, { ok: true, queued: true, jobId, queuePosition });
     return true;
   } catch (error) {
+    if (error instanceof ContactQueueError) {
+      console.error(`[contact] ${error.code}`, error);
+      sendJson(res, 503, { ok: false, error: error.message, errorCode: error.code });
+      return true;
+    }
+
     const mailError = getContactMailErrorResponse(error);
     console.error(`[contact] ${mailError.code}`, error);
     sendJson(res, mailError.status, { ok: false, error: mailError.message, errorCode: mailError.code });
