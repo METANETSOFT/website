@@ -226,7 +226,7 @@ async function init(): Promise<void> {
   // Simple contact form feedback (works in both shells — IDs are set in SSR)
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   if (form) {
-    form.addEventListener('submit', (e: SubmitEvent) => {
+    form.addEventListener('submit', async (e: SubmitEvent) => {
       e.preventDefault();
       const statusEl = document.getElementById('form-status');
       if (!statusEl) return;
@@ -234,13 +234,39 @@ async function init(): Promise<void> {
       const email = (document.getElementById('contact-email') as HTMLInputElement)?.value;
       const message = (document.getElementById('contact-message') as HTMLTextAreaElement)?.value;
       if (!name || !email || !message) {
-        statusEl.textContent = i18n.t('common.error');
+        statusEl.textContent = i18n.t('contact.error');
         statusEl.style.color = 'red';
         return;
       }
-      statusEl.textContent = i18n.t('contact.success');
-      statusEl.style.color = 'green';
-      form.reset();
+
+      const submitButton = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+
+      try {
+        if (submitButton) submitButton.disabled = true;
+        statusEl.textContent = '';
+
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ name, email, message }),
+        });
+
+        if (!response.ok) {
+          throw new Error(`Request failed with status ${response.status}`);
+        }
+
+        statusEl.textContent = i18n.t('contact.success');
+        statusEl.style.color = 'green';
+        form.reset();
+      } catch (error) {
+        console.error('[contact]', error);
+        statusEl.textContent = i18n.t('contact.error');
+        statusEl.style.color = 'red';
+      } finally {
+        if (submitButton) submitButton.disabled = false;
+      }
     });
   }
 

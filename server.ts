@@ -15,16 +15,23 @@ import { createServer as createViteDevServer } from 'vite';
 import { readFileSync, existsSync, statSync } from 'fs';
 import { resolve, join } from 'path';
 import { fileURLToPath } from 'url';
+import { config as loadEnv } from 'dotenv';
 import { isSupportedLocale } from './src/i18n/locales.js';
 import type { LocaleCode } from './src/i18n/types.js';
 import { detectInitialLocale, getLocaleCookieFromHeader, resolveCountry } from './src/server/index.js';
-import { getHeader } from './src/server/http.js';
+import { getHeader, getClientIP } from './src/server/http.js';
+import { sendContactEmail, hasContactMailConfig } from './src/server/contact-mail.js';
+
+loadEnv();
 
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 const isDev = process.env.NODE_ENV !== 'production';
 const PUBLIC_DIR = resolve(__dirname, 'public');
 const CLIENT_ENTRY_DEV = '/src/entry-client.ts';
 const CLIENT_ENTRY_PROD = '/assets/entry-client.js';
+const CONTACT_RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const CONTACT_RATE_LIMIT_MAX_REQUESTS = 5;
+const contactRequestLog = new Map<string, number[]>();
 
 function getPort(): number {
   const cliPortIndex = process.argv.findIndex(arg => arg === '--port');
@@ -32,6 +39,104 @@ function getPort(): number {
   const rawPort = cliPort ?? process.env.PORT ?? '5553';
   const port = Number.parseInt(rawPort, 10);
   return Number.isFinite(port) ? port : 5553;
+}
+
+function sendJson(
+  res: {
+    statusCode: number;
+    setHeader(key: string, val: string): void;
+    end(body: string): void;
+  },
+  status: number,
+  data: unknown,
+): void {
+  res.statusCode = status;
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+  res.end(JSON.stringify(data));
+}
+
+function readRequestBody(req: { on(event: string, listener: (chunk?: Buffer) => void): void }): Promise<string> {
+  return new Promise((resolveBody, reject) => {
+    const chunks: Buffer[] = [];
+    req.on('data', (chunk?: Buffer) => {
+      if (chunk) chunks.push(chunk);
+    });
+    req.on('end', () => resolveBody(Buffer.concat(chunks).toString('utf8')));
+    req.on('error', reject);
+  });
+}
+
+function isValidContactPayload(payload: unknown): payload is { name: string; email: string; message: string } {
+  if (!payload || typeof payload !== 'object') return false;
+  const { name, email, message } = payload as Record<string, unknown>;
+  if (typeof name !== 'string' || typeof email !== 'string' || typeof message !== 'string') return false;
+  if (!name.trim() || !email.trim() || !message.trim()) return false;
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+}
+
+function isRateLimited(clientKey: string): boolean {
+  const now = Date.now();
+  const recent = (contactRequestLog.get(clientKey) ?? []).filter((timestamp) => now - timestamp < CONTACT_RATE_LIMIT_WINDOW_MS);
+  if (recent.length >= CONTACT_RATE_LIMIT_MAX_REQUESTS) {
+    contactRequestLog.set(clientKey, recent);
+    return true;
+  }
+
+  recent.push(now);
+  contactRequestLog.set(clientKey, recent);
+  return false;
+}
+
+async function handleContactRequest(
+  req: { method?: string; headers: Record<string, string | string[] | undefined>; socket?: { remoteAddress?: string | undefined }; on(event: string, listener: (chunk?: Buffer) => void): void },
+  res: { statusCode: number; setHeader(key: string, val: string): void; end(body: string): void },
+  url: string,
+): Promise<boolean> {
+  const pathname = url.split('?')[0];
+  if (pathname !== '/api/contact') return false;
+
+  setCommonHeaders(res, url);
+
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', 'POST');
+    sendJson(res, 405, { ok: false, error: 'Method Not Allowed' });
+    return true;
+  }
+
+  if (!hasContactMailConfig()) {
+    sendJson(res, 503, { ok: false, error: 'Mail service unavailable' });
+    return true;
+  }
+
+  const clientIp = getClientIP({ headers: req.headers, ip: req.socket?.remoteAddress });
+  const rateLimitKey = clientIp || 'unknown';
+  if (isRateLimited(rateLimitKey)) {
+    res.setHeader('Retry-After', String(Math.ceil(CONTACT_RATE_LIMIT_WINDOW_MS / 1000)));
+    sendJson(res, 429, { ok: false, error: 'Too Many Requests' });
+    return true;
+  }
+
+  try {
+    const body = await readRequestBody(req);
+    const payload = JSON.parse(body) as unknown;
+    if (!isValidContactPayload(payload)) {
+      sendJson(res, 400, { ok: false, error: 'Invalid payload' });
+      return true;
+    }
+
+    await sendContactEmail({
+      name: payload.name.trim(),
+      email: payload.email.trim(),
+      message: payload.message.trim(),
+    });
+
+    sendJson(res, 200, { ok: true });
+    return true;
+  } catch (error) {
+    console.error('[contact]', error);
+    sendJson(res, 500, { ok: false, error: 'Internal Server Error' });
+    return true;
+  }
 }
 
 // ─── SSR render ──────────────────────────────────────────────────────────────
@@ -93,6 +198,10 @@ async function startDev(): Promise<void> {
       return;
     }
 
+    if (await handleContactRequest(req, res, url)) {
+      return;
+    }
+
     // Skip asset requests — let Vite handle them
     if (url.startsWith('/assets') || url.startsWith('/src/') || url.includes('.')) {
       // noop — Vite dev server serves them via middlewares
@@ -134,6 +243,10 @@ async function startProd(): Promise<void> {
       res.statusCode = 200;
       res.setHeader('Content-Type', 'application/json; charset=utf-8');
       res.end(JSON.stringify({ status: 'ok', mode: 'production' }));
+      return;
+    }
+
+    if (await handleContactRequest(req, res, url)) {
       return;
     }
 
