@@ -20,7 +20,7 @@ import { isSupportedLocale } from './src/i18n/locales.js';
 import type { LocaleCode } from './src/i18n/types.js';
 import { detectInitialLocale, getLocaleCookieFromHeader, resolveCountry } from './src/server/index.js';
 import { getHeader, getClientIP } from './src/server/http.js';
-import { sendContactEmail, hasContactMailConfig } from './src/server/contact-mail.js';
+import { sendContactEmail, hasContactMailConfig, getContactMailErrorResponse } from './src/server/contact-mail.js';
 
 loadEnv();
 
@@ -99,12 +99,12 @@ async function handleContactRequest(
 
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
-    sendJson(res, 405, { ok: false, error: 'Method Not Allowed' });
+    sendJson(res, 405, { ok: false, error: 'Method Not Allowed', errorCode: 'METHOD_NOT_ALLOWED' });
     return true;
   }
 
   if (!hasContactMailConfig()) {
-    sendJson(res, 503, { ok: false, error: 'Mail service unavailable' });
+    sendJson(res, 503, { ok: false, error: 'Mail service unavailable', errorCode: 'MAIL_CONFIG_MISSING' });
     return true;
   }
 
@@ -112,7 +112,7 @@ async function handleContactRequest(
   const rateLimitKey = clientIp || 'unknown';
   if (isRateLimited(rateLimitKey)) {
     res.setHeader('Retry-After', String(Math.ceil(CONTACT_RATE_LIMIT_WINDOW_MS / 1000)));
-    sendJson(res, 429, { ok: false, error: 'Too Many Requests' });
+    sendJson(res, 429, { ok: false, error: 'Too Many Requests', errorCode: 'RATE_LIMITED' });
     return true;
   }
 
@@ -120,7 +120,7 @@ async function handleContactRequest(
     const body = await readRequestBody(req);
     const payload = JSON.parse(body) as unknown;
     if (!isValidContactPayload(payload)) {
-      sendJson(res, 400, { ok: false, error: 'Invalid payload' });
+      sendJson(res, 400, { ok: false, error: 'Invalid payload', errorCode: 'INVALID_PAYLOAD' });
       return true;
     }
 
@@ -134,8 +134,9 @@ async function handleContactRequest(
     sendJson(res, 200, { ok: true });
     return true;
   } catch (error) {
-    console.error('[contact]', error);
-    sendJson(res, 500, { ok: false, error: 'Internal Server Error' });
+    const mailError = getContactMailErrorResponse(error);
+    console.error(`[contact] ${mailError.code}`, error);
+    sendJson(res, mailError.status, { ok: false, error: mailError.message, errorCode: mailError.code });
     return true;
   }
 }

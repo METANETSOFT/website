@@ -25,6 +25,19 @@ interface BootstrapPayload {
   skipDetect: boolean;
 }
 
+interface ContactApiErrorResponse {
+  ok?: boolean;
+  error?: string;
+  errorCode?: string;
+}
+
+type ToastVariant = 'info' | 'success' | 'error';
+
+interface ToastHandle {
+  update: (message: string, variant: ToastVariant, autoHideMs?: number) => void;
+  dismiss: () => void;
+}
+
 function getBootstrap(): BootstrapPayload | null {
   const el = document.getElementById('__i18n_bootstrap__');
   if (!el) return null;
@@ -72,6 +85,132 @@ function ensureFormStatusElement(form: HTMLFormElement): HTMLElement {
   statusEl.setAttribute('aria-live', 'polite');
   form.appendChild(statusEl);
   return statusEl;
+}
+
+function ensureToastRoot(): HTMLDivElement {
+  let root = document.getElementById('toast-root') as HTMLDivElement | null;
+  if (root) return root;
+
+  root = document.createElement('div');
+  root.id = 'toast-root';
+  root.setAttribute('aria-live', 'polite');
+  root.setAttribute('aria-atomic', 'true');
+  Object.assign(root.style, {
+    position: 'fixed',
+    top: '1rem',
+    left: '1rem',
+    zIndex: '2147483647',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.75rem',
+    maxWidth: 'min(92vw, 24rem)',
+    pointerEvents: 'none',
+  });
+  document.body.appendChild(root);
+  return root;
+}
+
+function showToast(message: string, variant: ToastVariant, autoHideMs = 0): ToastHandle {
+  const root = ensureToastRoot();
+  const toast = document.createElement('div');
+  const accent = document.createElement('span');
+  const content = document.createElement('span');
+  let timeoutId: number | null = null;
+
+  toast.appendChild(accent);
+  toast.appendChild(content);
+  root.appendChild(toast);
+
+  const applyVariant = (nextVariant: ToastVariant): void => {
+    const accentColor = nextVariant === 'success'
+      ? '#63f5b0'
+      : nextVariant === 'error'
+        ? '#ff7f7f'
+        : '#8ff5ff';
+    Object.assign(accent.style, {
+      width: '0.25rem',
+      alignSelf: 'stretch',
+      borderRadius: '999px',
+      background: accentColor,
+      boxShadow: `0 0 18px ${accentColor}`,
+      flexShrink: '0',
+    });
+    toast.style.borderColor = `${accentColor}33`;
+  };
+
+  const dismiss = (): void => {
+    if (timeoutId != null) window.clearTimeout(timeoutId);
+    toast.remove();
+  };
+
+  const update = (nextMessage: string, nextVariant: ToastVariant, nextAutoHideMs = 0): void => {
+    if (timeoutId != null) {
+      window.clearTimeout(timeoutId);
+      timeoutId = null;
+    }
+
+    content.textContent = nextMessage;
+    applyVariant(nextVariant);
+
+    if (nextAutoHideMs > 0) {
+      timeoutId = window.setTimeout(dismiss, nextAutoHideMs);
+    }
+  };
+
+  Object.assign(toast.style, {
+    display: 'grid',
+    gridTemplateColumns: '0.25rem 1fr',
+    gap: '0.85rem',
+    alignItems: 'stretch',
+    padding: '0.9rem 1rem',
+    border: '1px solid rgba(143,245,255,0.2)',
+    background: 'rgba(11, 15, 18, 0.96)',
+    color: '#f4f7f8',
+    boxShadow: '0 18px 48px rgba(0, 0, 0, 0.38)',
+    backdropFilter: 'blur(18px)',
+    borderRadius: '0.95rem',
+    pointerEvents: 'auto',
+    fontFamily: 'Inter, Arial, sans-serif',
+    fontSize: '0.92rem',
+    lineHeight: '1.45',
+  });
+
+  content.style.minWidth = '0';
+  update(message, variant, autoHideMs);
+
+  return { update, dismiss };
+}
+
+function setFormStatus(statusEl: HTMLElement, message: string, variant: ToastVariant): void {
+  statusEl.textContent = message;
+  statusEl.style.color = variant === 'error'
+    ? '#ff9b9b'
+    : variant === 'success'
+      ? '#8ff5ff'
+      : '#b8c7cf';
+}
+
+function resolveContactErrorMessage(i18n: ReturnType<typeof createI18n>, errorCode?: string, fallback?: string): string {
+  switch (errorCode) {
+    case 'INVALID_PAYLOAD':
+      return i18n.t('contact.errorInvalid');
+    case 'RATE_LIMITED':
+      return i18n.t('contact.errorRateLimited');
+    case 'MAIL_CONFIG_MISSING':
+      return i18n.t('contact.errorUnavailable');
+    case 'MAIL_AUTH_FAILED':
+      return i18n.t('contact.errorAuth');
+    case 'MAIL_TLS_FAILED':
+      return i18n.t('contact.errorTls');
+    case 'MAIL_TIMEOUT':
+      return i18n.t('contact.errorTimeout');
+    case 'MAIL_UNREACHABLE':
+      return i18n.t('contact.errorUnavailable');
+    case 'MAIL_SEND_FAILED':
+      return i18n.t('contact.errorServer');
+    default:
+      return fallback?.trim() || i18n.t('contact.errorServer');
+  }
 }
 
 function mountFormStatusObserver(form: HTMLFormElement): void {
@@ -251,16 +390,23 @@ async function init(): Promise<void> {
       const email = (document.getElementById('contact-email') as HTMLInputElement)?.value;
       const message = (document.getElementById('contact-message') as HTMLTextAreaElement)?.value;
       if (!name || !email || !message) {
-        statusEl.textContent = i18n.t('contact.error');
-        statusEl.style.color = 'red';
+        const validationMessage = i18n.t('contact.errorRequired');
+        setFormStatus(statusEl, validationMessage, 'error');
+        showToast(validationMessage, 'error', 5000);
         return;
       }
 
       const submitButton = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const pendingMessage = i18n.t('contact.sending');
+      const toast = showToast(pendingMessage, 'info');
 
       try {
-        if (submitButton) submitButton.disabled = true;
-        statusEl.textContent = '';
+        if (submitButton) {
+          submitButton.disabled = true;
+          submitButton.style.opacity = '0.65';
+          submitButton.style.cursor = 'progress';
+        }
+        setFormStatus(statusEl, pendingMessage, 'info');
 
         const response = await fetch('/api/contact', {
           method: 'POST',
@@ -270,20 +416,34 @@ async function init(): Promise<void> {
           body: JSON.stringify({ name, email, message }),
         });
 
-        if (!response.ok) {
-          throw new Error(`Request failed with status ${response.status}`);
+        let responseBody: ContactApiErrorResponse | null = null;
+        const contentType = response.headers.get('content-type') ?? '';
+        if (contentType.includes('application/json')) {
+          responseBody = await response.json().catch(() => null);
         }
 
-        statusEl.textContent = i18n.t('contact.success');
-        statusEl.style.color = 'green';
+        if (!response.ok) {
+          throw new Error(resolveContactErrorMessage(i18n, responseBody?.errorCode, responseBody?.error));
+        }
+
+        const successMessage = i18n.t('contact.success');
+        setFormStatus(statusEl, successMessage, 'success');
+        toast.update(successMessage, 'success', 4200);
         console.log('[contact] submit ok');
         form.reset();
       } catch (error) {
         console.error('[contact]', error);
-        statusEl.textContent = i18n.t('contact.error');
-        statusEl.style.color = 'red';
+        const messageText = error instanceof Error
+          ? error.message
+          : i18n.t('contact.errorServer');
+        setFormStatus(statusEl, messageText, 'error');
+        toast.update(messageText, 'error', 6000);
       } finally {
-        if (submitButton) submitButton.disabled = false;
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.style.opacity = '';
+          submitButton.style.cursor = '';
+        }
       }
     });
   }
