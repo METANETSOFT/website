@@ -554,7 +554,7 @@ export async function renderExactShell(
 
   html = html.replace(
     /<a class="font-\['Space_Grotesk'\] text-xs tracking-widest text-\[#757575\] hover:text-\[#e5e5e5\] transition-opacity" href="#">LinkedIn<\/a>/,
-    `<a class="font-['Space_Grotesk'] text-xs tracking-widest text-[#757575] hover:text-[#e5e5e5] transition-opacity" href="https://www.linkedin.com/company/metanetsoft/about/?viewAsMember=true" target="_blank" rel="noreferrer">LinkedIn</a>`,
+    `<a class="font-['Space_Grotesk'] text-xs tracking-widest text-[#757575] hover:text-[#e5e5e5] transition-opacity" href="https://www.linkedin.com/company/122004088/" target="_blank" rel="noreferrer">LinkedIn</a>`,
   );
 
   html = html.replace(
@@ -872,7 +872,7 @@ function renderFooter(dict: TranslationDict): string {
       <div class="site-footer__links">
         <button type="button" data-open-modal="privacy" data-i18n="footer.privacy">${t(dict, 'footer.privacy')}</button>
         <button type="button" data-open-modal="terms" data-i18n="footer.terms">${t(dict, 'footer.terms')}</button>
-        <a href="https://www.linkedin.com/company/metanetsoft/about/?viewAsMember=true" target="_blank" rel="noreferrer" data-i18n="footer.linkedin">${t(dict, 'footer.linkedin')}</a>
+        <a href="https://www.linkedin.com/company/122004088/" target="_blank" rel="noreferrer" data-i18n="footer.linkedin">${t(dict, 'footer.linkedin')}</a>
         <a href="https://github.com/METANETSOFT" target="_blank" rel="noreferrer" data-i18n="footer.github">${t(dict, 'footer.github')}</a>
       </div>
     </div>

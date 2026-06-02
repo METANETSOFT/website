@@ -437,7 +437,7 @@ function renderFooter(dict: TranslationDict): string {
       <div class="site-footer__links">
         <button type="button" data-open-modal="privacy" data-i18n="footer.privacy">${t(dict, 'footer.privacy')}</button>
         <button type="button" data-open-modal="terms" data-i18n="footer.terms">${t(dict, 'footer.terms')}</button>
-        <a href="https://www.linkedin.com/company/metanetsoft/about/?viewAsMember=true" target="_blank" rel="noreferrer" data-i18n="footer.linkedin">${t(dict, 'footer.linkedin')}</a>
+        <a href="https://www.linkedin.com/company/122004088/" target="_blank" rel="noreferrer" data-i18n="footer.linkedin">${t(dict, 'footer.linkedin')}</a>
         <a href="https://github.com/METANETSOFT" target="_blank" rel="noreferrer" data-i18n="footer.github">${t(dict, 'footer.github')}</a>
       </div>
     </div>
