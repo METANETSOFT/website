@@ -30,6 +30,7 @@ export const ko: TranslationDict = {
     services: '서비스',
     projects: '프로젝트',
     contact: '문의',
+    appointment: '상담 예약',
   },
 
   hero: {
@@ -125,6 +126,7 @@ export const ko: TranslationDict = {
     send: '메시지 보내기',
     sent: '메시지가 성공적으로 전송되었습니다',
     lead: '프로젝트를 구축할 준비가 되셨나요?',
+    emailAlt: '또는 info@metanetsoft.com으로 이메일을 보내실 수 있습니다.',
   },
 
   vm: {

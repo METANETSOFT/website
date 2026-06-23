@@ -27,6 +27,7 @@ export const fa: TranslationDict = {
     services: 'خدمات',
     projects: 'پروژه‌ها',
     contact: 'تماس',
+    appointment: 'رزرو وقت',
   },
   hero: {
     statusLabel: 'سیستم آماده: برقراری اتصال',
@@ -116,6 +117,7 @@ export const fa: TranslationDict = {
     send: 'ارسال پیام',
     sent: 'پیام با موفقیت ارسال شد',
     lead: 'آماده ساختن پروژه خود هستید؟',
+    emailAlt: 'به‌طور جایگزین، می‌توانید به info@metanetsoft.com ایمیل بزنید.',
   },
   vm: {
     sectionIndex: '01.1 // اهداف و ارزش‌ها',

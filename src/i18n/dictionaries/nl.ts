@@ -27,6 +27,7 @@ export const nl: TranslationDict = {
     services: 'Diensten',
     projects: 'Projecten',
     contact: 'Contact',
+    appointment: 'Afspraak Maken',
   },
   hero: {
     statusLabel: 'Systeem Gereed: Verbinding Maken',
@@ -116,6 +117,7 @@ export const nl: TranslationDict = {
     send: 'Bericht Verzenden',
     sent: 'Bericht succesvol verzonden',
     lead: 'Klaar om je project te bouwen?',
+    emailAlt: 'U kunt ons ook e-mailen via info@metanetsoft.com.',
   },
   vm: {
     sectionIndex: '01.1 // Doelen en Waarden',

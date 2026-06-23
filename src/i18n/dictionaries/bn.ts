@@ -27,6 +27,7 @@ export const bn: TranslationDict = {
     services: 'সেবাসমূহ',
     projects: 'প্রকল্পগুলি',
     contact: 'যোগাযোগ',
+    appointment: 'অ্যাপয়েন্টমেন্ট নিন',
   },
   hero: {
     statusLabel: 'সিস্টেম প্রস্তুত: সংযোগ স্থাপন করা হচ্ছে',
@@ -116,6 +117,7 @@ export const bn: TranslationDict = {
     send: 'বার্তা পাঠান',
     sent: 'বার্তা সফলভাবে পাঠানো হয়েছে',
     lead: 'আপনার প্রকল্প নির্মাণের জন্য প্রস্তুত?',
+    emailAlt: 'বিকল্পভাবে, আপনি আমাদের info@metanetsoft.com-এ ইমেল করতে পারেন।',
   },
   vm: {
     sectionIndex: '01.1 // লক্ষ্য এবং মূল্যবোধ',

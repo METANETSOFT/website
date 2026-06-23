@@ -27,6 +27,7 @@ export const hu: TranslationDict = {
     services: 'Szolgáltatások',
     projects: 'Projektek',
     contact: 'Kapcsolat',
+    appointment: 'Időpontot Foglalni',
   },
   hero: {
     statusLabel: 'Rendszer Kész: Kapcsolat Létrehozása',
@@ -116,6 +117,7 @@ export const hu: TranslationDict = {
     send: 'Üzenet Küldése',
     sent: 'Üzenet sikeresen elküldve',
     lead: 'Készen áll a projektje építésére?',
+    emailAlt: 'Vagy írjon nekünk a info@metanetsoft.com címre.',
   },
   vm: {
     sectionIndex: '01.1 // Célok és Értékek',

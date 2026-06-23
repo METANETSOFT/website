@@ -27,6 +27,7 @@ export const cs: TranslationDict = {
     services: 'Služby',
     projects: 'Projekty',
     contact: 'Kontakt',
+    appointment: 'Domluvit Schůzku',
   },
   hero: {
     statusLabel: 'Systém Připraven: Navazování Spojení',
@@ -116,6 +117,7 @@ export const cs: TranslationDict = {
     send: 'Odeslat Zprávu',
     sent: 'Zpráva úspěšně odeslána',
     lead: 'Připraveni stavět váš projekt?',
+    emailAlt: 'Případně nám můžete napsat na info@metanetsoft.com.',
   },
   vm: {
     sectionIndex: '01.1 // Cíle a Hodnoty',

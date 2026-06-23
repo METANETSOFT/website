@@ -30,6 +30,7 @@ export const de: TranslationDict = {
     services: 'Dienstleistungen',
     projects: 'Projekte',
     contact: 'Kontakt',
+    appointment: 'Termin Buchen',
   },
 
   hero: {
@@ -141,6 +142,7 @@ export const de: TranslationDict = {
     send: 'Nachricht senden',
     sent: 'Nachricht erfolgreich gesendet',
     lead: 'Bereit, Ihr Projekt zu bauen?',
+    emailAlt: 'Alternativ können Sie uns unter info@metanetsoft.com eine E-Mail senden.',
   },
 
   vm: {

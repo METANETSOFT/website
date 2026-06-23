@@ -30,6 +30,7 @@ export const ptBR: TranslationDict = {
     services: 'Serviços',
     projects: 'Projetos',
     contact: 'Contato',
+    appointment: 'Agendar Reunião',
   },
 
   hero: {
@@ -125,6 +126,7 @@ export const ptBR: TranslationDict = {
     send: 'Enviar Mensagem',
     sent: 'Mensagem enviada com sucesso',
     lead: 'Pronto para construir seu projeto?',
+    emailAlt: 'Alternativamente, você pode nos enviar um e-mail para info@metanetsoft.com.',
   },
 
   vm: {

@@ -27,6 +27,7 @@ export const fil: TranslationDict = {
     services: 'Mga Serbisyo',
     projects: 'Mga Proyekto',
     contact: 'Kontak',
+    appointment: 'Mag-book ng Appointment',
   },
   hero: {
     statusLabel: 'Sistema Handa: Itinatag ang Koneksyon',
@@ -116,6 +117,7 @@ export const fil: TranslationDict = {
     send: 'Magpadala ng Mensahe',
     sent: 'Matagumpay na naisumite ang mensahe',
     lead: 'Handa ka na bang buuin ang iyong proyekto?',
+    emailAlt: 'Bilang alternatibo, maaari ka sa amin mag-email sa info@metanetsoft.com.',
   },
   vm: {
     sectionIndex: '01.1 // Mga Layunin at Halaga',

@@ -27,6 +27,7 @@ export const uk: TranslationDict = {
     services: 'Послуги',
     projects: 'Проєкти',
     contact: 'Контакт',
+    appointment: 'Записатися',
   },
   hero: {
     statusLabel: "Система Готова: Встановлення Зв'язку",
@@ -116,6 +117,7 @@ export const uk: TranslationDict = {
     send: 'Надіслати Повідомлення',
     sent: 'Повідомлення успішно надіслано',
     lead: 'Готові будувати ваш проєкт?',
+    emailAlt: 'Або ви можете написати нам на info@metanetsoft.com.',
   },
   vm: {
     sectionIndex: '01.1 // Цілі та Цінності',

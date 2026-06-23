@@ -27,6 +27,7 @@ export const hi: TranslationDict = {
     services: 'सेवाएं',
     projects: 'प्रोजेक्ट्स',
     contact: 'संपर्क',
+    appointment: 'अपॉइंटमेंट बुक करें',
   },
   hero: {
     statusLabel: 'सिस्टम तैयार: कनेक्शन स्थापित कर रहा है',
@@ -116,6 +117,7 @@ export const hi: TranslationDict = {
     send: 'संदेश भेजें',
     sent: 'संदेश सफलतापूर्वक भेजा गया',
     lead: 'अपना प्रोजेक्ट बनाने के लिए तैयार?',
+    emailAlt: 'वैकल्पिक रूप से, आप हमें info@metanetsoft.com पर ईमेल कर सकते हैं।',
   },
   vm: {
     sectionIndex: '01.1 // लक्ष्य और मूल्य',

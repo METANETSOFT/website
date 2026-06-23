@@ -27,6 +27,7 @@ export const it: TranslationDict = {
     services: 'Servizi',
     projects: 'Progetti',
     contact: 'Contatti',
+    appointment: 'Prenota Appuntamento',
   },
   hero: {
     statusLabel: 'Sistema Pronto: Stabilimento Connessione',
@@ -116,6 +117,7 @@ export const it: TranslationDict = {
     send: 'Invia Messaggio',
     sent: 'Messaggio inviato con successo',
     lead: 'Pronto a costruire il tuo progetto?',
+    emailAlt: 'In alternativa, puoi scriverci a info@metanetsoft.com.',
   },
   vm: {
     sectionIndex: '01.1 // Obiettivi e Valori',

@@ -30,6 +30,7 @@ export const ru: TranslationDict = {
     services: 'Услуги',
     projects: 'Проекты',
     contact: 'Контакт',
+    appointment: 'Записаться',
   },
 
   hero: {
@@ -125,6 +126,7 @@ export const ru: TranslationDict = {
     send: 'Отправить Сообщение',
     sent: 'Сообщение успешно отправлено',
     lead: 'Готовы построить свой проект?',
+    emailAlt: 'Также вы можете написать нам на info@metanetsoft.com.',
   },
 
   vm: {

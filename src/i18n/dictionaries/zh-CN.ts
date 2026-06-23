@@ -30,6 +30,7 @@ export const zhCN: TranslationDict = {
     services: '服务',
     projects: '项目',
     contact: '联系我们',
+    appointment: '预约咨询',
   },
 
   hero: {
@@ -125,6 +126,7 @@ export const zhCN: TranslationDict = {
     send: '发送消息',
     sent: '消息发送成功',
     lead: '准备好构建您的项目了吗？',
+    emailAlt: '您也可以发送邮件至 info@metanetsoft.com 与我们联系。',
   },
 
   vm: {

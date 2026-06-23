@@ -30,6 +30,7 @@ export const ar: TranslationDict = {
     services: 'الخدمات',
     projects: 'المشاريع',
     contact: 'اتصل بنا',
+    appointment: 'حجز موعد',
   },
 
   hero: {
@@ -141,6 +142,7 @@ export const ar: TranslationDict = {
     send: 'إرسال الرسالة',
     sent: 'تم إرسال الرسالة بنجاح',
     lead: 'هل أنت مستعد لبناء مشروعك؟',
+    emailAlt: 'بدلاً من ذلك، يمكنك مراسلتنا على info@metanetsoft.com.',
   },
 
   vm: {

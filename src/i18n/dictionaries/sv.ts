@@ -27,6 +27,7 @@ export const sv: TranslationDict = {
     services: 'Tjänster',
     projects: 'Projekt',
     contact: 'Kontakt',
+    appointment: 'Boka Möte',
   },
   hero: {
     statusLabel: 'System klart: Upprättar anslutning',
@@ -116,6 +117,7 @@ export const sv: TranslationDict = {
     send: 'Skicka Meddelande',
     sent: 'Meddelande skickat framgångsrikt',
     lead: 'Redo att bygga ditt projekt?',
+    emailAlt: 'Alternativt kan du mejla oss på info@metanetsoft.com.',
   },
   vm: {
     sectionIndex: '01.1 // Mål och Värden',

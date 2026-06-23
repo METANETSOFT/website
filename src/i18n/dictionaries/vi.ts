@@ -27,6 +27,7 @@ export const vi: TranslationDict = {
     services: 'Dịch vụ',
     projects: 'Dự án',
     contact: 'Liên hệ',
+    appointment: 'Đặt Lịch',
   },
   hero: {
     statusLabel: 'Hệ thống sẵn sàng: Đang thiết lập kết nối',
@@ -116,6 +117,7 @@ export const vi: TranslationDict = {
     send: 'Gửi tin nhắn',
     sent: 'Tin nhắn được gửi thành công',
     lead: 'Sẵn sàng xây dựng dự án của bạn?',
+    emailAlt: 'Ngoài ra, bạn có thể gửi email cho chúng tôi theo địa chỉ info@metanetsoft.com.',
   },
   vm: {
     sectionIndex: '01.1 // Mục tiêu và Giá trị',

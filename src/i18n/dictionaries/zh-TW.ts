@@ -30,6 +30,7 @@ export const zhTW: TranslationDict = {
     services: '服務',
     projects: '專案',
     contact: '聯絡我們',
+    appointment: '預約諮詢',
   },
 
   hero: {
@@ -125,6 +126,7 @@ export const zhTW: TranslationDict = {
     send: '發送訊息',
     sent: '訊息已成功發送',
     lead: '準備好建構您的專案了嗎？',
+    emailAlt: '您也可以寄送電子郵件至 info@metanetsoft.com 與我們聯繫。',
   },
 
   vm: {

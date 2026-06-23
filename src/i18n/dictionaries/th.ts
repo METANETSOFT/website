@@ -27,6 +27,7 @@ export const th: TranslationDict = {
     services: 'บริการ',
     projects: 'โครงการ',
     contact: 'ติดต่อ',
+    appointment: 'นัดหมาย',
   },
   hero: {
     statusLabel: 'ระบบพร้อม: กำลังสร้างการเชื่อมต่อ',
@@ -116,6 +117,7 @@ export const th: TranslationDict = {
     send: 'ส่งข้อความ',
     sent: 'ส่งข้อความสำเร็จ',
     lead: 'พร้อมสร้างโครงการของคุณ?',
+    emailAlt: 'หรือส่งอีเมลถึงเราได้ที่ info@metanetsoft.com',
   },
   vm: {
     sectionIndex: '01.1 // เป้าหมายและค่านิยม',

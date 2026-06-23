@@ -27,6 +27,7 @@ export const el: TranslationDict = {
     services: 'Υπηρεσίες',
     projects: 'Έργα',
     contact: 'Επικοινωνία',
+    appointment: 'Κλείστε Ραντεβού',
   },
   hero: {
     statusLabel: 'Σύστημα Έτοιμο: Δημιουργία Σύνδεσης',
@@ -116,6 +117,7 @@ export const el: TranslationDict = {
     send: 'Αποστολή Μηνύματος',
     sent: 'Μήνυμα αποσταλμένο επιτυχώς',
     lead: 'Έτοιμοι να χτίσετε το έργο σας;',
+    emailAlt: 'Εναλλακτικά, μπορείτε να μας στείλετε email στο info@metanetsoft.com.',
   },
   vm: {
     sectionIndex: '01.1 // Στόχοι και Αξίες',

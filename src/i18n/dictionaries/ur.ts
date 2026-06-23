@@ -27,6 +27,7 @@ export const ur: TranslationDict = {
     services: 'خدمات',
     projects: 'منصوبے',
     contact: 'رابطہ',
+    appointment: 'اپائنٹمنٹ بک کریں',
   },
   hero: {
     statusLabel: 'سسٹم تیار: کنکشن قائم کر رہا ہے',
@@ -116,6 +117,7 @@ export const ur: TranslationDict = {
     send: 'پیغام بھیجیں',
     sent: 'پیغام کامیابی سے بھیج دیا گیا',
     lead: 'اپنا پروجیکٹ بنانے کے لیے تیار ہیں؟',
+    emailAlt: 'متبادل طور پر، آپ ہمیں info@metanetsoft.com پر ای میل کر سکتے ہیں۔',
   },
   vm: {
     sectionIndex: '01.1 // اہداف اور اقدار',

@@ -338,6 +338,8 @@ function localizeExactShellContent(html: string, dict: TranslationDict, locale: 
     ['MESAJ', escHtml(t(dict, 'contact.messageLabel'))],
     ['Danışma içeriğiniz...', escHtml(t(dict, 'contact.messagePlaceholder'))],
     ['PROTOKOLÜ BAŞLAT', escHtml(t(dict, 'contact.submit'))],
+    ['EMAIL_ALT_DEFAULT', escHtml(t(dict, 'contact.emailAlt'))],
+    ['RANDEVU', escHtml(t(dict, 'nav.appointment'))],
     ['01.1 // HEDEF VE DEĞERLER', escHtml(t(dict, 'vm.sectionIndex'))],
     ['Vizyon &amp; <br/><span class="text-on-surface-variant">Misyon</span>', `${escHtml(vmTitleParts[0] ?? t(dict, 'vm.title'))} <br/><span class="text-on-surface-variant">${escHtml(vmTitleParts[1] ?? '')}</span>`],
     ['[ VİZYONUMUZ ]', escHtml(t(dict, 'vm.visionLabel'))],

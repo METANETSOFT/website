@@ -27,6 +27,7 @@ export const id: TranslationDict = {
     services: 'Layanan',
     projects: 'Proyek',
     contact: 'Kontak',
+    appointment: 'Buat Janji',
   },
   hero: {
     statusLabel: 'Sistem Siap: Menyatakan Koneksi',
@@ -116,6 +117,7 @@ export const id: TranslationDict = {
     send: 'Kirim Pesan',
     sent: 'Pesan berhasil terkirim',
     lead: 'Siap membangun proyek Anda?',
+    emailAlt: 'Alternatif lain, Anda dapat mengirim email kepada kami di info@metanetsoft.com.',
   },
   vm: {
     sectionIndex: '01.1 // Tujuan dan Nilai',
