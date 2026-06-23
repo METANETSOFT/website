@@ -34,6 +34,48 @@ const CONTACT_RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const CONTACT_RATE_LIMIT_MAX_REQUESTS = 5;
 const contactRequestLog = new Map<string, number[]>();
 
+// ─── PDF routes ─────────────────────────────────────────────────────────────
+// Public document aliases — serve the local PDFs at clean, version-stable URLs.
+const PDF_ROUTES: Record<string, { file: string; downloadName: string }> = {
+  '/metanetsoft/cv': { file: 'metanetsoft/cv.pdf', downloadName: 'metanetsoft-cv.pdf' },
+  '/metanetsoft/companyprofile': { file: 'metanetsoft/companyprofile.pdf', downloadName: 'metanetsoft-company-profile.pdf' },
+};
+
+function handlePdfRoute(
+  url: string,
+  res: { statusCode: number; setHeader(key: string, val: string): void; end(chunk?: Buffer | string): void },
+): boolean {
+  const pathname = url.split('?')[0];
+  const route = PDF_ROUTES[pathname];
+  if (!route) return false;
+
+  const filePath = resolve(PUBLIC_DIR, route.file);
+  // Guard against path traversal: route.file is hardcoded but stay defensive.
+  if (!filePath.startsWith(PUBLIC_DIR) || !existsSync(filePath)) {
+    res.statusCode = 404;
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    res.end('Not Found');
+    return true;
+  }
+
+  try {
+    const data = readFileSync(filePath);
+    setCommonHeaders(res, url);
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Length', String(data.byteLength));
+    res.setHeader('Content-Disposition', `inline; filename="${route.downloadName}"`);
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+    res.end(data);
+    return true;
+  } catch (err) {
+    console.error('[pdf] failed to serve', pathname, err);
+    res.statusCode = 500;
+    res.end('Internal Server Error');
+    return true;
+  }
+}
+
 function getPort(): number {
   const cliPortIndex = process.argv.findIndex(arg => arg === '--port');
   const cliPort = cliPortIndex >= 0 ? process.argv[cliPortIndex + 1] : undefined;
@@ -244,6 +286,10 @@ async function startDev(): Promise<void> {
       return;
     }
 
+    if (handlePdfRoute(url, res)) {
+      return;
+    }
+
     // Skip asset requests — let Vite handle them
     if (url.startsWith('/assets') || url.startsWith('/src/') || url.includes('.')) {
       // noop — Vite dev server serves them via middlewares
@@ -289,6 +335,10 @@ async function startProd(): Promise<void> {
     }
 
     if (await handleContactRequest(req, res, url)) {
+      return;
+    }
+
+    if (handlePdfRoute(url, res)) {
       return;
     }
 
