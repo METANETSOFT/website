@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { BrainCircuit, Terminal, Smartphone } from 'lucide-react'
 import { useT } from '../i18n/react'
 import { Nav, Footer, ParticleCanvas } from '../components/site'
+import { CvSection } from '../components/cv-section'
 
 export const Route = createFileRoute('/')({
   component: Home,
@@ -182,6 +183,9 @@ function Home() {
             <p className="text-sm text-outline mt-8 opacity-50">{t('contact.emailAlt')}</p>
           </div>
         </section>
+
+        {/* Send Us Your CV */}
+        <CvSection />
 
         {/* Vision & Mission */}
         <section id="values" className="py-32 px-8 md:px-24 bg-surface border-t border-outline/10">
