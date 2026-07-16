@@ -3,6 +3,7 @@ import { BrainCircuit, Terminal, Smartphone } from 'lucide-react'
 import { useT } from '../i18n/react'
 import { Nav, Footer, ParticleCanvas } from '../components/site'
 import { CvSection } from '../components/cv-section'
+import { ContactForm } from '../components/contact-form'
 
 export const Route = createFileRoute('/')({
   component: Home,
@@ -156,31 +157,7 @@ function Home() {
           <div className="max-w-4xl mx-auto">
             <h3 className="mono-label text-tertiary mb-4">{t('contact.sectionIndex')}</h3>
             <h2 className="text-5xl font-headline font-bold tracking-tighter mb-12">{t('contact.title')}</h2>
-            <form className="space-y-6" method="post" action="/api/contact">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block text-xs mono-label text-outline mb-2">{t('contact.nameLabel')}</label>
-                  <input name="name" required className="w-full bg-surface-container-low border border-outline/30 p-4 text-on-surface focus:outline-none focus:border-tertiary transition-colors" placeholder={t('contact.namePlaceholder')} type="text" />
-                </div>
-                <div>
-                  <label className="block text-xs mono-label text-outline mb-2">{t('contact.emailLabel')}</label>
-                  <input name="email" required className="w-full bg-surface-container-low border border-outline/30 p-4 text-on-surface focus:outline-none focus:border-tertiary transition-colors" placeholder={t('contact.emailPlaceholder')} type="email" />
-                </div>
-              </div>
-              <div>
-                <label className="block text-xs mono-label text-outline mb-2">{t('contact.messageLabel')}</label>
-                <textarea name="message" required className="w-full bg-surface-container-low border border-outline/30 p-4 text-on-surface focus:outline-none focus:border-tertiary transition-colors h-32" placeholder={t('contact.messagePlaceholder')} />
-              </div>
-              <div className="flex flex-col items-stretch gap-4 md:items-start">
-                <button className="px-10 py-5 bg-primary text-on-primary font-headline font-bold uppercase tracking-widest hover:bg-primary-dim transition-all active:scale-95 w-full md:w-auto" type="submit">
-                  {t('contact.submit')}
-                </button>
-                <a className="px-10 py-5 border border-primary text-primary font-headline font-bold uppercase tracking-widest hover:bg-surface-container transition-all active:scale-95 w-full md:w-auto text-center" href="https://cal.eu/metanetsoft/30min" target="_blank" rel="noreferrer">
-                  {t('contact.requestMeeting')}
-                </a>
-              </div>
-            </form>
-            <p className="text-sm text-outline mt-8 opacity-50">{t('contact.emailAlt')}</p>
+            <ContactForm />
           </div>
         </section>
 

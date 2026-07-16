@@ -20,6 +20,39 @@ export function hasCvMailConfig(): boolean {
   )
 }
 
+export interface ContactMessage {
+  name: string
+  email: string
+  message: string
+}
+
+export async function sendContactMessage(m: ContactMessage): Promise<void> {
+  if (!hasCvMailConfig()) throw new Error('MAIL_CONFIG_MISSING')
+  const port = Number.parseInt(env('MAIL_PORT'), 10)
+  const encryption = (env('MAIL_ENCRYPTION') || 'tls').toLowerCase()
+  const secure = encryption === 'ssl' || port === 465
+  const fromAddress = env('MAIL_FROM_ADDRESS')
+  const fromName = env('MAIL_FROM_NAME') || 'Metanetsoft'
+  const toAddress = env('CONTACT_TO_EMAIL') || fromAddress
+  const transporter = nodemailer.createTransport({
+    host: env('MAIL_HOST'),
+    port,
+    secure,
+    auth: { user: env('MAIL_USERNAME'), pass: env('MAIL_PASSWORD') },
+    requireTLS: encryption === 'tls',
+    tls: { rejectUnauthorized: (env('MAIL_TLS_REJECT_UNAUTHORIZED') || 'true').toLowerCase() !== 'false' },
+  })
+  const esc = (s: string) => s.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+  await transporter.sendMail({
+    from: `${fromName} <${fromAddress}>`,
+    to: toAddress,
+    replyTo: m.email,
+    subject: `metanetsoft.com — ${m.name || m.email}`,
+    text: `Name: ${m.name}\nEmail: ${m.email}\n\n${m.message}`,
+    html: `<p><b>Name:</b> ${esc(m.name)}</p><p><b>Email:</b> ${esc(m.email)}</p><p>${esc(m.message).replace(/\n/g, '<br/>')}</p>`,
+  })
+}
+
 const MAX_CV_BYTES = 8 * 1024 * 1024 // 8 MB
 const ALLOWED = new Set([
   'application/pdf',
