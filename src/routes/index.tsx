@@ -121,11 +121,24 @@ function Home() {
               { k: 'neuralCore', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuB1hXnW7HrdXE8sqWXY6Q5WiTUyRFWJg94l_36szMh6x2TLNPPVG991LmhsPphDNfKljisI2eK84zcwT5qLLFgZmu32Wmf3f4-RSQ5CRkisimBai7jUDxTgNW2kEhxZ9ZtKg-fcoHi6JFYo2IOwm6xU3Ktf6owER29T0b6chjxxEFqopj5PSuM5-24mnKDoxMdcXfzcpS5eYSt8A-0IlScu10UoPuD5Yo68cwtGPmhIAcdVzx4gC_FD-Htt39JReC77mUWjcUl9B3mn', flip: false },
               { k: 'skyScale', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA1s7pwqo4hmWA-klbLHtgijAERXLv4z2lLRgaQmyMjiQ4pKXxzfAqmJpMXSCq7cXfWPuAJvxW_alPuRDFcNBMr0DN7qqOhRQDIsTiRr9Ad137lD66yM9QTrvwSGlX9NjpmkrhYQHZ3uqFxNRzrv9b1ncFj9fqLaZhRtlyV8YgY-onpWbo93vinNOkKYtVgxwcCfZA9crZ_6qTxJrVwCGAlZiDlIAFB7C2xXpt8JRsHUfjZ7KP5WnqqiHYhNmsU6M-Vh-VxFKVPm-Km', flip: true },
               { k: 'enterpriseFlux', img: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCJa_VHCElVaVw_R168IeQpFoF-Aflj5qtVZps9m68A-33H-LC6R0ew_Coc-z8ciSlP4mqaK9BgV-Xt0bzESblfo9PH_bLdv9OGKFYiBjMcxwjfMdfjLkMzoDzpFf_OlSnocmd0t670tuC9656FIOEJmIaIEdvggN6d_MsB1aBXTNzXgViIiPfo-6vOHjxrvHxQfH_BmFj3rRbKuLh9Q-vccpRsbCTRiHUsfURo-pF59SEmpM_kqlwky1QZc07p-mku2l6VkG9QRtt3', flip: false },
-            ] as const).map(({ k, img, flip }) => (
+            ] as const).map(({ k, flip }) => (
               <div key={k} className="md:grid md:grid-cols-12 gap-12 items-center">
                 <div className={`col-span-7 relative group overflow-hidden ${flip ? 'order-1 md:order-2' : ''}`}>
-                  <img alt={t(`portfolio.${k}.title`)} loading="lazy" className="w-full aspect-video object-cover grayscale hover:grayscale-0 transition-all duration-700" src={img} />
-                  <div className="absolute inset-0 bg-surface/40 group-hover:bg-transparent transition-all" />
+                  <div
+                    aria-hidden="true"
+                    className="w-full aspect-video grayscale group-hover:grayscale-0 transition-all duration-700 flex items-end p-6"
+                    style={{
+                      background:
+                        k === 'neuralCore'
+                          ? 'radial-gradient(120% 120% at 18% 12%, #16343a 0%, #0e0e0e 62%)'
+                          : k === 'skyScale'
+                            ? 'radial-gradient(120% 120% at 18% 12%, #17263f 0%, #0e0e0e 62%)'
+                            : 'radial-gradient(120% 120% at 18% 12%, #2a1e12 0%, #0e0e0e 62%)',
+                    }}
+                  >
+                    <span className="mono-label text-[10px] text-tertiary/70">{t(`portfolio.${k}.title`)}</span>
+                  </div>
+                  <div className="absolute inset-0 bg-surface/40 group-hover:bg-transparent transition-all pointer-events-none" />
                 </div>
                 <div className={`col-span-5 pt-8 md:pt-0 ${flip ? 'order-2 md:order-1 text-right md:text-left' : ''}`}>
                   <div className="text-tertiary text-xs mono-label mb-2">{t(`portfolio.${k}.meta`)}</div>

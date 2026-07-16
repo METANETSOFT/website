@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Metanetsoft">
+  <defs>
+    <radialGradient id="g" cx="30%" cy="30%" r="90%">
+      <stop offset="0%" stop-color="#1a1a1a"/><stop offset="100%" stop-color="#0e0e0e"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <g fill="none" stroke="#484848" stroke-opacity="0.25">
+    <circle cx="1000" cy="140" r="4" fill="#8ff5ff" stroke="none"/>
+    <circle cx="1080" cy="220" r="3" fill="#00deec" stroke="none"/>
+    <line x1="1000" y1="140" x2="1080" y2="220"/>
+  </g>
+  <text x="90" y="300" font-family="'Space Grotesk',Arial,sans-serif" font-size="86" font-weight="700" letter-spacing="-3" fill="#e5e5e5">METANET<tspan fill="#8ff5ff">SOFT</tspan></text>
+  <text x="92" y="370" font-family="'Space Grotesk',Arial,sans-serif" font-size="34" font-weight="300" fill="#ababab">AI · Web · Mobile · Cloud Engineering</text>
+  <text x="92" y="560" font-family="Arial,sans-serif" font-size="22" fill="#757575" letter-spacing="2">METANETSOFT.COM</text>
+</svg>
