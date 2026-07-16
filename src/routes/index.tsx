@@ -170,9 +170,14 @@ function Home() {
                 <label className="block text-xs mono-label text-outline mb-2">{t('contact.messageLabel')}</label>
                 <textarea name="message" required className="w-full bg-surface-container-low border border-outline/30 p-4 text-on-surface focus:outline-none focus:border-tertiary transition-colors h-32" placeholder={t('contact.messagePlaceholder')} />
               </div>
-              <button className="px-10 py-5 bg-primary text-on-primary font-headline font-bold uppercase tracking-widest hover:bg-primary-dim transition-all active:scale-95 w-full md:w-auto" type="submit">
-                {t('contact.submit')}
-              </button>
+              <div className="flex flex-col items-stretch gap-4 md:items-start">
+                <button className="px-10 py-5 bg-primary text-on-primary font-headline font-bold uppercase tracking-widest hover:bg-primary-dim transition-all active:scale-95 w-full md:w-auto" type="submit">
+                  {t('contact.submit')}
+                </button>
+                <a className="px-10 py-5 border border-primary text-primary font-headline font-bold uppercase tracking-widest hover:bg-surface-container transition-all active:scale-95 w-full md:w-auto text-center" href="https://cal.eu/metanetsoft/30min" target="_blank" rel="noreferrer">
+                  {t('contact.requestMeeting')}
+                </a>
+              </div>
             </form>
             <p className="text-sm text-outline mt-8 opacity-50">{t('contact.emailAlt')}</p>
           </div>

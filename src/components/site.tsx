@@ -52,9 +52,6 @@ export function Nav() {
           <a className="px-6 py-2 bg-primary text-on-primary font-headline font-bold uppercase tracking-tighter hover:scale-95 duration-200 transition-transform inline-block" href="#contact">
             {t('nav.contact')}
           </a>
-          <a className="px-6 py-2 border border-primary text-primary font-headline font-bold uppercase tracking-tighter hover:scale-95 duration-200 transition-transform inline-block" href="https://cal.eu/metanetsoft/30min" target="_blank" rel="noreferrer">
-            {t('nav.appointment')}
-          </a>
         </div>
       </div>
     </nav>
