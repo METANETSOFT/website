@@ -1,0 +1,195 @@
+import type { TranslationDict } from '../types';
+
+export const fr: TranslationDict = {
+  common: {
+    loading: 'Chargement...',
+    error: 'Une erreur est survenue',
+    retry: 'Réessayer',
+    close: 'Fermer',
+    save: 'Enregistrer',
+    cancel: 'Annuler',
+    confirm: 'Confirmer',
+    search: 'Rechercher',
+    noResults: 'Aucun résultat',
+  },
+
+  meta: {
+    appName: 'Metanetsoft',
+    pageTitle: 'Metanetsoft | Architectes Numériques du Futur',
+    pageDescription: 'Conseil technique centré sur l\'IA, l\'ingénierie web, les applications mobiles et la transformation numérique.',
+  },
+
+  header: {
+    brand: 'METANETSOFT',
+    languageLabel: 'Langue',
+    languageSelect: 'Sélectionner la langue',
+  },
+
+  nav: {
+    about: 'À propos',
+    services: 'Services',
+    projects: 'Projets',
+    contact: 'Contact',
+    appointment: 'Prendre Rendez-vous',
+  },
+
+  hero: {
+    statusLabel: 'Système prêt: Établissement de la connexion',
+    titleLine1: 'Notre travail',
+    titleLine2: 'est simple.',
+    subtitle: 'Nous nous joignons à votre équipe ou livrons vos projets avec excellence technique.',
+    ctaPrimary: 'Voir le portfolio',
+    latLabel: 'LAT: 40.7128° N',
+    lonLabel: 'LON: 74.0060° W',
+    uptimeLabel: 'DISPONIBILITÉ: %99.998',
+  },
+
+  about: {
+    sectionIndex: '01 // Architecture',
+    title: 'Architectes Numériques\ndu Futur',
+    bodyLead: 'Metanetsoft est un cabinet de conseil technique haute performance. Nous ne faisons pas que développer des logiciels ; nous concevons des fondations numériques évolutives et résilientes.',
+    bodyExtended: 'Des premières intégrations d\'IA aux systèmes d\'entreprise complexes, nous relions vision et exécution avec clarté structurelle et rigueur d\'ingénierie.',
+    bodyMethodology: 'Notre méthodologie s\'ancre dans le brutalisme technique : performance brute, intégrité structurelle et sécurité sans compromis.',
+    uptimeValue: '99.9%',
+    uptimeMetric: 'DISPONIBILITÉ DU SYSTÈME',
+    latencyValue: '< 50ms',
+    latencyMetric: 'VITESSE D\'ACCÈS GLOBAL',
+    description: 'Nous sommes une entreprise technologique de premier plan dédiée à la création de solutions innovantes qui transforment les entreprises et les communautés dans le monde entier.',
+  },
+
+  services: {
+    sectionIndex: '02 // Capacités Principales',
+    title: 'Exécution Stratégique',
+    lead: 'Solutions modulaires conçues pour les environnements à haute disponibilité.',
+    ai: {
+      title: 'IA et Automatisation Intelligente',
+      description: 'Nous appliquons les LLM, la vision par ordinateur et l\'analyse prédictive pour automatiser les flux de décision et transformer les données en levier autonome.',
+      bullet1: 'Fine-Tuning LLM Personnalisé',
+      bullet2: 'Moteurs de Logique Prédictive',
+    },
+    web: {
+      title: 'Design Web, Ingénierie et SEO',
+      description: 'Nous combinons design produit exigeant et ingénierie haute performance avec React, Next.js et des systèmes web modernes.',
+      bullet1: 'Design UI/UX Moderne',
+      bullet2: 'SEO Technique et Optimisation',
+    },
+    mobile: {
+      title: 'Développement d\'Applications Mobiles',
+      description: 'Expériences mobiles natives et multiplateformes conçues pour la fiabilité, la vitesse et une interaction de haute fidélité.',
+      bullet1: 'Expertise Swift / Kotlin',
+      bullet2: 'Synchronisation Biométrique en Temps Réel',
+    },
+    consulting: 'Conseil',
+    development: 'Développement',
+    support: 'Support',
+    training: 'Formation',
+  },
+
+  portfolio: {
+    sectionIndex: '03 // Preuve de Concept',
+    neuralCore: {
+      meta: 'Optimisation de l\'Architecture IA // 2024',
+      title: 'REFONTE DE NEURAL CORE',
+      description: 'Optimisation avancée du cœur IA qui réduit la latence de 40 % et fait passer les cycles de décision autonome à l\'échelle de la milliseconde.',
+    },
+    skyScale: {
+      meta: 'Scalabilité de l\'infrastructure cloud // 2024',
+      title: 'PROJET SKY SCALE',
+      description: 'Architecture cloud élastique conçue pour absorber le trafic mondial et traiter des millions de requêtes par seconde sans défaillance.',
+    },
+    enterpriseFlux: {
+      meta: 'Transformation numérique d\'entreprise // 2023',
+      title: 'ENTERPRISE FLUX',
+      description: 'Écosystème logiciel qui modernise les workflows d\'entreprise et automatise les opérations critiques de bout en bout.',
+    },
+  },
+
+  partners: {
+    label: '04 // Références et Partenaires',
+  },
+
+  contact: {
+    sectionIndex: '05 // Contact',
+    title: 'Connexion au Système',
+    nameLabel: 'NOM',
+    namePlaceholder: 'Votre nom...',
+    emailLabel: 'COURRIEL',
+    emailPlaceholder: 'Votre courriel...',
+    messageLabel: 'MESSAGE',
+    messagePlaceholder: 'Votre contenu...',
+    submit: 'INITIER LE PROTOCOLE',
+    queueing: 'Mise en file de la transmission...',
+    queued: 'Transmission mise en file. Traitement en arrière-plan.',
+    queuedWithPosition: 'Transmission mise en file. Position: {position}.',
+    processing: 'File acceptée. Transmission en cours d’envoi...',
+    processingDelayed: 'La transmission est toujours en file. Traitement en arrière-plan en cours.',
+    sending: 'Transmission en cours...',
+    success: 'Transmission terminée.',
+    error: 'Transmission échouée.',
+    errorRequired: 'Remplissez tous les champs avant de lancer le protocole.',
+    errorInvalid: 'Les données envoyées sont invalides.',
+    errorQueueFull: 'La file est pleine. Réessayez sous peu.',
+    errorQueueLost: 'Le statut de la file n’a pas pu être vérifié.',
+    errorRateLimited: 'Trop de tentatives. Attendez puis réessayez.',
+    errorAuth: 'Échec de l’authentification du serveur mail.',
+    errorTls: 'La connexion mail sécurisée a échoué.',
+    errorTimeout: 'Le serveur mail a expiré.',
+    errorUnavailable: 'Le service mail est indisponible.',
+    errorServer: 'La transmission du mail a échoué.',
+    formName: 'Nom',
+    formEmail: 'Courriel',
+    formMessage: 'Message',
+    send: 'Envoyer le message',
+    sent: 'Message envoyé avec succès',
+    lead: 'Prêt à construire votre projet?',
+    emailAlt: 'Vous pouvez également nous écrire à info@metanetsoft.com.',
+  },
+
+  vm: {
+    sectionIndex: '01.1 // Objectifs et Valeurs',
+    title: 'Vision\nMission',
+    visionLabel: '[ NOTRE VISION ]',
+    visionBody: 'Repousser les limites de la technologie et définir des standards mondiaux pour l\'architecture numérique afin de devenir un leader innovant et transformateur du conseil technologique.',
+    missionLabel: '[ NOTRE MISSION ]',
+    missionBody: 'Apporter excellence technique et profondeur stratégique à nos clients en transformant des problèmes numériques complexes en solutions simples, évolutives et durables.',
+  },
+
+  cta: {
+    title: 'Prêt à construire votre projet?',
+    body: 'Notre équipe est prête à s\'intégrer à votre workflow. Parlons de votre feuille de route technique.',
+  },
+
+  footer: {
+    brand: 'METANETSOFT',
+    tagline: '© 2024 METANETSOFT. NOUS BÂTISSONS LE FUTUR.',
+    privacy: 'Politique de Confidentialité',
+    terms: 'Conditions d\'Utilisation',
+    linkedin: 'LinkedIn',
+    github: 'GitHub',
+  },
+
+  home: {
+    welcome: 'Bienvenue',
+    heroTitle: 'Construisons Ensemble le Futur',
+    heroSubtitle: 'Solutions innovantes pour un monde connecté',
+  },
+
+  language: {
+    title: 'Langue',
+    select: 'Sélectionner la langue',
+    changed: 'Langue modifiée',
+  },
+
+  apply: {
+    title: 'Postuler maintenant',
+    subtitle: 'Rejoignez notre équipe',
+    cta: 'Soumettre la candidature',
+    name: 'Nom complet',
+    email: 'Adresse e-mail',
+    phone: 'Numéro de téléphone',
+    position: 'Poste',
+    message: 'Lettre de motivation',
+    submitted: 'Candidature soumise avec succès',
+    failed: 'Échec de la soumission.',
+  },
+};

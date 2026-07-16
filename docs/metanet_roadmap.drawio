@@ -1,0 +1,76 @@
+<mxfile host="app.diagrams.net" agent="claude" version="24.0.0">
+  <diagram id="roadmap" name="metanetsoft.com Roadmap">
+    <mxGraphModel dx="1200" dy="900" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="1720" math="0" shadow="0" background="#0f1420">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="title" value="metanetsoft.com — React SSR Yeniden Yazım + Özellik Yol Haritası&#10;(foxapplicant stack: TanStack Start · Vite SSR React 19 · TanStack Router · Tailwind v4 · Radix/CVA)" style="text;html=1;align=center;verticalAlign=middle;fontColor=#f3f4f6;fontSize=17;fontStyle=1;whiteSpace=wrap;" vertex="1" parent="1">
+          <mxGeometry x="140" y="24" width="820" height="60" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p0" value="P0 — Hazırlık &amp; Güvenlik&#10;• git 'rewrite' branch aç, mevcut canlı siteyi dondur/yedek&#10;• foxapplicant stack'ini referans olarak incele&#10;• SEO API key'lerini al (⛔ şu an bende yok)" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fillColor=#374151;strokeColor=#6b7280;fontColor=#f3f4f6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="290" y="110" width="520" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p1" value="P1 — Scaffold (foxapplicant stack)&#10;• TanStack Start (Vite SSR React 19) + TanStack Router (file-based)&#10;• Tailwind v4 + Radix + CVA + lucide-react&#10;• Node/nodemailer mail backend (Convex GEREKMEZ — pazarlama sitesi)" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fillColor=#1f3b57;strokeColor=#3b82f6;fontColor=#f3f4f6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="290" y="260" width="520" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p2" value="P2 — 30-dilli i18n motorunu taşı&#10;• mevcut i18n motorunu React context/hook olarak sar (yeniden yazma)&#10;• SSR locale tespiti koru (cookie/header/geo) + hydrate&#10;• &lt;html lang/dir&gt; RTL + hreflang temeli" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fillColor=#1f3b57;strokeColor=#3b82f6;fontColor=#f3f4f6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="290" y="410" width="520" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p3" value="P3 — Sayfaları React'e kur&#10;• Hero + bölümler + footer — içerik/tasarım birebir korunur&#10;• SSR render + client hydrate doğrula" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fillColor=#1f3b57;strokeColor=#3b82f6;fontColor=#f3f4f6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="290" y="560" width="520" height="96" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p4" value="P4 — UI &amp; kopya değişiklikleri (30 dil translate)&#10;• üstteki 'Randevu' butonunu kaldır → aşağı taşı&#10;• 'PROTOKOLÜ BAŞLAT' → 'Mesaj Gönder'&#10;• altına net 'Meeting Ayarla' (toplantı iste) butonu" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fillColor=#3730a3;strokeColor=#818cf8;fontColor=#f3f4f6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="290" y="696" width="520" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p5" value="P5 — Yeni 'Bize CV Gönder' bölümü (frame)&#10;• CV upload (pdf/doc) + açıklama 'havuzda ileriki işler için işlenir'&#10;• Gönder → server fn → nodemailer → user@metanetsoft.com (info@'dan)&#10;• Windmill cv_pipeline cron zaten işliyor (aynı adresten çok mail OK)" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fillColor=#3730a3;strokeColor=#818cf8;fontColor=#f3f4f6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="290" y="846" width="520" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p6" value="P6 — KVKK/GDPR açık rıza modal&#10;• gönderimden önce scroll'lu uzun onay metni, 30 dil, responsive&#10;• açık rıza + veri işleme + AI ile işlenme + yasal kullanım hakkı&#10;• onay verilmeden CV gönderilmez" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fillColor=#3730a3;strokeColor=#818cf8;fontColor=#f3f4f6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="290" y="996" width="520" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p7" value="P7 — SEO revizyonu (mevcut SSR üstünde — React değil çözüyor)&#10;• meta/OG/Twitter, JSON-LD (Organization/WebSite), canonical, hreflang×30&#10;• sitemap.xml + robots.txt, performans/Lighthouse, font/görsel opt&#10;• (SEO API key'leri → audit + Search Console)" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fillColor=#166534;strokeColor=#22c55e;fontColor=#f3f4f6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1146" width="520" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p8" value="P8 — Windmill cron (cv_outreach_mailer)&#10;• GitHub'dan bulunan kişilere giden mail — metanetsoft temalı yap/doğrula&#10;• metni değiştir: 'user@'a mail at' YERİNE&#10;  'metanetsoft.com'a gir, CV'ni havuza yükle (ileriki pozisyonlar)'" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fillColor=#166534;strokeColor=#22c55e;fontColor=#f3f4f6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1296" width="520" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="p9" value="P9 — Deploy &amp; Doğrulama&#10;• Dockerfile/Nixpacks + Dokploy (foxapplicant deseni)&#10;• SSR + i18n + form + CV upload + SEO smoke test → canlıya al" style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=12;spacingTop=8;fillColor=#9a3412;strokeColor=#fb923c;fontColor=#f3f4f6;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1446" width="520" height="96" as="geometry" />
+        </mxCell>
+
+        <mxCell id="blocker" value="⛔ BLOCKER — SEO API key'leri&#10;Yapıştırdığın key'ler bana ULAŞMADI ('[Pasted text]').&#10;Tekrar paylaş ya da Windmill/dosya değişkenini söyle.&#10;P7 audit'i buna bağlı; kalan her şey key'siz ilerler." style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=10;spacingTop=6;fillColor=#7f1d1d;strokeColor=#f87171;fontColor=#fee2e2;fontSize=11;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="1146" width="230" height="110" as="geometry" />
+        </mxCell>
+
+        <mxCell id="dep" value="🔗 Bağımlılık&#10;P8 cron metni P5 (CV yükleme sayfası) canlı olduktan sonra oraya yönlendirir." style="rounded=1;whiteSpace=wrap;html=1;align=left;verticalAlign=top;spacingLeft=10;spacingTop=6;fillColor=#1f2937;strokeColor=#9ca3af;fontColor=#e5e7eb;fontSize=11;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="850" y="1310" width="230" height="90" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e01" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9ca3af;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="p0" target="p1"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9ca3af;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="p1" target="p2"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9ca3af;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="p2" target="p3"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9ca3af;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="p3" target="p4"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e45" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9ca3af;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="p4" target="p5"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e56" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9ca3af;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="p5" target="p6"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9ca3af;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="p6" target="p7"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e78" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9ca3af;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="p7" target="p8"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="e89" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9ca3af;strokeWidth=2;endArrow=block;endFill=1;" edge="1" parent="1" source="p8" target="p9"><mxGeometry relative="1" as="geometry" /></mxCell>
+
+        <mxCell id="eblk" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#f87171;strokeWidth=1.5;endArrow=open;endFill=1;dashed=1;" edge="1" parent="1" source="blocker" target="p7"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edep" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9ca3af;strokeWidth=1.5;endArrow=open;endFill=1;dashed=1;" edge="1" parent="1" source="dep" target="p8"><mxGeometry relative="1" as="geometry" /></mxCell>
+        <mxCell id="edep5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;strokeColor=#9ca3af;strokeWidth=1.2;endArrow=open;endFill=1;dashed=1;" edge="1" parent="1" source="p5" target="dep"><mxGeometry relative="1" as="geometry" /></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
