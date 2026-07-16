@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+/* Metanetsoft design tokens (ported from legacy tailwind.config.cjs). */
+@theme {
+  --color-background: #0e0e0e;
+  --color-on-background: #e5e5e5;
+  --color-surface: #0e0e0e;
+  --color-surface-dim: #0e0e0e;
+  --color-surface-bright: #2c2c2c;
+  --color-surface-container-lowest: #000000;
+  --color-surface-container-low: #131313;
+  --color-surface-container: #191919;
+  --color-surface-container-high: #1f1f1f;
+  --color-surface-container-highest: #262626;
+  --color-on-surface: #e5e5e5;
+  --color-on-surface-variant: #ababab;
+  --color-primary: #c6c6c7;
+  --color-on-primary: #3f4041;
+  --color-primary-dim: #b8b9b9;
+  --color-primary-container: #454747;
+  --color-secondary: #9f9d9d;
+  --color-tertiary: #8ff5ff;
+  --color-tertiary-dim: #00deec;
+  --color-on-tertiary: #005d63;
+  --color-outline: #757575;
+  --color-outline-variant: #484848;
+  --color-error: #ee7d77;
+
+  --font-headline: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, sans-serif;
+  --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-background);
+    color: var(--color-on-background);
+    scroll-behavior: smooth;
+  }
+}
+
+@utility grid-pattern {
+  background-image: radial-gradient(rgba(72, 72, 72, 0.15) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@utility mono-label {
+  font-family: "Space Grotesk", ui-monospace, monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}

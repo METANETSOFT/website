@@ -1,16 +1,26 @@
-[variables]
-NODE_ENV = "production"
-NIXPACKS_NODE_VERSION = "22"
+# Nixpacks deploy (Dokploy → Nixpacks builder) for the TanStack Start app.
+# Vite 8 / rolldown / TanStack Start need Node >= 22.12; the default nixpkgs pin
+# only ships 22.11, so pin an archive that provides 22.13.1. (Most robust option:
+# set Dokploy build type to "Dockerfile" and use ./Dockerfile instead.)
+providers = ["node"]
 
 [phases.setup]
-nixPkgs = ["nodejs_22"]
+nixpkgsArchive = "51ad838b03a05b1de6f9f2a0fffecee64a9788ee"
+
+[variables]
+NODE_ENV = "production"
+HOST = "0.0.0.0"
+NIXPACKS_NODE_VERSION = "22"
 
 [phases.install]
-cmds = ["npm ci --include=dev"]
-cacheDirectories = ["/root/.npm"]
+# Lockfile-free install so the optional native rolldown binding installs correctly.
+cmds = [
+  "rm -f package-lock.json",
+  "npm install --include=optional --legacy-peer-deps",
+]
 
 [phases.build]
 cmds = ["npm run build"]
 
 [start]
-cmd = "npm run start"
+cmd = "node .output/server/index.mjs"
