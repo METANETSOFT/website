@@ -1,27 +1,8 @@
-# Dependencies
-node_modules/
-
-# Build output
-dist/
-.vite/
-
-# Environment files
+node_modules
+.output
+.nitro
+.tanstack
+dist
+src/routeTree.gen.ts
+*.log
 .env
-.env.*
-!.env.example
-
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# OS / editor
-.DS_Store
-Thumbs.db
-.idea/
-.vscode/
-
-# Local temp files
-*.tmp
-*.temp
