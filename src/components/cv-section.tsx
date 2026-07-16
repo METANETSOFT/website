@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { createServerFn } from '@tanstack/react-start'
 import { toast } from 'sonner'
 import { useT } from '../i18n/react'
+import { ConsentModal } from './consent-modal'
 
 // Server fn: receives the CV FormData, emails it to the pool inbox.
 // nodemailer (server-only) is dynamically imported so it never hits the client bundle.
@@ -32,20 +33,18 @@ const submitCv = createServerFn({ method: 'POST' })
 export function CvSection() {
   const t = useT()
   const [busy, setBusy] = useState(false)
-  const [consent, setConsent] = useState(false)
+  const [modalOpen, setModalOpen] = useState(false)
+  const formRef = useRef<HTMLFormElement>(null)
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    const form = e.currentTarget
+  async function send(form: HTMLFormElement) {
     const fd = new FormData(form)
-    fd.set('consent', consent ? 'yes' : 'no')
+    fd.set('consent', 'yes') // reaching here means the consent modal was accepted
     setBusy(true)
     try {
       const res = await submitCv({ data: fd })
       if (res.ok) {
         toast.success(t('cv.success'))
         form.reset()
-        setConsent(false)
       } else {
         toast.error(t('cv.error'))
       }
@@ -56,6 +55,13 @@ export function CvSection() {
     }
   }
 
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    if (!e.currentTarget.reportValidity()) return
+    // Gate every submission behind the explicit-consent modal.
+    setModalOpen(true)
+  }
+
   return (
     <section id="cv" className="py-32 px-8 md:px-24 bg-surface-container-low border-t border-outline/10">
       <div className="max-w-4xl mx-auto">
@@ -64,7 +70,7 @@ export function CvSection() {
         <p className="text-xl text-on-surface-variant leading-relaxed font-light mb-2">{t('cv.intro')}</p>
         <p className="text-sm text-outline mb-10">{t('cv.poolNote')}</p>
 
-        <form className="space-y-6" onSubmit={onSubmit}>
+        <form ref={formRef} className="space-y-6" onSubmit={onSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label className="block text-xs mono-label text-outline mb-2">{t('cv.nameLabel')}</label>
@@ -84,15 +90,21 @@ export function CvSection() {
             <input name="cv" required accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" className="block w-full text-sm text-on-surface-variant file:mr-4 file:border-0 file:bg-primary file:text-on-primary file:font-headline file:font-bold file:uppercase file:tracking-widest file:px-6 file:py-3 file:cursor-pointer border border-outline/30 bg-surface p-3" type="file" />
             <p className="text-xs text-outline mt-2">{t('cv.fileHint')}</p>
           </div>
-          <label className="flex items-start gap-3 text-sm text-on-surface-variant">
-            <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-1 accent-tertiary" />
-            <span>{t('cv.consent')}</span>
-          </label>
-          <button disabled={busy || !consent} className="px-10 py-5 bg-primary text-on-primary font-headline font-bold uppercase tracking-widest hover:bg-primary-dim transition-all active:scale-95 w-full md:w-auto disabled:opacity-40 disabled:cursor-not-allowed" type="submit">
+          <p className="text-sm text-on-surface-variant">{t('cv.consent')}</p>
+          <button disabled={busy} className="px-10 py-5 bg-primary text-on-primary font-headline font-bold uppercase tracking-widest hover:bg-primary-dim transition-all active:scale-95 w-full md:w-auto disabled:opacity-40 disabled:cursor-not-allowed" type="submit">
             {busy ? t('cv.sending') : t('cv.submit')}
           </button>
         </form>
       </div>
+
+      <ConsentModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onAccept={() => {
+          setModalOpen(false)
+          if (formRef.current) void send(formRef.current)
+        }}
+      />
     </section>
   )
 }
