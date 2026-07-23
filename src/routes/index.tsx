@@ -24,10 +24,10 @@ function Home() {
         <section className="relative min-h-[921px] flex flex-col justify-center px-8 md:px-24 grid-pattern overflow-hidden">
           <div className="relative z-10 max-w-5xl">
             <div className="flex items-center gap-4 mb-6">
-              <span className="w-12 h-px bg-tertiary" />
-              <span className="mono-label text-tertiary text-sm">{t('hero.statusLabel')}</span>
+              <span className="w-12 h-px bg-tertiary shrink-0" />
+              <span className="mono-label text-tertiary text-xs sm:text-sm break-words min-w-0">{t('hero.statusLabel')}</span>
             </div>
-            <h1 className="text-6xl md:text-8xl font-headline font-bold leading-tight tracking-tighter mb-4">
+            <h1 className="text-5xl sm:text-6xl md:text-8xl font-headline font-bold leading-tight tracking-tighter mb-4 break-words">
               {t('hero.titleLine1')} <span className="text-primary">{t('hero.titleLine2')}</span>
             </h1>
             <div className="md:grid md:grid-cols-12 gap-8 items-start">
@@ -54,9 +54,9 @@ function Home() {
         {/* About / Architecture */}
         <section id="architecture" className="py-32 px-8 md:px-24 bg-surface">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
-            <div className="col-span-12 md:col-span-5">
+            <div className="md:col-span-5">
               <h3 className="mono-label text-tertiary mb-4">{t('about.sectionIndex')}</h3>
-              <h2 className="text-5xl font-headline font-bold tracking-tighter leading-none mb-8">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-bold tracking-tighter leading-tight md:leading-none mb-8 break-words">
                 {lines(t('about.title')).map((l, i) => (
                   <span key={i} className={i > 0 ? 'text-on-surface-variant' : undefined}>
                     {i > 0 ? <br /> : null}
@@ -65,7 +65,7 @@ function Home() {
                 ))}
               </h2>
             </div>
-            <div className="col-span-12 md:col-span-7 space-y-6">
+            <div className="md:col-span-7 space-y-6">
               <p className="text-xl text-on-surface-variant leading-relaxed font-light">{t('about.bodyLead')}</p>
               <p className="text-lg text-outline leading-relaxed">{t('about.bodyExtended')}</p>
               <p className="text-lg text-outline leading-relaxed">{t('about.bodyMethodology')}</p>
@@ -88,7 +88,7 @@ function Home() {
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
             <div>
               <h3 className="mono-label text-tertiary mb-4">{t('services.sectionIndex')}</h3>
-              <h2 className="text-5xl font-headline font-bold tracking-tighter">{t('services.title')}</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-bold tracking-tighter break-words">{t('services.title')}</h2>
             </div>
             <p className="max-w-xs text-outline text-sm mono-label">{t('services.lead')}</p>
           </div>
@@ -129,7 +129,7 @@ function Home() {
                 </div>
                 <div className={`col-span-5 pt-8 md:pt-0 ${flip ? 'order-2 md:order-1 text-right md:text-left' : ''}`}>
                   <div className="text-tertiary text-xs mono-label mb-2">{t(`portfolio.${k}.meta`)}</div>
-                  <h4 className="text-4xl font-headline font-bold mb-4">{t(`portfolio.${k}.title`)}</h4>
+                  <h4 className="text-2xl sm:text-3xl md:text-4xl font-headline font-bold mb-4 break-words">{t(`portfolio.${k}.title`)}</h4>
                   <p className="text-on-surface-variant mb-6">{t(`portfolio.${k}.description`)}</p>
                 </div>
               </div>
@@ -156,7 +156,7 @@ function Home() {
         <section id="contact" className="py-32 px-8 md:px-24 bg-surface">
           <div className="max-w-4xl mx-auto">
             <h3 className="mono-label text-tertiary mb-4">{t('contact.sectionIndex')}</h3>
-            <h2 className="text-5xl font-headline font-bold tracking-tighter mb-12">{t('contact.title')}</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-bold tracking-tighter mb-12 break-words">{t('contact.title')}</h2>
             <ContactForm />
           </div>
         </section>
@@ -167,9 +167,9 @@ function Home() {
         {/* Vision & Mission */}
         <section id="values" className="py-32 px-8 md:px-24 bg-surface border-t border-outline/10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-16">
-            <div className="col-span-12 md:col-span-5">
+            <div className="md:col-span-5">
               <h3 className="mono-label text-tertiary mb-4">{t('vm.sectionIndex')}</h3>
-              <h2 className="text-5xl font-headline font-bold tracking-tighter leading-none mb-8">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-bold tracking-tighter leading-tight md:leading-none mb-8 break-words">
                 {lines(t('vm.title')).map((l, i) => (
                   <span key={i} className={i > 0 ? 'text-on-surface-variant' : undefined}>
                     {i > 0 ? <br /> : null}
@@ -178,7 +178,7 @@ function Home() {
                 ))}
               </h2>
             </div>
-            <div className="col-span-12 md:col-span-7 grid grid-cols-1 gap-8">
+            <div className="md:col-span-7 grid grid-cols-1 gap-8">
               <div className="p-8 bg-surface-container-low border-l-2 border-tertiary hover:bg-surface-container transition-colors duration-300">
                 <div className="mono-label text-xs text-tertiary mb-4">{t('vm.visionLabel')}</div>
                 <p className="text-xl text-on-surface-variant leading-relaxed font-light">{t('vm.visionBody')}</p>
@@ -193,7 +193,7 @@ function Home() {
 
         {/* CTA */}
         <section className="py-32 px-8 md:px-24 bg-surface-container-highest flex flex-col items-center text-center">
-          <h2 className="text-5xl md:text-7xl font-headline font-bold tracking-tighter mb-8 max-w-4xl">{t('cta.title')}</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-7xl font-headline font-bold tracking-tighter mb-8 max-w-4xl break-words">{t('cta.title')}</h2>
           <p className="text-on-surface-variant text-xl mb-12 max-w-2xl">{t('cta.body')}</p>
         </section>
       </main>
