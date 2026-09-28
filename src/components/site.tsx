@@ -43,13 +43,13 @@ export function Nav() {
           METANETSOFT
         </div>
         <div className="hidden md:flex items-center space-x-8">
-          <a className="font-headline uppercase tracking-tighter text-outline hover:text-tertiary transition-colors duration-300" href="#architecture">{t('nav.about')}</a>
-          <a className="font-headline uppercase tracking-tighter text-outline hover:text-tertiary transition-colors duration-300" href="#architecture">{t('nav.services')}</a>
-          <a className="font-headline uppercase tracking-tighter text-outline hover:text-tertiary transition-colors duration-300" href="#portfolio">{t('nav.projects')}</a>
+          <a className="font-headline uppercase tracking-tighter text-outline hover:text-tertiary transition-colors duration-300" href="/#architecture">{t('nav.about')}</a>
+          <a className="font-headline uppercase tracking-tighter text-outline hover:text-tertiary transition-colors duration-300" href="/#architecture">{t('nav.services')}</a>
+          <a className="font-headline uppercase tracking-tighter text-outline hover:text-tertiary transition-colors duration-300" href="/#portfolio">{t('nav.projects')}</a>
         </div>
         <div className="exact-shell-nav__actions flex items-center gap-6">
           <LocaleSwitcher />
-          <a className="px-6 py-2 bg-primary text-on-primary font-headline font-bold uppercase tracking-tighter hover:scale-95 duration-200 transition-transform inline-block" href="#contact">
+          <a className="px-6 py-2 bg-primary text-on-primary font-headline font-bold uppercase tracking-tighter hover:scale-95 duration-200 transition-transform inline-block" href="/#contact">
             {t('nav.contact')}
           </a>
         </div>
@@ -70,8 +70,8 @@ export function Footer() {
           <p className="font-headline text-xs tracking-widest text-outline">{t('footer.tagline')}</p>
         </div>
         <div className="footer-links flex gap-8">
-          <a className={link} href="#">{t('footer.privacy')}</a>
-          <a className={link} href="#">{t('footer.terms')}</a>
+          <a className={link} href="/privacy">{t('footer.privacy')}</a>
+          <a className={link} href="/terms">{t('footer.terms')}</a>
           <a className={link} href="https://www.linkedin.com/company/122004088/" target="_blank" rel="noreferrer">{t('footer.linkedin')}</a>
           <a className={link} href="https://github.com/METANETSOFT" target="_blank" rel="noreferrer">{t('footer.github')}</a>
         </div>
