@@ -31,7 +31,7 @@ const unlock = createServerFn({ method: 'POST' })
     const { setCookie } = await import('@tanstack/react-start/server')
     const t = await import('../../server/tiktok')
     if (!t.checkPassword(data.password)) return { ok: false }
-    setCookie(SESSION, t.sessionToken(), { httpOnly: true, secure: true, sameSite: 'lax', path: '/tiktok', maxAge: 60 * 60 * 12 })
+    setCookie(SESSION, t.sessionToken(), { httpOnly: true, secure: true, sameSite: 'lax', path: '/', maxAge: 60 * 60 * 12 })
     return { ok: true }
   })
 
@@ -40,7 +40,7 @@ const startLogin = createServerFn({ method: 'POST' }).handler(async () => {
   const { setCookie } = await import('@tanstack/react-start/server')
   const t = await import('../../server/tiktok')
   const state = t.newState()
-  setCookie('gcf_oauth_state', state, { httpOnly: true, secure: true, sameSite: 'lax', path: '/tiktok', maxAge: 600 })
+  setCookie('gcf_oauth_state', state, { httpOnly: true, secure: true, sameSite: 'lax', path: '/', maxAge: 600 })
   return { url: t.authorizeUrl(state) }
 })
 

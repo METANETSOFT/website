@@ -12,7 +12,7 @@ const finishLogin = createServerFn({ method: 'GET' })
     const t = await import('../../server/tiktok')
     if (!t.validSession(getCookie('gcf_session'))) return { done: false, error: '' }
     if (!data.state || data.state !== getCookie('gcf_oauth_state')) return { done: false, error: 'state_mismatch' }
-    deleteCookie('gcf_oauth_state', { path: '/tiktok' })
+    deleteCookie('gcf_oauth_state', { path: '/' })
     try {
       await t.exchangeCode(data.code)
       return { done: true, error: '' }
